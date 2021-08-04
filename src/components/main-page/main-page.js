@@ -5,7 +5,7 @@ import Section
  from "../section/section";
 function MainPage () {
     return (
-        <div className={styles.container}>
+        <div className={styles.container + " containter"}>
             Hello!
             <Section 
                 header="this is one section"
