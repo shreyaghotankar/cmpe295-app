@@ -14,6 +14,16 @@
     "categories": {
       "auth": {
         "cmpe295appb8938036": {}
+      },
+      "function": {
+        "S3Trigger27517569": {
+          "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
+          "s3Key": "amplify-builds/S3Trigger27517569-62576b4639314c6c5842-build.zip"
+        },
+        "cmpe295DbTriggerebf794e7": {
+          "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
+          "s3Key": "amplify-builds/cmpe295DbTriggerebf794e7-396b745a746d4b73414d-build.zip"
+        }
       }
     }
   }
