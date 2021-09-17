@@ -1,0 +1,5 @@
+{
+    "tableName": "user-image-data",
+    "partitionKeyName": "imageId",
+    "partitionKeyType": "S"
+}

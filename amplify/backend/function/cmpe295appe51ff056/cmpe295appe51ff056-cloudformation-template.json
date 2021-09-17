@@ -1,23 +1,16 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Lambda resource stack creation using Amplify CLI",
+  "Description": "Lambda Function resource stack creation using Amplify CLI",
   "Parameters": {
-    "env": {
-      "Type": "String"
-    },
-    "storagecmpe295DbName": {
+    "CloudWatchRule": {
       "Type": "String",
-      "Default": "storagecmpe295DbName"
-    },
-    "storagecmpe295DbArn": {
-      "Type": "String",
-      "Default": "storagecmpe295DbArn"
-    },
-    "storagecmpe295DbStreamArn": {
-      "Type": "String",
-      "Default": "storagecmpe295DbArn"
+      "Default": "NONE",
+      "Description": " Schedule Expression"
     },
     "deploymentBucketName": {
+      "Type": "String"
+    },
+    "env": {
       "Type": "String"
     },
     "s3Key": {
@@ -42,16 +35,24 @@
         "aws:asset:property": "Code"
       },
       "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        },
         "Handler": "index.handler",
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cmpe295DbTriggerebf794e7",
+            "cmpe295appe51ff056",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cmpe295DbTriggerebf794e7",
+                  "cmpe295appe51ff056",
                   "-",
                   {
                     "Ref": "env"
@@ -65,6 +66,9 @@
           "Variables": {
             "ENV": {
               "Ref": "env"
+            },
+            "REGION": {
+              "Ref": "AWS::Region"
             }
           }
         },
@@ -75,15 +79,8 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Timeout": "25",
-        "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        }
+        "Layers": [],
+        "Timeout": "25"
       }
     },
     "LambdaExecutionRole": {
@@ -92,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cmpe295DbLambdaRoleebf794e7",
+            "cmpe295appLambdaRole8916b36d",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cmpe295DbLambdaRoleebf794e7",
+                  "cmpe295appLambdaRole8916b36d",
                   "-",
                   {
                     "Ref": "env"
@@ -166,59 +163,6 @@
             }
           ]
         }
-      }
-    },
-    "cmpe295DbTriggerPolicy": {
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ],
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "lambda-trigger-policy-cmpe295Db",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "dynamodb:DescribeStream",
-                "dynamodb:GetRecords",
-                "dynamodb:GetShardIterator",
-                "dynamodb:ListStreams"
-              ],
-              "Resource": [
-                {
-                  "Ref": "storagecmpe295DbStreamArn"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "cmpe295DbTrigger": {
-      "Type": "AWS::Lambda::EventSourceMapping",
-      "DependsOn": [
-        "cmpe295DbTriggerPolicy"
-      ],
-      "Properties": {
-        "BatchSize": 100,
-        "Enabled": true,
-        "EventSourceArn": {
-          "Ref": "storagecmpe295DbStreamArn"
-        },
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "LambdaFunction",
-            "Arn"
-          ]
-        },
-        "StartingPosition": "LATEST"
       }
     }
   },

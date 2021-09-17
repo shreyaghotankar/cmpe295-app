@@ -33,7 +33,7 @@
                 "AttributeDefinitions": [
                   
                   {
-                      "AttributeName": "email",
+                      "AttributeName": "imageId",
                       "AttributeType": "S"
                   } 
                   
@@ -41,7 +41,7 @@
                 "KeySchema": [
                   
                   {
-                    "AttributeName": "email",
+                    "AttributeName": "imageId",
                     "KeyType": "HASH"
                   } 
                   

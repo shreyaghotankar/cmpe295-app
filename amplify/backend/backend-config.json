@@ -13,21 +13,10 @@
       "providerPlugin": "awscloudformation",
       "build": true
     },
-    "cmpe295DbTriggerebf794e7": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
+    "cmpe295appe51ff056": {
       "build": true,
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "cmpe295Db",
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ]
-        }
-      ]
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "storage": {
@@ -46,9 +35,25 @@
         }
       ]
     },
-    "cmpe295Db": {
+    "masterDB": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    }
+  },
+  "api": {
+    "dbapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cmpe295appe51ff056",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
     }
   }
 }
