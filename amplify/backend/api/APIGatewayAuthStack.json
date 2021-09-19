@@ -11,7 +11,7 @@
     "env": {
       "Type": "String"
     },
-    "dbapi": {
+    "dBApi": {
       "Type": "String"
     }
   },
@@ -52,7 +52,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -64,7 +64,7 @@
                           }
                         ]
                       },
-                      "/POST/image/*"
+                      "/POST/images/*"
                     ]
                   ]
                 },
@@ -82,7 +82,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -94,7 +94,7 @@
                           }
                         ]
                       },
-                      "/POST/image"
+                      "/POST/images"
                     ]
                   ]
                 },
@@ -112,7 +112,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -124,7 +124,7 @@
                           }
                         ]
                       },
-                      "/GET/image/*"
+                      "/GET/images/*"
                     ]
                   ]
                 },
@@ -142,7 +142,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -154,7 +154,7 @@
                           }
                         ]
                       },
-                      "/GET/image"
+                      "/GET/images"
                     ]
                   ]
                 },
@@ -172,7 +172,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -184,7 +184,7 @@
                           }
                         ]
                       },
-                      "/PUT/image/*"
+                      "/PUT/images/*"
                     ]
                   ]
                 },
@@ -202,7 +202,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -214,7 +214,7 @@
                           }
                         ]
                       },
-                      "/PUT/image"
+                      "/PUT/images"
                     ]
                   ]
                 },
@@ -232,7 +232,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -244,7 +244,7 @@
                           }
                         ]
                       },
-                      "/PATCH/image/*"
+                      "/PATCH/images/*"
                     ]
                   ]
                 },
@@ -262,7 +262,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -274,7 +274,7 @@
                           }
                         ]
                       },
-                      "/PATCH/image"
+                      "/PATCH/images"
                     ]
                   ]
                 },
@@ -292,7 +292,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -304,7 +304,7 @@
                           }
                         ]
                       },
-                      "/DELETE/image/*"
+                      "/DELETE/images/*"
                     ]
                   ]
                 },
@@ -322,7 +322,7 @@
                       },
                       ":",
                       {
-                        "Ref": "dbapi"
+                        "Ref": "dBApi"
                       },
                       "/",
                       {
@@ -334,7 +334,7 @@
                           }
                         ]
                       },
-                      "/DELETE/image"
+                      "/DELETE/images"
                     ]
                   ]
                 }

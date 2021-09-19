@@ -13,10 +13,24 @@
       "providerPlugin": "awscloudformation",
       "build": true
     },
-    "cmpe295appe51ff056": {
+    "cmpe295app95382f35": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "masterDB",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
     }
   },
   "storage": {
@@ -41,13 +55,13 @@
     }
   },
   "api": {
-    "dbapi": {
+    "dBApi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "cmpe295appe51ff056",
+          "resourceName": "cmpe295app95382f35",
           "attributes": [
             "Name",
             "Arn"

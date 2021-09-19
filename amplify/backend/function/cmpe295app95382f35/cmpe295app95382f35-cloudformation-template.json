@@ -15,6 +15,14 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "storagemasterDBName": {
+      "Type": "String",
+      "Default": "storagemasterDBName"
+    },
+    "storagemasterDBArn": {
+      "Type": "String",
+      "Default": "storagemasterDBArn"
     }
   },
   "Conditions": {
@@ -47,12 +55,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cmpe295appe51ff056",
+            "cmpe295app95382f35",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cmpe295appe51ff056",
+                  "cmpe295app95382f35",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cmpe295appLambdaRole8916b36d",
+            "cmpe295appLambdaRole009d21bd",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cmpe295appLambdaRole8916b36d",
+                  "cmpe295appLambdaRole009d21bd",
                   "-",
                   {
                     "Ref": "env"
@@ -160,6 +168,34 @@
                   }
                 ]
               }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DescribeTable",
+                "dynamodb:GetItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storagemasterDBArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storagemasterDBArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }

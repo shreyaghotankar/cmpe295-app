@@ -8,15 +8,15 @@
         },
     
     
-          "functioncmpe295appe51ff056Name": {
+          "functioncmpe295app95382f35Name": {
             "Type": "String",
-            "Default": "functioncmpe295appe51ff056Name"
+            "Default": "functioncmpe295app95382f35Name"
           },
 
           
-          "functioncmpe295appe51ff056Arn": {
+          "functioncmpe295app95382f35Arn": {
             "Type": "String",
-            "Default": "functioncmpe295appe51ff056Arn"
+            "Default": "functioncmpe295app95382f35Arn"
           }
 
           
@@ -37,16 +37,16 @@
         
         
         
-      "dbapi": {
+      "dBApi": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
           "Description": "",
-          "Name": "dbapi",
+          "Name": "dBApi",
           "Body": {
             "swagger": "2.0",
             "info": {
               "version": "2018-05-24T17:52:00Z",
-              "title": "dbapi"
+              "title": "dBApi"
             },
             "host": {
                 "Fn::Join": [
@@ -82,7 +82,7 @@
             ],
             "paths": {
               
-              "/image": {
+              "/images": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -174,7 +174,7 @@
                             
                             {
 
-                                "Ref": "functioncmpe295appe51ff056Arn"
+                                "Ref": "functioncmpe295app95382f35Arn"
                             },
                             
                             "/invocations"
@@ -187,7 +187,7 @@
                   }
                 }
               },
-              "/image/{proxy+}": {
+              "/images/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -279,7 +279,7 @@
                           
                           {
 
-                            "Ref": "functioncmpe295appe51ff056Arn"
+                            "Ref": "functioncmpe295app95382f35Arn"
                           },
                           
                           "/invocations"
@@ -336,12 +336,12 @@
       
         
 
-        "functioncmpe295appe51ff056Permissiondbapi": {
+        "functioncmpe295app95382f35PermissiondBApi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functioncmpe295appe51ff056Name"
+                        "Ref":  "functioncmpe295app95382f35Name"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -360,7 +360,7 @@
                             },
                             ":",
                             {
-                                "Ref": "dbapi"
+                                "Ref": "dBApi"
                             },
                             "/*/*/*"
                         ]
@@ -371,7 +371,7 @@
         
         
 
-      "DeploymentAPIGWdbapi": {
+      "DeploymentAPIGWdBApi": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
@@ -385,7 +385,7 @@
             ]
           },
           "RestApiId": {
-            "Ref": "dbapi"
+            "Ref": "dBApi"
           }
         }
       }
@@ -393,15 +393,15 @@
     "Outputs": {
         "RootUrl": {
             "Description": "Root URL of the API gateway",
-            "Value": {"Fn::Join": ["", ["https://", {"Ref": "dbapi"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
+            "Value": {"Fn::Join": ["", ["https://", {"Ref": "dBApi"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
         },
         "ApiName": {
           "Description": "API Friendly name",
-          "Value": "dbapi"
+          "Value": "dBApi"
         },
         "ApiId": {
           "Description": "API ID (prefix of API URL)",
-          "Value": {"Ref": "dbapi"}
+          "Value": {"Ref": "dBApi"}
         }
     }
   }

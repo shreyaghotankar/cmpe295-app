@@ -1,8 +1,8 @@
 {
   "paths": [
     {
-      "name": "/image",
-      "lambdaFunction": "cmpe295appe51ff056",
+      "name": "/images",
+      "lambdaFunction": "cmpe295app95382f35",
       "privacy": {
         "private": true,
         "auth": [
@@ -13,14 +13,14 @@
           "/DELETE"
         ]
       },
-      "policyResourceName": "/image"
+      "policyResourceName": "/images"
     }
   ],
-  "resourceName": "dbapi",
-  "apiName": "dbapi",
+  "resourceName": "dBApi",
+  "apiName": "dBApi",
   "functionArns": [
     {
-      "lambdaFunction": "cmpe295appe51ff056"
+      "lambdaFunction": "cmpe295app95382f35"
     }
   ],
   "privacy": {
@@ -32,7 +32,7 @@
   "dependsOn": [
     {
       "category": "function",
-      "resourceName": "cmpe295appe51ff056",
+      "resourceName": "cmpe295app95382f35",
       "attributes": [
         "Name",
         "Arn"
