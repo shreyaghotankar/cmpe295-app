@@ -1,0 +1,14 @@
+@import '../../shared/styles/colors.scss';
+
+.container {
+    background-color: $primary-blue;
+    padding: 24px 40px;
+}
+
+.button {
+    color: $primary-white;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+}

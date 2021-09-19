@@ -111,4 +111,7 @@ To destinguish local vs global styles we are using Css Modules that automaticall
 ## References:
 
 [Configure AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) \
-[CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet)
+[CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet) \
+
+[Context Usage](https://dmitripavlutin.com/react-context-and-usecontext/) \
+[Custom Amplify SignOut](https://github.com/aws-amplify/amplify-js/issues/7039)
