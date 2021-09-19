@@ -3,12 +3,32 @@
 .container {
     background-color: $primary-blue;
     padding: 24px 40px;
+    justify-content: space-between !important;
+    * {
+        color: $primary-white;
+    }
 }
 
 .button {
-    color: $primary-white;
+    
     background-color: transparent;
     border: none;
+    
+    display: flex;
+    align-items: center;
+}
+
+.buttonText {
     font-size: 18px;
     font-weight: 500;
+}
+
+.brand {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: $primary-white !important;
+    padding: 0 !important;
+    line-height: 24px;
 }

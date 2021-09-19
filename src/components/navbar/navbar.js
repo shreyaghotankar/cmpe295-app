@@ -1,8 +1,8 @@
 import React from "react";
 import { Auth, Hub } from 'aws-amplify';
 import styles from './navbar.module.scss'
-import { Container, Navbar, Row, Col } from "react-bootstrap";
-import {ReactComponent as ExitIcon} from '../../shared/icons/logout.svg'
+import { Navbar, NavbarBrand } from "react-bootstrap";
+import {ExitIcon} from '../../shared/icons/icons'
 
 const handleSignOutButtonClick = async () => {
     try {
@@ -19,12 +19,12 @@ const handleSignOutButtonClick = async () => {
 
 function MainNavbar () {
 
-
     return (
         <Navbar className={styles.container}>
-            <Row><Col></Col><Col><button className={styles.button} onClick={handleSignOutButtonClick}>
-            <ExitIcon />Exit
-            </button></Col></Row>
+            <NavbarBrand className={styles.brand}>Outfit Perfection</NavbarBrand>
+            <button className={styles.button} onClick={handleSignOutButtonClick}>
+            <ExitIcon /><span className={styles.buttonText}>Exit</span>
+            </button>
                     
         </Navbar>
 
