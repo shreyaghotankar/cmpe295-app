@@ -1,0 +1,42 @@
+{
+  "paths": [
+    {
+      "name": "/images",
+      "lambdaFunction": "cmpe295app95382f35",
+      "privacy": {
+        "private": true,
+        "auth": [
+          "/POST",
+          "/GET",
+          "/PUT",
+          "/PATCH",
+          "/DELETE"
+        ]
+      },
+      "policyResourceName": "/images"
+    }
+  ],
+  "resourceName": "dBApi",
+  "apiName": "dBApi",
+  "functionArns": [
+    {
+      "lambdaFunction": "cmpe295app95382f35"
+    }
+  ],
+  "privacy": {
+    "auth": 1,
+    "unauth": 0,
+    "authRoleName": "amplify-cmpe295app-dev-212841-authRole",
+    "unAuthRoleName": "amplify-cmpe295app-dev-212841-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "cmpe295app95382f35",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}
