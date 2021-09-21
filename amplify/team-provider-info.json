@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-cmpe295app-dev-212841-unauthRole",
       "StackName": "amplify-cmpe295app-dev-212841",
       "StackId": "arn:aws:cloudformation:us-west-2:114958753008:stack/amplify-cmpe295app-dev-212841/74c370c0-f4dc-11eb-8509-0afba0b1a36f",
-      "AmplifyAppId": "dcyd1dojqc739"
+      "AmplifyAppId": "dcyd1dojqc739",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-cmpe295app-dev-212841-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
