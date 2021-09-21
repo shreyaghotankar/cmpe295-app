@@ -7,24 +7,33 @@ import awsconfig from "./aws-exports";
 
 import MainPage from './components/main-page/main-page';
 import {UserContext} from './shared/contexts/user-info';
+import getItems from "./shared/hooks/items";
+import { ItemsContext } from "./shared/contexts/items-info";
 
 Amplify.configure(awsconfig);
 
 const App = () => {
   const [user, setUser] = useState();
   const [authState, setAuthState] = useState();
+  const [items, setItems] = useState();
 
   useEffect(() => {
     return onAuthUIStateChange((nextAuthState, authData) => {
+      getItems().then(result => {
+        setItems(result)
+      })
       setAuthState(nextAuthState);
       setUser(authData);
-      console.log(authData)
     });
   }, [])
 
+
+
   return authState === AuthState.SignedIn && user ? (
     <UserContext.Provider value={{user: user}}>
+      <ItemsContext.Provider value={{items: items}}>
       <MainPage />
+      </ItemsContext.Provider>
     </UserContext.Provider>) : (
       <AmplifyAuthenticator usernameAlias="email">
       <AmplifySignUp
