@@ -1,0 +1,21 @@
+@import '../../../../shared/styles/typography.scss';
+
+%text {
+    margin: 24px;
+    text-align: center;
+}
+
+.header {
+    @extend %h3;
+    @extend %text
+}
+
+.text {
+    @extend %regular;
+    @extend %text
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+}

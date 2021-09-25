@@ -3,7 +3,7 @@ const getItems = function() {
       setTimeout(function(){
           console.log("Items read from DB")
           // returning  list of items
-        resolve(["h"])
+        resolve([])
       }, 1000);
     });
   }
