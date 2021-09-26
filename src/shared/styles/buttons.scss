@@ -1,0 +1,17 @@
+@import './colors.scss';
+.btn {
+    border-radius: 8px;
+    padding: 1.25rem;
+    width: 280px;
+    font-size: 18px;
+}
+
+.btn-op {
+    background-color: $primary-red;
+    color: $primary-white;
+    font-weight: bold;
+}
+
+.btn-link {
+    color: $primary-blue;
+}

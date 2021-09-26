@@ -1,5 +1,4 @@
 @import './shared/styles/colors.scss';
-@import './shared/styles/buttons.scss';
 @import url('https://fonts.googleapis.com/css?family=Spartan');
 
 html {
@@ -10,7 +9,6 @@ body {
   font-family: 'Spartan';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $primary-grey !important;
 }
 
 code {

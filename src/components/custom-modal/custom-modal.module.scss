@@ -1,0 +1,15 @@
+@import '../../shared/styles/colors.scss';
+
+.container {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalHeader {
+    border-bottom: none;
+}
+.modal {
+    border-radius: 16px;
+}
