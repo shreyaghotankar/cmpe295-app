@@ -4,6 +4,7 @@ import Amplify from "aws-amplify";
 import {AmplifyAuthenticator, AmplifySignIn, AmplifySignUp, AmplifySignOut} from "@aws-amplify/ui-react";
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 import awsconfig from "./aws-exports";
+import './App.scss'
 
 import MainPage from './components/main-page/main-page';
 import {UserContext} from './shared/contexts/user-info';

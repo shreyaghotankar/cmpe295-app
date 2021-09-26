@@ -10,7 +10,7 @@ function CustomModal (props) {
 
 
     return (
-        <Modal show={show} onHide={onHide} backdrop="static" size="lg" keyboard={false} dialogClassName={styles.modal}>
+        <Modal show={show} onHide={onHide} backdrop="static" size="lg" keyboard={false} contentClassName={styles.modal}>
             <Modal.Header closeButton bsPrefix={`modal-header ${styles.modalHeader}`}/>
             <Modal.Body>
                 <div className={styles.container}>{children}</div>

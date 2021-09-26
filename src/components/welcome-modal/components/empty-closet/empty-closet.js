@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import styles from './empty-closet.module.scss';
 import {HangerIcon} from '../../../../shared/icons/icons'
-import { Row, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
-function EmptyCloset () {
+function EmptyCloset (props) {
+    const {onClick} = props;
     return (
         <div className={styles.container}>
             <div className={styles.iconContainer}>
@@ -14,7 +15,7 @@ function EmptyCloset () {
             <p className={styles.text}>
             We noticed that you haven’t added any clothing items yet.
             </p>
-            <button>Upload new item</button>
+            <Button variant="op" onClick={onClick}>Upload new item</Button>
         </div>
         
         
@@ -22,7 +23,7 @@ function EmptyCloset () {
 }
 
 EmptyCloset.propTypes = {
-
+    onClick: PropTypes.func.isRequired
 }
 
 export default EmptyCloset;

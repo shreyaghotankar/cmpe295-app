@@ -5,5 +5,6 @@ export const SECTIONS = {
 
 export const WELCOME_STEPS = {
     CLOSET: 'Closet', 
-    COLORS: 'Colors'
+    COLORS: 'Colors',
+    NEW_ITEM: 'Add New Item'
 }

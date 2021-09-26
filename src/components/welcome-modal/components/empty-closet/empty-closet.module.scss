@@ -2,12 +2,12 @@
 
 %text {
     margin: 24px;
-    text-align: center;
 }
 
 .header {
     @extend %h3;
-    @extend %text
+    @extend %text;
+    margin-bottom: 0px;
 }
 
 .text {
@@ -18,4 +18,10 @@
 .iconContainer {
     display: flex;
     justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

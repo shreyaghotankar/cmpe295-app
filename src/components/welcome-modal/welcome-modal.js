@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
-import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 import { WELCOME_STEPS } from "../../shared/constants";
 import styles from './welcome-modal.module.scss';
 import CustomModal from "../custom-modal/custom-modal";
@@ -17,9 +17,12 @@ function WelcomeModal (props) {
 
     return (
         <CustomModal show={show} onHide={onHide}>
-            {currentStep === WELCOME_STEPS.CLOSET && <EmptyCloset />}
+            {currentStep === WELCOME_STEPS.CLOSET && <EmptyCloset onClick={() => setCurrentStep(WELCOME_STEPS.NEW_ITEM)}/>}
             {currentStep === WELCOME_STEPS.COLORS && <EmptyColor />}
-                {currentStep === WELCOME_STEPS.CLOSET && <button onClick={()=>{setCurrentStep(WELCOME_STEPS.COLORS)}}>skip this step</button>}
+            {currentStep === WELCOME_STEPS.NEW_ITEM && <div>Add new item here</div>}
+            {currentStep === WELCOME_STEPS.CLOSET && 
+            <Button variant="link" onClick={()=>{setCurrentStep(WELCOME_STEPS.COLORS)}}>Skip this step
+            </Button>}
         </CustomModal>
     )
 }
