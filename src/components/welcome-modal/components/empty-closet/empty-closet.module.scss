@@ -12,7 +12,8 @@
 
 .text {
     @extend %regular;
-    @extend %text
+    @extend %text;
+    text-align: center;
 }
 
 .iconContainer {
