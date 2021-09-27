@@ -40,9 +40,9 @@ function ItemCart (props) {
                         <ArrowIcon className={showAttr ? '': `${styles.toggle}`}/>
                     </Button>
                 </div>
-                {showAttr && attrLength > 0 && <div className={styles.list}>
+                {showAttr && attrLength > 0 && <div className={`row ${styles.list}`}>
                     {attributes.map((attr) =>
-                        <span className={styles.pill}>{getAttrName(upper, attr)}</span>
+                        <span className={`col-auto ${styles.pill}`}>{getAttrName(upper, attr)}</span>
                     )}
                 </div>}
             </div>

@@ -12,7 +12,7 @@ function Closet (props) {
 
     const fakeData = {
         image: "https://di2ponv0v5otw.cloudfront.net/posts/2020/11/15/5fb1c7d2ffba9492e0b2c29a/m_5fb1c7d812d8803988ba4355.jpg",
-        attributes: ['t_stripe']
+        attributes: ['t_stripe', 'f_denim', 't_stripe', 'f_denim', 't_stripe', 'f_denim', 't_stripe', 'f_denim']
     }
 
     return (

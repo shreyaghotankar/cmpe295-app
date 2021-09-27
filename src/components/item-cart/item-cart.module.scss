@@ -40,19 +40,24 @@
 .toggle {
     transform: rotate(0.5turn);
 }
-
-.list {
-    margin-top: 8px;
-    border-top: 1px solid $light-grey;
-    padding-top: 16px;
-}
-
 .pill {
     background-color: $light-grey;
     color: $primary-blue;
     font-weight: 700;
     font-size: 12px;
-    font-weight: 18px;
+    line-height: 18px;
     padding: 6px 10px;
     border-radius:16px;
+    margin-bottom: 4px;
+    margin-right: 4px;
 }
+.list {
+    border-top: 1px solid $light-grey;
+    padding-top: 16px;
+    margin: 8px 0 0;
+}
+
+.list:first-child {
+margin-left: 0;
+}
+
