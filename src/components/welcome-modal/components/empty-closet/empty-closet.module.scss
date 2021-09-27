@@ -12,7 +12,11 @@
 
 .text {
     @extend %regular;
-    @extend %text
+    @extend %text;
+    span {
+        display: block;
+        margin-bottom: 8px;
+    }
 }
 
 .iconContainer {

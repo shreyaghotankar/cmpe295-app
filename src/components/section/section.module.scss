@@ -1,11 +1,28 @@
 @import '../../shared/styles/colors.scss';
-
+@import '../../shared/styles/typography.scss';
 .container {
    margin-top: 56px;
    margin-left: 80px;
 }
 
+.icon {
+    background-color: $dark-grey;
+    border-radius: 50%;
+    height: 56px;
+    width: 56px;
+    padding: 9px;
+    display: flex;
+    svg {
+        height: auto;
+        width: 40px;
+    }
+    margin-right: 16px;
+}
+
 .header {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    @extend %h3;
+    margin-bottom: 40px;
 }

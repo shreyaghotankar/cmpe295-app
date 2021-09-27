@@ -9,6 +9,7 @@ import MainNavbar from "../navbar/navbar";
 import WelcomeModal from "../welcome-modal/welcome-modal";
 import { SECTIONS } from "../../shared/constants";
 import { ItemsContext } from "../../shared/contexts/items-info";
+import Closet from "../closet/closet";
 function MainPage () {
 
     const {user} = useContext(UserContext);
@@ -34,8 +35,8 @@ function MainPage () {
             <div className={styles.container}>
             <Section
                 section={SECTIONS.CLOSET}
-                >Here will be the list of Items
-                {items ? "Items are here" : "Loading it"}
+                >
+                    <Closet items={items} />
                 </Section>
             <Section
                 section={SECTIONS.OUTFITS}
