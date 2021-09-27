@@ -1,0 +1,58 @@
+@import '../../shared/styles/colors.scss';
+
+.container {
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    
+    
+}
+
+.attributes {
+    background-color: $white;
+    padding: 16px 16px;
+}
+
+.header {
+    color: $primary-blue;
+    display: flex;
+}
+
+%imageStyle {
+    height: 168px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.image {
+    @extend %imageStyle;
+    background-size: cover;
+}
+
+.noImage {
+    @extend %imageStyle;
+}
+
+.toggle {
+    transform: rotate(0.5turn);
+}
+
+.list {
+    margin-top: 8px;
+    border-top: 1px solid $light-grey;
+    padding-top: 16px;
+}
+
+.pill {
+    background-color: $light-grey;
+    color: $primary-blue;
+    font-weight: 700;
+    font-size: 12px;
+    font-weight: 18px;
+    padding: 6px 10px;
+    border-radius:16px;
+}

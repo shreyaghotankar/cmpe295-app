@@ -13,7 +13,10 @@
 .text {
     @extend %regular;
     @extend %text;
-    text-align: center;
+    span {
+        display: block;
+        margin-bottom: 8px;
+    }
 }
 
 .iconContainer {

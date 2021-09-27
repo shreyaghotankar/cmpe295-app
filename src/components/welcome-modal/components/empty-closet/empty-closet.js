@@ -13,9 +13,9 @@ function EmptyCloset (props) {
             </div>
             <div className={styles.header}>Nothing in your closet yet!</div>
             <p className={styles.text}>
-            We noticed that you haven’t added any clothing items yet.
-            This information is essential for outfit generation. 
-            Take pictures of your clothes and upload them so we can create outfit suggectoins
+            <span>We noticed that you haven’t added any clothing items yet.</span>
+            <span>This information is essential for outfit generation.</span> 
+            <span>Take pictures of your clothes and upload them so we can create outfit suggectoins.</span>
             </p>
             <Button variant="op" onClick={onClick}>Upload new item</Button>
         </div>

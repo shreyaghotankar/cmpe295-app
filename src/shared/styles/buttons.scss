@@ -4,14 +4,70 @@
     padding: 1.25rem;
     width: 280px;
     font-size: 18px;
+    &:active, &:enabled {
+        outline: none;
+  box-shadow: none;
+    }
 }
 
 .btn-op {
     background-color: $primary-red;
     color: $primary-white;
     font-weight: bold;
+
+    &:hover {
+        background-color: $dark-red;
+        color: $primary-white;
+    }
 }
 
 .btn-link {
     color: $primary-blue;
+
+    &:hover {
+        color: inherit;
+    }
+}
+
+.btn-outfit {
+    background-color: $primary-red;
+    color: $primary-white;
+    font-weight: bold;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    width: 100%;
+    padding: 1rem;
+
+    &:hover {
+        background-color: $dark-red;
+        color: $primary-white;
+    }
+}
+
+.btn-icon {
+    background-color: $primary-black;
+    color: $primary-white;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 8px 0 0;
+
+    &:hover {
+        background-color: $primary-blue;
+        color: $primary-white;
+    }
+}
+
+.btn-toggle {
+    color: $primary-blue;
+    height: 24px;
+    width: 24px;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
