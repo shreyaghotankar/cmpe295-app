@@ -10,6 +10,7 @@ import WelcomeModal from "../welcome-modal/welcome-modal";
 import { SECTIONS } from "../../shared/constants";
 import { ItemsContext } from "../../shared/contexts/items-info";
 import Closet from "../closet/closet";
+import {PlusIcon} from '../../shared/icons/icons'
 function MainPage () {
 
     const {user} = useContext(UserContext);
@@ -35,12 +36,18 @@ function MainPage () {
             <div className={styles.container}>
             <Section
                 section={SECTIONS.CLOSET}
+                isButton
+                sectionButton={<Button 
+                                variant="grey" 
+                                onClick={() => console.log("hello")}>
+                                    <PlusIcon />Upload new item
+                                </Button>}
                 >
                     <Closet items={items} />
                 </Section>
             <Section
                 section={SECTIONS.OUTFITS}
-            />
+                >outfit</Section>
            <Button onClick={()=> setShowWelcomeModal(!showWelcomeModal)}>Modal</Button>
            
             Hello!, {given_name}
