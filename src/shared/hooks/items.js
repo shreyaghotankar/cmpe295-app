@@ -4,7 +4,7 @@ const getItems = function() {
           console.log("Items read from DB")
           // returning  list of items
         resolve([])
-      }, 1000);
+      }, 3000);
     });
   }
 

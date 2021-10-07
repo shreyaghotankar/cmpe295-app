@@ -44,6 +44,23 @@
     }
 }
 
+.btn-grey {
+    display: flex;
+    align-items: center;
+    background-color: $neutral-grey;
+    color: $dark-grey;
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: auto;
+    svg {
+        fill: $dark-grey;
+        margin-right: 8px;
+    }
+    &:hover {
+        background-color: $dark-neutral-grey;
+    }
+}
+
 .btn-icon {
     background-color: $primary-black;
     color: $primary-white;

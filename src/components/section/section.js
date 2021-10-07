@@ -2,21 +2,23 @@ import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
 import { SECTIONS } from "../../shared/constants";
 import styles from './section.module.scss';
-import { HangerIcon } from "../../shared/icons/icons";
+import { ClosetIcon, OutfitsIcon } from "../../shared/icons/icons";
 
 function Section (props) {
     const {
         section, 
-        children
+        children,
+        isButton, 
+        sectionButton
     } = props;
 
     const [icon, setIcon] = useState(null)
 
     useEffect(() => {
         if (section === SECTIONS.CLOSET) {
-            setIcon(<HangerIcon />);
+            setIcon(<ClosetIcon />);
         } else if (section === SECTIONS.OUTFITS) {
-            setIcon(null);
+            setIcon(<OutfitsIcon />);
         }
     }, [section])
 
@@ -25,6 +27,7 @@ function Section (props) {
             <div className={styles.header}>
                 <span className={styles.icon}>{icon}</span>
                 <span>{section}</span>
+                {isButton && <span className={styles.button}>{sectionButton}</span>}
             </div>
             <div>
                 {children}
@@ -35,8 +38,10 @@ function Section (props) {
 
 Section.propTypes = {
     header: PropTypes.string,
+    isButton: PropTypes.bool,
+    sectionButton: PropTypes.object,
     side: PropTypes.string, 
-    section: PropTypes.string
+    section: PropTypes.string,
 }
 
 export default Section;
