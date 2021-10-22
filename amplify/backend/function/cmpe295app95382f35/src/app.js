@@ -59,7 +59,7 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get(path + hashKeyPath, function(req, res) {
+/* app.get(path + hashKeyPath, function(req, res) {
   var condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
@@ -89,7 +89,34 @@ app.get(path + hashKeyPath, function(req, res) {
       res.json(data.Items);
     }
   });
+}); */
+app.get(path, function(req, res) {
+  var condition = {}
+  condition.userId = {
+    ComparisonOperator: 'EQ'
+  }
+  if (userIdPresent) {
+    req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+    condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+  }
+
+  let queryParams = {
+    TableName: tableName,
+    KeyConditions: condition,
+    
+  }
+  dynamodb.scan(queryParams, function(err, data) {
+    if (err){
+      res.json({ err });
+    } 
+    else {
+      res.json({ data });
+    }
+  })
 });
+
+
+
 
 /*****************************************
  * HTTP Get method for get single object *
