@@ -98,19 +98,19 @@ app.get(path, function(req, res) {
   if (userIdPresent) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
     condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+
   }
 
   let queryParams = {
     TableName: tableName,
-    KeyConditions: condition,
-    
+        
   }
   dynamodb.scan(queryParams, function(err, data) {
-    if (err){
-      res.json({ err });
-    } 
-    else {
-      res.json({ data });
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json(data.Items);
     }
   })
 });
