@@ -25,7 +25,6 @@ function Section (props) {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <span className={styles.icon}>{icon}</span>
                 <span>{section}</span>
                 {isButton && <span className={styles.button}>{sectionButton}</span>}
             </div>

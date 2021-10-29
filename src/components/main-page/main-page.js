@@ -23,6 +23,7 @@ function MainPage () {
             setShowWelcomeModal(true)
         }
         if (items && items.length > 0) {
+            console.log(items)
             console.log("It's not empty")
         }
         if (!items) {
@@ -48,10 +49,12 @@ function MainPage () {
             <Section
                 section={SECTIONS.OUTFITS}
                 >outfit</Section>
-           <Button onClick={()=> setShowWelcomeModal(!showWelcomeModal)}>Modal</Button>
+                    <Section
+                section="Bonus Section"
+                ><Button onClick={()=> setShowWelcomeModal(!showWelcomeModal)}>Modal</Button>
            
-            Hello!, {given_name}
-            
+                Hello!, {given_name}</Section>
+
 
         </div>
         <WelcomeModal show={showWelcomeModal} onHide={()=> setShowWelcomeModal(false)} />

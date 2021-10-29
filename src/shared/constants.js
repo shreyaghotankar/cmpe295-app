@@ -1,6 +1,6 @@
 export const SECTIONS = {
-    CLOSET: 'Closet',
-    OUTFITS: 'Outfits'
+    CLOSET: 'Your Closet',
+    OUTFITS: 'Your Outfits'
 }
 
 export const WELCOME_STEPS = {
