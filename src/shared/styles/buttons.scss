@@ -88,3 +88,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.btn-cancel {
+    align-items: center;
+    background-color: $neutral-grey;
+    color: $dark-grey;
+    border-radius: 8px;
+    padding: 8px 16px;
+    
+    &:hover {
+        background-color: $dark-neutral-grey;
+    }
+}

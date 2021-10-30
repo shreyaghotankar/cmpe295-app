@@ -28,13 +28,32 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],"rules": {
+    ],
+    "rules": {
       "semi": 0,
       "no-console": 0,
-      "indent": ["error", 2, { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 } }],
-      "space-before-function-paren": ["error", "always"],
-      "object-curly-spacing": ["error", "always"],
-      "space-in-parens": ["error", "never"]
+      "indent": [
+        "error",
+        1,
+        {
+          "VariableDeclarator": {
+            "let": 5,
+            "const": 5
+          }
+        }
+      ],
+      "space-before-function-paren": [
+        "error",
+        "always"
+      ],
+      "object-curly-spacing": [
+        1,
+        "always"
+      ],
+      "space-in-parens": [
+        1,
+        "never"
+      ]
     }
   },
   "browserslist": {
