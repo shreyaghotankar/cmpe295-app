@@ -1,16 +1,75 @@
 
 import { API, Storage } from "aws-amplify";
+import {AddingError} from '../constants';
+
 
 Storage.configure({ level: 'private' });
 
+let apiName = 'dBApi';
+let path = '/images';
 
 
-const getItems = function() {
+const addItemS3 = (fileName, file) => {
+  return Storage.put(fileName, file).catch((err) => Promise.reject(new AddingError('S3')))
+}
+
+const addItemDynamoDB = (result, attributes) => {
+  const item = {
+    imageId: result.key,
+    attributes: attributes
+  }
+  return API.put(apiName,path, {
+       body: item,
+   }).catch((err) => Promise.reject(new AddingError('DynamoDB')))
+} 
+
+export const uploadItem = function(fileName, file, attributes) {
+  return addItemS3(fileName, file).then(result => {
+    return addItemDynamoDB(result, attributes)
+  })
+
+}
+
+export const getItems = function() {
     return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
   }
 
-export default getItems;
+// TBD: REMOVE_ITEM AND UPDATE_ITEM
 
+
+
+// async function onchange(e){
+//   const file = e.target.files[0];
+//   const result = await Storage.put(file.name, file)
+//   const image_id = result.key
+//   //await Storage.get(result.key)
+//   console.log("results: ", result)
+//   console.log("image id: ", image_id)
+//   setImage_id(image_id);
+
+//   }
+//   const onBoxChecked = e =>{
+//       const target = e.target;
+//       const attributes = target.value;
+//       setAttributes(attributes)
+//     }
+//   const handleSubmit = e => {
+//       e.preventDefault();
+//       let item = {image_id, attributes};
+//       console.log("payload:", item)
+//       API.put(apiName,path, {
+//          body: {
+//              imageId: image_id,
+//              attributes: attributes
+//          },
+//      }).then(res => {
+//          console.log("Database updated");
+//      })
+//      .catch(error => {
+//          console.log(error.response)
+//      });
+
+//   }
 
 // Shreya's fetch
 // async function fetchImages() {

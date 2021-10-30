@@ -10,7 +10,7 @@ import AddItem from "../add-item/add-item";
 
 function WelcomeModal (props) {
     const {
-        show, onHide
+        show, onHide, addItemToDB
     } = props;
 
     const [currentStep, setCurrentStep] = useState(WELCOME_STEPS.CLOSET)
@@ -20,7 +20,7 @@ function WelcomeModal (props) {
         <CustomModal show={show} onHide={onHide}>
             {currentStep === WELCOME_STEPS.CLOSET && <EmptyCloset onClick={() => setCurrentStep(WELCOME_STEPS.NEW_ITEM)}/>}
             {currentStep === WELCOME_STEPS.COLORS && <EmptyColor />}
-            {currentStep === WELCOME_STEPS.NEW_ITEM && <AddItem />}
+            {currentStep === WELCOME_STEPS.NEW_ITEM && <AddItem addItemToDB={addItemToDB}/>}
             {currentStep === WELCOME_STEPS.CLOSET && 
             <Button variant="link" onClick={()=>{setCurrentStep(WELCOME_STEPS.COLORS)}}>Skip this step
             </Button>}

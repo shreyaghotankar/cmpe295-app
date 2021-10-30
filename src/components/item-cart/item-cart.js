@@ -41,8 +41,8 @@ function ItemCart (props) {
                     </Button>
                 </div>
                 {showAttr && attrLength > 0 && <div className={`row ${styles.list}`}>
-                    {attributes.map((attr) =>
-                        <span className={`col-auto ${styles.pill}`}>{getAttrName(upper, attr)}</span>
+                    {attributes.map((attr, index) =>
+                        <span key={`user-item-${index}`} className={`col-auto ${styles.pill}`}>{getAttrName(upper, attr)}</span>
                     )}
                 </div>}
             </div>

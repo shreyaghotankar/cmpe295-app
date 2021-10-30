@@ -57,7 +57,7 @@ function MainPage () {
 
 
         </div>
-        <WelcomeModal show={showWelcomeModal} onHide={()=> setShowWelcomeModal(false)} />
+        <WelcomeModal show={showWelcomeModal} onHide={()=> setShowWelcomeModal(false)}/>
         </>
                 
         

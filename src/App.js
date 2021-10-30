@@ -8,7 +8,7 @@ import './App.scss'
 
 import MainPage from './components/main-page/main-page';
 import {UserContext} from './shared/contexts/user-info';
-import getItems from "./shared/hooks/items";
+import { getItems, uploadItem } from "./shared/hooks/items";
 import { ItemsContext } from "./shared/contexts/items-info";
 
 Amplify.configure(awsconfig);
@@ -28,12 +28,16 @@ const App = () => {
     });
   }, [])
 
+  const addItem = (fileName, file, attributes) => {
+    uploadItem(fileName, file, attributes).then(() => getItems()).then(result => setItems(result)).catch(e => console.log(e.step));
+  }
+
 
 
   return authState === AuthState.SignedIn && user ? (
     <UserContext.Provider value={{user: user}}>
-      <ItemsContext.Provider value={{items: items}}>
-      <MainPage />
+      <ItemsContext.Provider value={{items: items, addItem: addItem}}>
+      <MainPage/>
       </ItemsContext.Provider>
     </UserContext.Provider>) : (
       <AmplifyAuthenticator usernameAlias="email">
