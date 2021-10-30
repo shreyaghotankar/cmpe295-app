@@ -1,6 +1,6 @@
 
 import { API, Storage } from "aws-amplify";
-import {AddingError} from '../constants';
+import { AddingError } from '../constants';
 
 
 Storage.configure({ level: 'private' });
@@ -19,20 +19,20 @@ const addItemDynamoDB = (result, attributes) => {
     attributes: attributes
   }
   return API.put(apiName,path, {
-       body: item,
-   }).catch((err) => Promise.reject(new AddingError('DynamoDB')))
+    body: item,
+  }).catch((err) => Promise.reject(new AddingError('DynamoDB')))
 } 
 
-export const uploadItem = function(fileName, file, attributes) {
+export const uploadItem = function (fileName, file, attributes) {
   return addItemS3(fileName, file).then(result => {
     return addItemDynamoDB(result, attributes)
   })
 
 }
 
-export const getItems = function() {
-    return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
-  }
+export const getItems = function () {
+  return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
+}
 
 // TBD: REMOVE_ITEM AND UPDATE_ITEM
 
@@ -84,10 +84,10 @@ export const getItems = function() {
 
 
 // Dummy promise
-    // return new Promise(function(resolve) {
-    //   setTimeout(function(){
-    //       console.log("Items read from DB")
-    //       // returning  list of items
-    //     resolve([])
-    //   }, 3000);
-    // });
+// return new Promise(function(resolve) {
+//   setTimeout(function(){
+//       console.log("Items read from DB")
+//       // returning  list of items
+//     resolve([])
+//   }, 3000);
+// });

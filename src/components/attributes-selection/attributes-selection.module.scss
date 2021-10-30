@@ -1,17 +1,5 @@
 @import '../../shared/styles/colors.scss';
-.fileInput {
-    > input {
-        width: 0.1px;
-        height: 0.1px;
-        opacity: 0;
-        overflow: hidden;
-        position: absolute;
-        z-index: -1;
-    }
 
-
-    >input:active + label {
-        outline: none;
-        box-shadow: none;
-    }
+.container {
+    margin-top: 8px;
 }

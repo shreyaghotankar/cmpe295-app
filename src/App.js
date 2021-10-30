@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Amplify from "aws-amplify";
-import {AmplifyAuthenticator, AmplifySignIn, AmplifySignUp, AmplifySignOut} from "@aws-amplify/ui-react";
+import { AmplifyAuthenticator, AmplifySignIn, AmplifySignUp } from "@aws-amplify/ui-react";
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 import awsconfig from "./aws-exports";
 import './App.scss'
 
 import MainPage from './components/main-page/main-page';
-import {UserContext} from './shared/contexts/user-info';
+import { UserContext } from './shared/contexts/user-info';
 import { getItems, uploadItem } from "./shared/hooks/items";
 import { ItemsContext } from "./shared/contexts/items-info";
 
@@ -35,12 +35,12 @@ const App = () => {
 
 
   return authState === AuthState.SignedIn && user ? (
-    <UserContext.Provider value={{user: user}}>
-      <ItemsContext.Provider value={{items: items, addItem: addItem}}>
-      <MainPage/>
+    <UserContext.Provider value={{ user: user }}>
+      <ItemsContext.Provider value={{ items: items, addItem: addItem }}>
+        <MainPage/>
       </ItemsContext.Provider>
     </UserContext.Provider>) : (
-      <AmplifyAuthenticator usernameAlias="email">
+    <AmplifyAuthenticator usernameAlias="email">
       <AmplifySignUp
         slot="sign-up"
         usernameAlias="email"
