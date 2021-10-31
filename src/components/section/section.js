@@ -28,7 +28,7 @@ function Section (props) {
     <span>{section}</span>
     {isButton && <span className={styles.button}>{sectionButton}</span>}
    </div>
-   <div>
+   <div className={styles.body}>
     {children}
    </div>
   </div>
