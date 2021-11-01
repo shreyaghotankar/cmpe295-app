@@ -1,0 +1,19 @@
+@import '../../shared/styles/colors.scss';
+
+
+.pill {
+    background-color: $light-grey;
+    color: $primary-blue;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 6px 10px;
+    border-radius:16px;
+    margin-bottom: 8px;
+    border: none;
+margin-right: 8px;
+}
+   .checked {
+    background-color: $neutral-grey-05;
+    
+   }

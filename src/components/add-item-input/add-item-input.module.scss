@@ -1,0 +1,42 @@
+@import '../../shared/styles/colors.scss';
+@import '../../shared/styles/typography.scss';
+
+%text {
+    margin: 24px;
+    color: $primary-blue;
+}
+
+
+.fileInput {
+    > input {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+
+    >input:active + label {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.imageAddContainer {
+    border: 4px dashed $neutral-grey-05;
+    border-radius: 8px;
+    padding: 20px ;
+    padding-top: 56px;
+    text-align: center;
+}
+
+.text {
+    @extend %regular;
+    @extend %text;
+    span {
+        display: block;
+        margin-bottom: 8px;
+    }
+}
