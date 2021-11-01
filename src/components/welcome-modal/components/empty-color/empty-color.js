@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import PropTypes from 'prop-types';
-import styles from './empty-color.module.scss';
+import React  from "react";
+// import PropTypes from 'prop-types';
+// import styles from './empty-color.module.scss';
 
 function EmptyColor () {
-    return (
-        <div>Color</div>
-    )
+ return (
+  <div>Color</div>
+ )
 }
 
 EmptyColor.propTypes = {
