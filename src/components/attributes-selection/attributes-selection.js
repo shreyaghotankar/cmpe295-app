@@ -1,12 +1,12 @@
 import React  from "react";
 import PropTypes from 'prop-types';
 import styles from './attributes-selection.module.scss';
-import { UPPER_ATTRIBUTES, getAttrName } from '../../shared/constants'
+import { UPPER_ATTRIBUTES, BOTTOM_ATTRIBUTES, getAttrName } from '../../shared/constants'
 import AttributesButtonPill from "../attribute-button-pill/attributes-button-pill";
 
 function AttributesSelection (props) {
  const { selectedOptions, setSelectedOptions, upper=true } = props;
- const options = Object.keys(UPPER_ATTRIBUTES)
+ const options = upper ? Object.keys(UPPER_ATTRIBUTES) : Object.keys(BOTTOM_ATTRIBUTES)
  const selectOption = (option) => {
   if (selectedOptions.includes(option)) {
    setSelectedOptions(selectedOptions.filter(item => item !== option))

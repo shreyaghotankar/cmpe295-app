@@ -21,7 +21,7 @@ function WelcomeModal (props) {
    {currentStep === WELCOME_STEPS.COLORS && <EmptyColor />}
    {currentStep === WELCOME_STEPS.NEW_ITEM && <AddItem cancelAdding={onHide}/>}
    {currentStep === WELCOME_STEPS.CLOSET && 
-            <Button variant="link" onClick={()=>{setCurrentStep(WELCOME_STEPS.COLORS)}}>Skip this step
+            <Button variant="link" onClick={onHide}>Skip this step
             </Button>}
   </CustomModal>
  )
