@@ -28,8 +28,8 @@ const App = () => {
   });
  }, [])
 
- const addItem = (fileName, file, attributes) => {
-  return uploadItem(fileName, file, attributes).then(() => getItems()).then(result => setItems(result)).catch(e => console.log(e.step));
+ const addItem = (fileName, file, item_type, attributes) => {
+  return uploadItem(fileName, file, item_type, attributes).then(() => getItems()).then(result => setItems(result)).catch(e => console.log(e.step));
  }
 
 
