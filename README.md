@@ -114,4 +114,8 @@ To destinguish local vs global styles we are using Css Modules that automaticall
 [CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet) \
 
 [Context Usage](https://dmitripavlutin.com/react-context-and-usecontext/) \
-[Custom Amplify SignOut](https://github.com/aws-amplify/amplify-js/issues/7039)
+[Custom Amplify SignOut](https://github.com/aws-amplify/amplify-js/issues/7039) \
+[Preview in React](https://dev.to/yosraskhiri/make-an-image-preview-in-react-js-301f) \
+[Custom Upload Button](https://dev.to/faddalibrahim/how-to-create-a-custom-file-upload-button-using-html-css-and-javascript-1c03) \
+[Error handling in long Promises](https://medium.com/@arthurxavier/error-handling-in-long-promise-chains-155f610b5bc6)
+[Drag and Drop](https://medium.com/@650egor/simple-drag-and-drop-file-upload-in-react-2cb409d88929)

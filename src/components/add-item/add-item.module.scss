@@ -21,6 +21,7 @@ font-weight: 500;
 font-size: 14px;
 line-height: 150%;
 letter-spacing: -0.0025em;
+margin-right: 8px;
 }
 
 .buttonContainer {
@@ -29,4 +30,10 @@ letter-spacing: -0.0025em;
     >:first-child {
         margin-right: 16px;
     }
+}
+
+.typeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }

@@ -9,7 +9,32 @@ export const WELCOME_STEPS = {
  NEW_ITEM: 'Add New Item'
 }
 
+export const ITEM_TYPE = {
+ BOTTOM: 'BOTTOM',
+ UPPER: 'TOP'
+}
+
 export const UPPER_ATTRIBUTES ={
+ t_floral: 'Floral',
+ t_stripe: 'Stripe',
+ t_dot: 'Dot',
+ f_lace: 'Lace',
+ f_denim: 'Denim',
+ f_chiffon: 'Chiffon',
+ f_cotton: 'Cotton',
+ f_leather: 'Leather',
+ f_fur: 'Fur',
+ p_sleeveless: 'Sleeveless',
+ p_longsleeve: 'LongSleeve',
+ p_collar: 'Collar',
+ p_pocket: 'Pocket',
+ p_vneck: 'V Neck',
+ p_button: 'Button',
+ p_hooded: 'Hooded',
+ p_zipper: 'Zipper'
+}
+
+export const BOTTOM_ATTRIBUTES ={
  t_floral: 'Floral',
  t_stripe: 'Stripe',
  t_dot: 'Dot',
@@ -33,7 +58,7 @@ export const getAttrName = (upper, attr) => {
  if (upper) {
   return UPPER_ATTRIBUTES[attr];
  }
- return attr;
+ return BOTTOM_ATTRIBUTES[attr];
 }
 
 export class AddingError extends Error {
