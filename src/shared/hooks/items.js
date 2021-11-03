@@ -13,9 +13,10 @@ const addItemS3 = (fileName, file) => {
  return Storage.put(fileName, file).catch((err) => Promise.reject(new AddingError('S3')))
 }
 
-const addItemDynamoDB = (result, attributes) => {
+const addItemDynamoDB = (result, type, attributes) => {
  const item = {
   imageId: result.key,
+  type: type,
   attributes: attributes
  }
  return API.put(apiName,path, {
@@ -23,9 +24,9 @@ const addItemDynamoDB = (result, attributes) => {
  }).catch((err) => Promise.reject(new AddingError('DynamoDB')))
 } 
 
-export const uploadItem = function (fileName, file, attributes) {
+export const uploadItem = function (fileName, file, type, attributes) {
  return addItemS3(fileName, file).then(result => {
-  return addItemDynamoDB(result, attributes)
+  return addItemDynamoDB(result, type, attributes)
  })
 
 }

@@ -107,12 +107,7 @@ app.get('/images', function(req, res) {
   let queryParams = {
     TableName: tableName,
     IndexName: 'userId-index',
-    KeyConditions: condition,
-    //KeyConditionExpression: "#kn0 = :kv0",
-    //ExpressionAttributeNames:{"#kn0":"userId"},
-    //ExpressionAttributeValues:{":kv0":{"S":"us-west-2:63c1b52e-1560-4e77-9abf-eba7549e6d19"}}
-    //KeyConditions: condition,
-        
+    KeyConditions: condition,        
   }
   dynamodb.query(queryParams, function(err, data) {
     if (err) {
@@ -123,39 +118,6 @@ app.get('/images', function(req, res) {
     }
   })
 });
-
-
-app.get(path, function(req, res) {
-  var condition = {}
-  condition.userId = {
-    ComparisonOperator: 'EQ'
-  }
-
-  if (userIdPresent && req.apiGateway) {
-    condition.userId['AttributeValueList'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-  }
-
-  let queryParams = {
-    TableName: tableName,
-    IndexName: 'userId-index',
-    KeyConditionExpression: "#kn0 = :kv0",
-    //ExpressionAttributeNames:{"#kn0":"userId"},
-    ExpressionAttributeValues:{":kv0":{"S":"us-west-2:63c1b52e-1560-4e77-9abf-eba7549e6d19"}}
-    //KeyConditions: condition,
-        
-  }
-  dynamodb.query(queryParams, function(err, data) {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err});
-    } else {
-      res.json(data.Items);
-    }
-  })
-});
-
-
-
 
 /*****************************************
  * HTTP Get method for get single object *
