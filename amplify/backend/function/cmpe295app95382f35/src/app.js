@@ -95,17 +95,21 @@ app.get(path, function(req, res) {
   condition.userId = {
     ComparisonOperator: 'EQ'
   }
-  if (userIdPresent) {
-    req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-    condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
 
+  if (userIdPresent && req.apiGateway) {
+    condition.userId['AttributeValueList'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
 
   let queryParams = {
     TableName: tableName,
+    IndexName: 'userId-index',
+    KeyConditionExpression: "#kn0 = :kv0",
+    //ExpressionAttributeNames:{"#kn0":"userId"},
+    ExpressionAttributeValues:{":kv0":{"S":req.apiGateway.event.requestContext.identity.cognitoIdentityId}} //temp
+    //KeyConditions: condition,
         
   }
-  dynamodb.scan(queryParams, function(err, data) {
+  dynamodb.query(queryParams, function(err, data) {
     if (err) {
       res.statusCode = 500;
       res.json({error: 'Could not load items: ' + err});
