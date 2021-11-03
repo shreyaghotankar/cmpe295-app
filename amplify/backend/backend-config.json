@@ -19,6 +19,13 @@
       "service": "Lambda",
       "dependsOn": [
         {
+          "category": "function",
+          "resourceName": "cmpe295appcorslayer",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
           "category": "storage",
           "resourceName": "masterDB",
           "attributes": [
@@ -31,6 +38,11 @@
           }
         }
       ]
+    },
+    "cmpe295appcorslayer": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
     }
   },
   "storage": {

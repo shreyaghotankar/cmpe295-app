@@ -12,6 +12,7 @@ const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 var bodyParser = require('body-parser')
 var express = require('express')
+var cors = require('cors')
 
 
 AWS.config.update({ region: process.env.TABLE_REGION });
@@ -37,6 +38,7 @@ const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
+app.use(cors())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
@@ -90,6 +92,39 @@ const convertUrlType = (param, type) => {
     }
   });
 }); */
+app.get('/images', function(req, res) {
+  var condition = {}
+  condition.userId = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH];
+  }
+
+  console.log(condition)
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    KeyConditions: condition,
+    //KeyConditionExpression: "#kn0 = :kv0",
+    //ExpressionAttributeNames:{"#kn0":"userId"},
+    //ExpressionAttributeValues:{":kv0":{"S":"us-west-2:63c1b52e-1560-4e77-9abf-eba7549e6d19"}}
+    //KeyConditions: condition,
+        
+  }
+  dynamodb.query(queryParams, function(err, data) {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json({data});
+    }
+  })
+});
+
+
 app.get(path, function(req, res) {
   var condition = {}
   condition.userId = {
@@ -105,7 +140,7 @@ app.get(path, function(req, res) {
     IndexName: 'userId-index',
     KeyConditionExpression: "#kn0 = :kv0",
     //ExpressionAttributeNames:{"#kn0":"userId"},
-    ExpressionAttributeValues:{":kv0":{"S":req.apiGateway.event.requestContext.identity.cognitoIdentityId}} //temp
+    ExpressionAttributeValues:{":kv0":{"S":"us-west-2:63c1b52e-1560-4e77-9abf-eba7549e6d19"}}
     //KeyConditions: condition,
         
   }

@@ -31,8 +31,10 @@ export const uploadItem = function (fileName, file, attributes) {
 }
 
 export const getItems = function () {
- return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
+ return API.get('dBApi','/images')
+ //return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
 }
+
 
 // TBD: REMOVE_ITEM AND UPDATE_ITEM
 
