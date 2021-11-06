@@ -23,6 +23,10 @@
     "storagemasterDBArn": {
       "Type": "String",
       "Default": "storagemasterDBArn"
+    },
+    "functioncmpe295appcorslayerArn": {
+      "Type": "String",
+      "Default": "functioncmpe295appcorslayerArn"
     }
   },
   "Conditions": {
@@ -87,7 +91,11 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Layers": [],
+        "Layers": [
+          {
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:cmpe295appcorslayer-dev:1"
+          }
+        ],
         "Timeout": "25"
       }
     },

@@ -15,6 +15,7 @@ function Closet (props) {
   attributes: ['t_stripe', 'f_denim', 't_stripe', 'f_denim', 't_stripe', 'f_denim', 't_stripe', 'f_denim']
  }
 
+
  return (
   <div>
    {emptyCloset ? <div>No items in your Closet yet</div> : null}
@@ -29,7 +30,6 @@ function Closet (props) {
     image={fakeData.image} 
     attributes={fakeData.attributes}
    /></Col><Col><ItemCart/></Col></Row>
-        
   </div>
  )
 }

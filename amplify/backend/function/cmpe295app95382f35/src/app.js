@@ -12,6 +12,7 @@ const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 var bodyParser = require('body-parser')
 var express = require('express')
+var cors = require('cors')
 
 
 AWS.config.update({ region: process.env.TABLE_REGION });
@@ -37,6 +38,7 @@ const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
+app.use(cors())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
@@ -59,7 +61,7 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get(path + hashKeyPath, function(req, res) {
+/* app.get(path + hashKeyPath, function(req, res) {
   var condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
@@ -89,6 +91,32 @@ app.get(path + hashKeyPath, function(req, res) {
       res.json(data.Items);
     }
   });
+}); */
+app.get('/images', function(req, res) {
+  var condition = {}
+  condition.userId = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH];
+  }
+
+  console.log(condition)
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    KeyConditions: condition,        
+  }
+  dynamodb.query(queryParams, function(err, data) {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json({data});
+    }
+  })
 });
 
 /*****************************************

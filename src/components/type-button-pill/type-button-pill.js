@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './type-button-pill.module.scss';
 
 function TypeButtonPill (props) {
- const { isChecked, onSelect, value, icon } = props;
+ const { isChecked, onSelect, value } = props;
  const onClick = (e) => {
   e.preventDefault();
   e.stopPropagation();

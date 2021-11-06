@@ -21,7 +21,8 @@ const App = () => {
  useEffect(() => {
   return onAuthUIStateChange((nextAuthState, authData) => {
    getItems().then(result => {
-    setItems(result)
+    setItems(result.data.Items)
+    console.log(result.data.Items)
    })
    setAuthState(nextAuthState);
    setUser(authData);
