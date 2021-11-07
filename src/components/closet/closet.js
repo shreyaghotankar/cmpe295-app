@@ -25,7 +25,7 @@ function Closet (props) {
                 
     {Array.isArray(items) && items.map((el, index)=>
      <Col sm="auto" key={`user-item-${index}`}>
-      <ItemCart image={el.image} attributes={el.attributes} imageId={el.imageId}/>
+      <ItemCart image={el.image} attributes={el.attributes} imageId={el.imageId} type={el.type}/>
      </Col>)
     }</Row>
    <Row className="justify-content-start"><Col sm="auto"><ItemCart 

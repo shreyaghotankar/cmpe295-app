@@ -12,11 +12,12 @@ function ItemCart (props) {
   attributes, 
   upper = true,
   imageId,
+  type,
  } = props;
 
  const [showAttr, setShowAttr] = useState(false);
- const { removeItem } = useContext(ItemsContext);
- console.log("test: ", props);
+ const { removeItem, updateItem } = useContext(ItemsContext);
+ //console.log("test: ", props);
  const imageStyle = image ? {
   backgroundImage: `url(${image})`
  } : {
@@ -26,14 +27,20 @@ function ItemCart (props) {
  const attrLength = Array.isArray(attributes) ? attributes.length : 0;
  const handleDelete = (e) =>{
   e.preventDefault();
-  console.log("check id: ", imageId);
+  //console.log("check id: ", imageId);
   removeItem(imageId);
+ }
+
+ const handleUpdate = (e) =>{
+  e.preventDefault();
+  updateItem(imageId, type, attributes)
+
  }
 
  return (
   <div className={styles.container}>
    <div className={image ? styles.image : styles.noImage} style={imageStyle}>
-    <Button variant="icon"><PenIcon /></Button>
+    <Button variant="icon" onClick={handleUpdate}><PenIcon /></Button>
     <Button variant="icon" onClick={handleDelete}><BinIcon /></Button>
    </div>
    <div className={styles.attributes}>

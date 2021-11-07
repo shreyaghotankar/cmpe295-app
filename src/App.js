@@ -8,7 +8,7 @@ import './App.scss'
 
 import MainPage from './components/main-page/main-page';
 import { UserContext } from './shared/contexts/user-info';
-import { getItems, uploadItem, deleteItems } from "./shared/hooks/items";
+import { getItems, uploadItem, deleteItems, updateItemDynamoDb } from "./shared/hooks/items";
 import { ItemsContext } from "./shared/contexts/items-info";
 
 Amplify.configure(awsconfig);
@@ -37,9 +37,13 @@ const App = () => {
   return deleteItems(imageId).then(() => getItems()).then(result => setItems(result)).catch(e => console.log(e.step));
  }
 
+ const updateItem = (imageId, type, attributes) => {
+  return updateItemDynamoDb(imageId, type, attributes).then(() => getItems()).then(result => setItems(result)).catch(e => console.log(e.step));
+ }
+
  return authState === AuthState.SignedIn && user ? (
   <UserContext.Provider value={{ user: user }}>
-   <ItemsContext.Provider value={{ items: items, addItem: addItem, removeItem: removeItem }}>
+   <ItemsContext.Provider value={{ items: items, addItem: addItem, removeItem: removeItem, updateItem: updateItem }}>
     <MainPage/>
    </ItemsContext.Provider>
   </UserContext.Provider>) : (
