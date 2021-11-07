@@ -15,6 +15,8 @@ function Closet (props) {
   attributes: ['t_stripe', 'f_denim', 't_stripe', 'f_denim', 't_stripe', 'f_denim', 't_stripe', 'f_denim']
  }
 
+ console.log("items: ", items);
+
 
  return (
   <div>
@@ -23,7 +25,7 @@ function Closet (props) {
                 
     {Array.isArray(items) && items.map((el, index)=>
      <Col sm="auto" key={`user-item-${index}`}>
-      <ItemCart image={el.image} attributes={el.attributes}/>
+      <ItemCart image={el.image} attributes={el.attributes} imageId={el.imageId}/>
      </Col>)
     }</Row>
    <Row className="justify-content-start"><Col sm="auto"><ItemCart 

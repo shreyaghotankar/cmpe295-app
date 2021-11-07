@@ -37,8 +37,16 @@ export const getItems = function () {
 }
 
 
-// TBD: REMOVE_ITEM AND UPDATE_ITEM
 
+// TBD: REMOVE_ITEM AND UPDATE_ITEM
+export const deleteItems = function (imageId) {
+ return API.del(apiName,path,{
+  body: {
+   imageId: imageId
+  },
+ }).catch((err) => Promise.reject(new AddingError('Delete Fail')))
+}
+   
 
 
 // async function onchange(e){
