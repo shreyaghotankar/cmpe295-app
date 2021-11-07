@@ -37,14 +37,18 @@ export const getItems = function () {
 }
 
 
-
+const removeItemS3 = (fileName) => {
+ return Storage.remove(fileName).catch((err) => Promise.reject(new AddingError('S3 remove Failed')))
+}
 // TBD: REMOVE_ITEM AND UPDATE_ITEM
 export const deleteItems = function (imageId) {
  return API.del(apiName,path,{
   body: {
    imageId: imageId
   },
- }).catch((err) => Promise.reject(new AddingError('Delete Fail')))
+ }).catch((err) => Promise.reject(new AddingError('Delete Fail'))).then(result => {
+  return removeItemS3(imageId)
+ })
 }
    
 
