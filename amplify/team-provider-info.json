@@ -28,10 +28,6 @@
         "cmpe295appcorslayer": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
           "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersionf0737838-build.zip"
-        },
-        "getRecommendation": {
-          "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/getRecommendation-2b5165776c4d6836334b-build.zip"
         }
       }
     }
