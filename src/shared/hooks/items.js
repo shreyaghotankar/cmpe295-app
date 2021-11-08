@@ -10,30 +10,33 @@ let path = '/images';
 
 
 const addItemS3 = (fileName, file) => {
- return Storage.put(fileName, file).catch((err) => Promise.reject(new AddingError('S3')))
+	return Storage.put(fileName, file).catch((err) => Promise.reject(new AddingError('S3')))
 }
 
 const addItemDynamoDB = (result, type, attributes) => {
- const item = {
-  imageId: result.key,
-  type: type,
-  attributes: attributes
- }
- return API.put(apiName,path, {
-  body: item,
- }).catch((err) => Promise.reject(new AddingError('DynamoDB')))
+	const item = {
+		imageId: result.key,
+		type: type,
+		attributes: attributes
+	}
+	return API.put(apiName,path, {
+		body: item,
+	}).catch((err) => Promise.reject(new AddingError('DynamoDB')))
 } 
 
 export const uploadItem = function (fileName, file, type, attributes) {
- return addItemS3(fileName, file).then(result => {
-  return addItemDynamoDB(result, type, attributes)
- })
+	return addItemS3(fileName, file).then(result => {
+		return addItemDynamoDB(result, type, attributes)
+	})
 
 }
 
 export const getItems = function () {
- return API.get('dBApi','/images')
- //return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
+	const myInit = { // OPTIONAL
+		headers: {}, // OPTIONAL
+	};
+	return API.get('dBApi','/images', myInit)
+	//return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
 }
 
 

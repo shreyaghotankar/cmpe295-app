@@ -8,28 +8,28 @@ import EmptyColor from "./components/empty-color/empty-color";
 import AddItem from "../add-item/add-item";
 
 function WelcomeModal (props) {
- const {
-  show, onHide
- } = props;
+	const {
+		show, onHide
+	} = props;
 
- const [currentStep, setCurrentStep] = useState(WELCOME_STEPS.CLOSET)
+	const [currentStep, setCurrentStep] = useState(WELCOME_STEPS.CLOSET)
 
 
- return (
-  <CustomModal show={show} onHide={onHide} hasCloseButton={currentStep !== WELCOME_STEPS.NEW_ITEM}>
-   {currentStep === WELCOME_STEPS.CLOSET && <EmptyCloset onClick={() => setCurrentStep(WELCOME_STEPS.NEW_ITEM)}/>}
-   {currentStep === WELCOME_STEPS.COLORS && <EmptyColor />}
-   {currentStep === WELCOME_STEPS.NEW_ITEM && <AddItem cancelAdding={onHide}/>}
-   {currentStep === WELCOME_STEPS.CLOSET && 
+	return (
+		<CustomModal show={show} onHide={onHide} hasCloseButton={currentStep !== WELCOME_STEPS.NEW_ITEM}>
+			{currentStep === WELCOME_STEPS.CLOSET && <EmptyCloset onClick={() => setCurrentStep(WELCOME_STEPS.NEW_ITEM)}/>}
+			{currentStep === WELCOME_STEPS.COLORS && <EmptyColor />}
+			{currentStep === WELCOME_STEPS.NEW_ITEM && <AddItem cancelAdding={onHide}/>}
+			{currentStep === WELCOME_STEPS.CLOSET && 
             <Button variant="link" onClick={onHide}>Skip this step
             </Button>}
-  </CustomModal>
- )
+		</CustomModal>
+	)
 }
 
 WelcomeModal.propTypes = {
- onHide: PropTypes.func,
- show: PropTypes.bool,
+	onHide: PropTypes.func,
+	show: PropTypes.bool,
 }
 
 export default WelcomeModal;

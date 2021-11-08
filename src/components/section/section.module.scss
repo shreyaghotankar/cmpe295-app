@@ -33,7 +33,26 @@
     margin-left: auto;
 }
 
-.body {
-    max-height: 300px;
+.bodyHidden {
+    //max-height: 300px;
     overflow: auto;
+    max-height: 0px;
+}
+
+.body{
+    max-height: 400px;
+    overflow: auto;
+}
+
+.toggle {
+    transform: rotate(0.5turn);
+}
+
+.headerLeft{
+    display: flex;
+    flex-direction: row;
+
+    .headerText {
+        margin-right: 8px;
+    }
 }

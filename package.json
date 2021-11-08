@@ -34,7 +34,7 @@
       "no-console": 0,
       "indent": [
         "error",
-        1,
+        "tab",
         {
           "VariableDeclarator": {
             "let": 5,
