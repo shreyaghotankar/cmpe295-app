@@ -40,9 +40,31 @@ export const getItems = function () {
 }
 
 
+const removeItemS3 = (fileName) => {
+	return Storage.remove(fileName).catch((err) => Promise.reject(new AddingError('S3 remove Failed')))
+}
 // TBD: REMOVE_ITEM AND UPDATE_ITEM
-
-
+export const deleteItems = function (imageId) {
+	return API.del(apiName,path,{
+		body: {
+			imageId: imageId
+		},
+	}).catch((err) => Promise.reject(new AddingError('Delete Fail'))).then(result => {
+		return removeItemS3(imageId)
+	})
+}
+   
+export const updateItemDynamoDb = function (imageId, type, attributes) {
+	const item = {
+		imageId: imageId,
+		type: type,
+		attributes: attributes
+	}
+	//console.log("print stuff", item)
+	return API.put(apiName,path, {
+		body: item,
+	}).catch((err) => Promise.reject(new AddingError('DynamoDB Update Failed')))
+} 
 
 // async function onchange(e){
 //   const file = e.target.files[0];

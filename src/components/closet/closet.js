@@ -15,6 +15,8 @@ function Closet (props) {
 		attributes: ['t_stripe', 'f_denim', 't_stripe', 'f_denim', 't_stripe', 'f_denim', 't_stripe', 'f_denim']
 	}
 
+	console.log("items: ", items);
+
 
 	return (
 		<div>
@@ -24,7 +26,7 @@ function Closet (props) {
 				{Array.isArray(items) && items.map((el, index)=>{
 					const image = 'https://d17y7rra8hr88b.cloudfront.net/private/' + el.userId + '/' + el.imageId;
 					return (<Col sm="auto" key={`user-item-${index}`}>
-						<ItemCart image={image} attributes={el.attributes}/>
+						<ItemCart image={image} attributes={el.attributes} imageId={el.imageId} type={el.type}/>
 					</Col>)
 				})
 
