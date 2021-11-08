@@ -20,7 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersion9c19b62c": {
+    "LambdaLayerVersionf0737838": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": {
@@ -51,13 +51,50 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivate9c19b62c": {
+    "LambdaLayerPermissionPrivatef0737838": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
         "LayerVersionArn": {
-          "Ref": "LambdaLayerVersion9c19b62c"
+          "Ref": "LambdaLayerVersionf0737838"
         },
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerVersion0c9c4f04": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "CompatibleRuntimes": [
+          "nodejs14.x"
+        ],
+        "Content": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersion0c9c4f04-build.zip"
+        },
+        "Description": "Updated layer version 2021-11-06T17:28:17.872Z",
+        "LayerName": {
+          "Fn::Sub": [
+            "cmpe295appcorslayer-${env}",
+            {
+              "env": {
+                "Ref": "env"
+              }
+            }
+          ]
+        }
+      },
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Retain"
+    },
+    "LambdaLayerPermissionPrivate0c9c4f04": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": "arn:aws:lambda:us-west-2:114958753008:layer:cmpe295appcorslayer-dev:2",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
@@ -67,7 +104,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersion9c19b62c"
+        "Ref": "LambdaLayerVersionf0737838"
       }
     }
   }

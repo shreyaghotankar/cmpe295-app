@@ -23,11 +23,11 @@
         },
         "cmpe295app95382f35": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295app95382f35-697931612b4550597138-build.zip"
+          "s3Key": "amplify-builds/cmpe295app95382f35-454d704f7a496f6b3732-build.zip"
         },
         "cmpe295appcorslayer": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersion9c19b62c-build.zip"
+          "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersionf0737838-build.zip"
         }
       }
     }

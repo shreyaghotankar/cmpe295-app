@@ -38,7 +38,7 @@ const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
-app.use(cors())
+//app.use(cors())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
@@ -101,8 +101,6 @@ app.get('/images', function(req, res) {
   if (userIdPresent && req.apiGateway) {
     condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH];
   }
-
-  console.log(condition)
 
   let queryParams = {
     TableName: tableName,
@@ -217,7 +215,7 @@ app.post(path, function(req, res) {
 * HTTP remove method to delete object *
 ***************************************/
 
-app.delete(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
+/* app.delete(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
@@ -251,7 +249,40 @@ app.delete(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
       res.json({url: req.url, data: data});
     }
   });
+}); */
+app.delete('/images', function(req, res) {
+ var params = {};
+ var condition ={}
+ condition.userId={
+  ComparisonOperator: 'EQ'
+ }
+
+ if (userIdPresent && req.apiGateway) {
+  condition.userId['AttributeValueList'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+ }
+ if (userIdPresent && req.apiGateway) {
+  params[partitionKeyName] = convertUrlType(req.body['imageId'], partitionKeyType);
+ }
+ console.log("dynamodb checking: ", params);
+
+  let removeItemParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    Key: params,
+    KeyConditions: condition,        
+  }
+
+  dynamodb.delete(removeItemParams, (err, data)=> {
+    if(err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url});
+    } else {
+      res.json({url: req.url, data: data});
+    }
+  });
 });
+
+
 app.listen(3000, function() {
     console.log("App started")
 });
