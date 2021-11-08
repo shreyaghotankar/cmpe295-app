@@ -14,6 +14,19 @@
                 ]
             },
             "policyResourceName": "/images"
+        },
+        {
+            "name": "/outfits",
+            "lambdaFunction": "generateOutfits",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ]
+            },
+            "policyResourceName": "/outfits"
         }
     ],
     "resourceName": "dBApi",
@@ -21,6 +34,9 @@
     "functionArns": [
         {
             "lambdaFunction": "cmpe295app95382f35"
+        },
+        {
+            "lambdaFunction": "generateOutfits"
         }
     ],
     "privacy": {
@@ -37,7 +53,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "generateOutfits",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "818b2f74"
+    "uuid": "72d690db"
 }
