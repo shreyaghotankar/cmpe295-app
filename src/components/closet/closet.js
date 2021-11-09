@@ -17,7 +17,7 @@ function Closet (props) {
 
  console.log("items: ", items);
 
-
+ 
  return (
   <div>
    {emptyCloset ? <div>No items in your Closet yet</div> : null}

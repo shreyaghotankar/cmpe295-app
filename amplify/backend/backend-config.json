@@ -47,7 +47,16 @@
     "generateOutfits": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cmpe295appcorslayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "storage": {
