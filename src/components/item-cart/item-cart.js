@@ -18,6 +18,7 @@ function ItemCart (props) {
 
      const [showAttr, setShowAttr] = useState(false);
      const [showUpdateModal, setShowUpdateModal] = useState(false);
+     const [deletingItem, setDeletingItem] = useState(false);
      const { removeItem } = useContext(ItemsContext);
      const upper = type === ITEM_TYPE.UPPER;
 
@@ -27,10 +28,15 @@ function ItemCart (props) {
           backgroundImage: `url('/defaultImg.png')`
      }
 
+     const spinnerStyle= {
+          height: `14px`,
+          width: `14px`
+     }
      const attrLength = Array.isArray(attributes) ? attributes.length : 0;
      const handleDelete = (e) =>{
           e.preventDefault();
-          removeItem(imageId);
+          setDeletingItem(true);
+          removeItem(imageId).then(() => console.log("done"));
      }
 
      return (
@@ -38,7 +44,7 @@ function ItemCart (props) {
                <div className={styles.container}>
                     <div className={image ? styles.image : styles.noImage} style={imageStyle}>
                          <Button variant="icon" onClick={() => setShowUpdateModal(true)}><PenIcon /></Button>
-                         <Button variant="icon" onClick={handleDelete}><BinIcon /></Button>
+                         <Button variant="icon" onClick={handleDelete}>{deletingItem ? <div style={spinnerStyle} className="spinner-border" role="status"></div> : <BinIcon />}</Button>
                     </div>
                     <div className={styles.attributes}>
                          <div className={styles.header}>

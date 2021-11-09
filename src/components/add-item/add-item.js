@@ -88,7 +88,6 @@ function AddItem (props) {
         		<Button variant="cancel" onClick={cancelAdding}>Cancel</Button>
         		<Button variant="op" onClick={handleSubmit} disabled={!Boolean(selectedType) || selectedAttributes.length === 0}>
         			{sendingInfo ? <div className="spinner-border" role="status">
-            
         			</div>: 'Submit'}
         		</Button>
         	</div>
