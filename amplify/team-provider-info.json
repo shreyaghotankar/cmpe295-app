@@ -31,7 +31,7 @@
         },
         "generateOutfits": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/generateOutfits-673246387869646b4974-build.zip"
+          "s3Key": "amplify-builds/generateOutfits-64696166415135766762-build.zip"
         }
       }
     }

@@ -8,15 +8,23 @@ See the License for the specific language governing permissions and limitations 
 
 
 
-
+const AWS = require('aws-sdk')
 var express = require('express')
 var bodyParser = require('body-parser')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+var cors = require('cors')
+//var axios = require('axios');
+var amplifyBackend = new AWS.AmplifyBackend();
+
+
 
 // declare a new express app
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
+app.use(cors())
+
+
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
@@ -32,6 +40,9 @@ app.use(function(req, res, next) {
 
 app.get('/outfits', function(req, res) {
   // Add your code here
+ // const results = amplify.get('dBApi','/images')
+  const reault = amplifyBackend.getBackendApi('dBApi')
+  console.log('generated: ', results)
   res.json({success: 'get call succeed!', url: req.url});
 });
 
