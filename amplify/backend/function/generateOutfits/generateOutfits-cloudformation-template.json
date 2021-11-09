@@ -84,13 +84,19 @@
         },
         "Runtime": "nodejs14.x",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
         "Layers": [
           {
             "Ref": "functioncmpe295appcorslayerArn"
           }
         ],
+<<<<<<< HEAD
 =======
         "Layers": [],
+>>>>>>> master
+=======
 >>>>>>> master
         "Timeout": 25
       }
