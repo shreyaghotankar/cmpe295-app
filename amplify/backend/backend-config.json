@@ -43,6 +43,20 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
       "build": true
+    },
+    "generateOutfits": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cmpe295appcorslayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "storage": {
@@ -74,6 +88,14 @@
         {
           "category": "function",
           "resourceName": "cmpe295app95382f35",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "generateOutfits",
           "attributes": [
             "Name",
             "Arn"
