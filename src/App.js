@@ -14,73 +14,77 @@ import { ItemsContext } from "./shared/contexts/items-info";
 Amplify.configure(awsconfig);
 
 const App = () => {
-	const [user, setUser] = useState();
-	const [authState, setAuthState] = useState();
-	const [items, setItems] = useState();
+     const [user, setUser] = useState();
+     const [authState, setAuthState] = useState();
+     const [items, setItems] = useState();
 
-	useEffect(() => {
-		return onAuthUIStateChange((nextAuthState, authData) => {
-			getItems().then(result => {
-				setItems(result.data.Items)
-				console.log(result.data.Items)
-			})
-			setAuthState(nextAuthState);
-			setUser(authData);
-		});
-	}, [])
+     useEffect(() => {
+          return onAuthUIStateChange((nextAuthState, authData) => {
+               getItems().then(result => {
+                    setItems(result.data.Items.sort((a, b) => b?.created - a?.created))
+                    console.log(result.data.Items)
+               })
+               setAuthState(nextAuthState);
+               setUser(authData);
+          });
+     }, [])
 
-	const addItem = (fileName, file, item_type, attributes) => {
-		return uploadItem(fileName, file, item_type, attributes).then(() => getItems()).then(result => setItems(result)).catch(e => console.log(e.step));
-	}
+     const sortItems = (result) => {
+          return result?.data?.Items?.sort((a, b) => b?.created - a?.created);
+     }
 
-	const removeItem = (imageId) => {
-		return deleteItems(imageId).then(() => getItems()).then(result => setItems(result)).catch(e => console.log(e.step));
-	}
+     const addItem = (fileName, file, item_type, attributes) => {
+          return uploadItem(fileName, file, item_type, attributes).then(() => getItems()).then(result => setItems(sortItems(result))).catch(e => console.log(e.step));
+     }
 
-	const updateItem = (imageId, type, attributes) => {
-		return updateItemDynamoDb(imageId, type, attributes).then(() => getItems()).then(result => setItems(result)).catch(e => console.log(e.step));
-	}
+     const removeItem = (imageId) => {
+          return deleteItems(imageId).then(() => getItems()).then(result => setItems(sortItems(result))).catch(e => console.log(e.step));
+     }
 
-	return authState === AuthState.SignedIn && user ? (
-		<UserContext.Provider value={{ user: user }}>
-			<ItemsContext.Provider value={{ items: items, addItem: addItem, removeItem: removeItem, updateItem: updateItem }}>
-				<MainPage/>
-			</ItemsContext.Provider>
-		</UserContext.Provider>) : (
-		<AmplifyAuthenticator usernameAlias="email">
-			<AmplifySignUp
-				slot="sign-up"
-				usernameAlias="email"
-				formFields={[
-					{
-						type: "email",
-						label: "Email",
-						placeholder: "Email",
-						inputProps: { required: true, autocomplete: "username" },
-					},
-					{
-						type: "password",
-						label: "Password",
-						placeholder: "********",
-						inputProps: { required: true, autocomplete: "new-password" },
-					},
-					{
-						type: "given_name",
-						label: "Given Name",
-						placeholder: "First Name",
-						inputProps: { required: true, autocomplete: "given_name" },
-					},
-					{
-						type: "family_name",
-						label: "Family Name",
-						placeholder: "Last Name",
-						inputProps: { required: true, autocomplete: "family_name" },
-					},
-				]} 
-			/>
-			<AmplifySignIn slot="sign-in" usernameAlias="email" />
-		</AmplifyAuthenticator>
-	)
+     const updateItem = (imageId, type, attributes) => {
+          return updateItemDynamoDb(imageId, type, attributes).then(() => getItems()).then(result => setItems(sortItems(result))).catch(e => console.log(e.step));
+     }
+
+     return authState === AuthState.SignedIn && user ? (
+          <UserContext.Provider value={{ user: user }}>
+               <ItemsContext.Provider value={{ items: items, addItem: addItem, removeItem: removeItem, updateItem: updateItem }}>
+                    <MainPage/>
+               </ItemsContext.Provider>
+          </UserContext.Provider>) : (
+          <AmplifyAuthenticator usernameAlias="email">
+               <AmplifySignUp
+                    slot="sign-up"
+                    usernameAlias="email"
+                    formFields={[
+                         {
+                              type: "email",
+                              label: "Email",
+                              placeholder: "Email",
+                              inputProps: { required: true, autocomplete: "username" },
+                         },
+                         {
+                              type: "password",
+                              label: "Password",
+                              placeholder: "********",
+                              inputProps: { required: true, autocomplete: "new-password" },
+                         },
+                         {
+                              type: "given_name",
+                              label: "Given Name",
+                              placeholder: "First Name",
+                              inputProps: { required: true, autocomplete: "given_name" },
+                         },
+                         {
+                              type: "family_name",
+                              label: "Family Name",
+                              placeholder: "Last Name",
+                              inputProps: { required: true, autocomplete: "family_name" },
+                         },
+                    ]} 
+               />
+               <AmplifySignIn slot="sign-in" usernameAlias="email" />
+          </AmplifyAuthenticator>
+     )
 
 };
 

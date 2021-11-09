@@ -100,3 +100,22 @@
         background-color: $dark-neutral-grey;
     }
 }
+
+.btn-dropdown {
+    color: $primary-blue;
+    height: 40px;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $primary-blue;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: auto;
+    display: flow-root;
+}
+
+.btn-dropdown::after{
+    display: none;
+}

@@ -41,7 +41,8 @@
 
 .body{
     max-height: 400px;
-    overflow: auto;
+    overflow-x: hidden;
+
 }
 
 .toggle {
@@ -51,7 +52,7 @@
 .headerLeft{
     display: flex;
     flex-direction: row;
-
+    align-items: center;
     .headerText {
         margin-right: 8px;
     }

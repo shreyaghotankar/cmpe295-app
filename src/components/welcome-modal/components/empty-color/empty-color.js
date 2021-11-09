@@ -3,9 +3,9 @@ import React  from "react";
 // import styles from './empty-color.module.scss';
 
 function EmptyColor () {
-	return (
-		<div>Color</div>
-	)
+     return (
+          <div>Color</div>
+     )
 }
 
 EmptyColor.propTypes = {
