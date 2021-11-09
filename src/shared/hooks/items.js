@@ -10,57 +10,63 @@ let path = '/images';
 
 
 const addItemS3 = (fileName, file) => {
- return Storage.put(fileName, file).catch((err) => Promise.reject(new AddingError('S3')))
+     return Storage.put(fileName, file).catch((err) => Promise.reject(new AddingError('S3')))
 }
 
 const addItemDynamoDB = (result, type, attributes) => {
- const item = {
-  imageId: result.key,
-  type: type,
-  attributes: attributes
- }
- return API.put(apiName,path, {
-  body: item,
- }).catch((err) => Promise.reject(new AddingError('DynamoDB')))
+     const date = new Date();
+     const epoch = date.getTime();
+     const item = {
+          imageId: result.key,
+          type: type,
+          attributes: attributes, 
+          created: epoch
+     }
+     return API.put(apiName,path, {
+          body: item,
+     }).catch((err) => Promise.reject(new AddingError('DynamoDB')))
 } 
 
 export const uploadItem = function (fileName, file, type, attributes) {
- return addItemS3(fileName, file).then(result => {
-  return addItemDynamoDB(result, type, attributes)
- })
+     return addItemS3(fileName, file).then(result => {
+          return addItemDynamoDB(result, type, attributes)
+     })
 
 }
 
 export const getItems = function () {
- return API.get('dBApi','/images')
- //return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
+     const myInit = { // OPTIONAL
+          headers: {}, // OPTIONAL
+     };
+     return API.get('dBApi','/images', myInit)
+     //return Storage.list('').then(keys => Promise.all(keys.map(k => Storage.get(k.key))));
 }
 
 
 const removeItemS3 = (fileName) => {
- return Storage.remove(fileName).catch((err) => Promise.reject(new AddingError('S3 remove Failed')))
+     return Storage.remove(fileName).catch((err) => Promise.reject(new AddingError('S3 remove Failed')))
 }
 // TBD: REMOVE_ITEM AND UPDATE_ITEM
 export const deleteItems = function (imageId) {
- return API.del(apiName,path,{
-  body: {
-   imageId: imageId
-  },
- }).catch((err) => Promise.reject(new AddingError('Delete Fail'))).then(result => {
-  return removeItemS3(imageId)
- })
+     return API.del(apiName,path,{
+          body: {
+               imageId: imageId
+          },
+     }).catch((err) => Promise.reject(new AddingError('Delete Fail'))).then(result => {
+          return removeItemS3(imageId)
+     })
 }
    
 export const updateItemDynamoDb = function (imageId, type, attributes) {
- const item = {
-  imageId: imageId,
-  type: type,
-  attributes: attributes
- }
- //console.log("print stuff", item)
- return API.put(apiName,path, {
-  body: item,
- }).catch((err) => Promise.reject(new AddingError('DynamoDB Update Failed')))
+     const item = {
+          imageId: imageId,
+          type: type,
+          attributes: attributes
+     }
+     //console.log("print stuff", item)
+     return API.put(apiName,path, {
+          body: item,
+     }).catch((err) => Promise.reject(new AddingError('DynamoDB Update Failed')))
 } 
 
 // async function onchange(e){

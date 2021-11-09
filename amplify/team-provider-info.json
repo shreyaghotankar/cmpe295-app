@@ -19,19 +19,19 @@
       "function": {
         "S3Trigger27517569": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/S3Trigger27517569-62576b4639314c6c5842-build.zip"
+          "s3Key": "amplify-builds/S3Trigger27517569-34356c2f473953313050-build.zip"
         },
         "cmpe295app95382f35": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295app95382f35-735246744b78766a6251-build.zip"
+          "s3Key": "amplify-builds/cmpe295app95382f35-6d7736554c724e4b6335-build.zip"
         },
         "cmpe295appcorslayer": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersionf0737838-build.zip"
+          "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersion04aa2389-build.zip"
         },
         "generateOutfits": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/generateOutfits-64696166415135766762-build.zip"
+          "s3Key": "amplify-builds/generateOutfits-3830655468684f2f5557-build.zip"
         }
       }
     }

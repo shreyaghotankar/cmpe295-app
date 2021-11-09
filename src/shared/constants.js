@@ -1,79 +1,85 @@
 export const SECTIONS = {
- CLOSET: 'Your Closet',
- OUTFITS: 'Your Outfits'
+     CLOSET: 'Your Closet',
+     OUTFITS: 'Your Outfits'
 }
 
 export const WELCOME_STEPS = {
- CLOSET: 'Closet', 
- COLORS: 'Colors',
- NEW_ITEM: 'Add New Item'
+     CLOSET: 'Closet', 
+     COLORS: 'Colors',
+     NEW_ITEM: 'Add New Item'
 }
 
 export const ITEM_TYPE = {
- BOTTOM: 'BOTTOM',
- UPPER: 'TOP'
+     BOTTOM: 'BOTTOM',
+     UPPER: 'TOP'
+}
+
+export const FILTER_TYPES = {
+     UPPER: 'TOP', 
+     BOTTOM: 'BOTTOM',
+     ALL: 'ALL'
 }
 
 export const UPPER_ATTRIBUTES ={
- t_floral: 'Floral',
- t_stripe: 'Stripe',
- t_dot: 'Dot',
- f_lace: 'Lace',
- f_denim: 'Denim',
- f_chiffon: 'Chiffon',
- f_cotton: 'Cotton',
- f_leather: 'Leather',
- f_fur: 'Fur',
- p_sleeveless: 'Sleeveless',
- p_longsleeve: 'LongSleeve',
- p_collar: 'Collar',
- p_pocket: 'Pocket',
- p_vneck: 'V Neck',
- p_button: 'Button',
- p_hooded: 'Hooded',
- p_zipper: 'Zipper'
+     t_floral: 'Floral',
+     t_stripe: 'Stripe',
+     t_dot: 'Dot',
+     f_lace: 'Lace',
+     f_denim: 'Denim',
+     f_chiffon: 'Chiffon',
+     f_cotton: 'Cotton',
+     f_leather: 'Leather',
+     f_fur: 'Fur',
+     p_sleeveless: 'Sleeveless',
+     p_longsleeve: 'LongSleeve',
+     p_collar: 'Collar',
+     p_pocket: 'Pocket',
+     p_vneck: 'V Neck',
+     p_button: 'Button',
+     p_hooded: 'Hooded',
+     p_zipper: 'Zipper'
 }
 
 export const BOTTOM_ATTRIBUTES ={
- t_floral: 'Floral',
- t_stripe: 'Stripe',
- t_dot: 'Dot',
- f_lace: 'Lace',
- f_denim: 'Denim',
- f_chiffon: 'Chiffon',
- f_cotton: 'Cotton',
- f_leather: 'Leather',
- f_fur: 'Fur',
- p_sleeveless: 'Sleeveless',
- p_longsleeve: 'LongSleeve',
- p_collar: 'Collar',
- p_pocket: 'Pocket',
- p_vneck: 'V Neck',
- p_button: 'Button',
- p_hooded: 'Hooded',
- p_zipper: 'Zipper'
+     t_floral: 'Floral',
+     t_stripe: 'Stripe',
+     t_dot: 'Dot',
+
+     
+     f_denim: 'Denim',
+
+     f_cotton: 'Cotton',
+     f_leather: 'Leather',
+     f_knit: 'Knit',
+     f_pleated: 'Pleated',
+     p_zipper: 'Zipper',
+     s_fit: 'Fit',
+     s_pencil: 'Pencil',
+     s_midi: 'Midi',
+     s_mini: 'Mini',
+     s_maxi: 'Maxi'
 }
 
 export const getAttrName = (upper, attr) => {
- if (upper) {
-  return UPPER_ATTRIBUTES[attr];
- }
- return BOTTOM_ATTRIBUTES[attr];
+     if (upper) {
+          return UPPER_ATTRIBUTES[attr];
+     }
+     return BOTTOM_ATTRIBUTES[attr];
 }
 
 export class AddingError extends Error {
- constructor (step = 'S3put', ...params) {
-  // Pass remaining arguments (including vendor specific ones) to parent constructor
-  super(...params)
+     constructor (step = 'S3put', ...params) {
+          // Pass remaining arguments (including vendor specific ones) to parent constructor
+          super(...params)
   
-  // Maintains proper stack trace for where our error was thrown (only available on V8)
-  if (Error.captureStackTrace) {
-   Error.captureStackTrace(this, AddingError)
-  }
+          // Maintains proper stack trace for where our error was thrown (only available on V8)
+          if (Error.captureStackTrace) {
+               Error.captureStackTrace(this, AddingError)
+          }
   
-  this.name = 'AddingError'
-  // Custom debugging information
-  this.step = step
-  this.date = new Date()
- }
+          this.name = 'AddingError'
+          // Custom debugging information
+          this.step = step
+          this.date = new Date()
+     }
 }

@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
 app.get('/outfits', function(req, res) {
   // Add your code here
  // const results = amplify.get('dBApi','/images')
-  const reault = amplifyBackend.getBackendApi('dBApi')
+  const results = amplifyBackend.getBackendApi('dBApi')
   console.log('generated: ', results)
   res.json({success: 'get call succeed!', url: req.url});
 });
