@@ -24,8 +24,7 @@ function TypeButtonPill (props) {
 TypeButtonPill.propTypes = {
      isChecked: PropTypes.bool,
      onSelect: PropTypes.func,
-     value: PropTypes.string,
-     icon: PropTypes.string
+     value: PropTypes.string
 }
 
 export default TypeButtonPill;

@@ -9,7 +9,7 @@ import { ITEM_TYPE } from '../../shared/constants'
 
 function UpdateItem (props) {
      const { updateItem } = useContext(ItemsContext);
-     const { imageId, image, type, attributes, cancelUpdate } = props;
+     const { attributes, cancelUpdate, image, imageId, type } = props;
      const [selectedAttributes, setSelectedAttributes] = useState(attributes);
      const [sendingInfo, setSendingInfo] = useState(false);
 
@@ -50,11 +50,11 @@ function UpdateItem (props) {
 }
 
 UpdateItem.propTypes = {
+     attributes: PropTypes.arrayOf(PropTypes.string),
+     cancelUpdate: PropTypes.func,
      image: PropTypes.string,
      imageId: PropTypes.string, 
-     type: PropTypes.string,
-     cancelUpdate: PropTypes.func, 
-     attributes: PropTypes.arrayOf(PropTypes.string)
+     type: PropTypes.string
 }
 
 export default UpdateItem;

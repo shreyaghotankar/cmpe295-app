@@ -9,13 +9,13 @@ import FilterButton from "../filter-button/filter-button";
 
 function Section (props) {
      const {
-          section, 
           children,
-          isButton, 
-          sectionButton, 
           filterHeader,
-          onFilterSelect, 
-          filterOptions
+          filterOptions,
+          isButton,
+          onFilterSelect,
+          section, 
+          sectionButton 
      } = props;
 
      const [hideSection, setHideSection] = useState(false);
@@ -43,7 +43,9 @@ function Section (props) {
                          >
                               <ArrowIcon className={hideSection ? `${styles.toggle}` : ''}/>
                          </Button>
-                         {showFilter && <FilterButton header={filterHeader} options={filterOptions} onSelect={onFilterSelect} />}
+                         {showFilter && <div className={styles.filterButton}>
+                              <FilterButton header={filterHeader} options={filterOptions} onSelect={onFilterSelect} />
+                         </div>}
                     </div>
     
                     {isButton && <span className={styles.button}>{sectionButton}</span>}
@@ -56,12 +58,13 @@ function Section (props) {
 }
 
 Section.propTypes = {
-     header: PropTypes.string,
+     children: PropTypes.any,
+     filterHeader: PropTypes.string,
+     filterOptions: PropTypes.arrayOf(PropTypes.string),
      isButton: PropTypes.bool,
-     sectionButton: PropTypes.object,
-     side: PropTypes.string, 
+     onFilterSelect: PropTypes.func,
      section: PropTypes.string,
-     filterHeader: PropTypes.string
+     sectionButton: PropTypes.object
 }
 
 export default Section;

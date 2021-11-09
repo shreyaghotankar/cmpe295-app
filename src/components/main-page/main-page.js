@@ -12,10 +12,13 @@ import Closet from "../closet/closet";
 import { PlusIcon } from '../../shared/icons/icons';
 import CustomModal from "../custom-modal/custom-modal";
 import AddItem from "../add-item/add-item";
+import Outfits from "../outfits/outfits";
+import { OutfitsContext } from "../../shared/contexts/outfits-info";
 
 function MainPage () {
 
      const { items } = useContext(ItemsContext);
+     const { outfits } = useContext(OutfitsContext);
      const [showWelcomeModal, setShowWelcomeModal] = useState(false);
      const [showAddModal, setShowAddModal] = useState(false);
      const [itemsFilter, setItemsFilter] = useState(FILTER_TYPES.ALL);
@@ -65,7 +68,9 @@ function MainPage () {
                     </Section>
                     <Section
                          section={SECTIONS.OUTFITS}
-                    >outfit</Section>
+                    >
+                         <Outfits outfits={outfits}/>
+                    </Section>
                </div>
                <WelcomeModal show={showWelcomeModal} onHide={()=> setShowWelcomeModal(false)}/>
                <CustomModal show={showAddModal} onHide={()=> setShowAddModal(false)} hasCloseButton={false}>
