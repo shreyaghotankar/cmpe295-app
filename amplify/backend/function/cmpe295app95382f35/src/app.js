@@ -38,7 +38,7 @@ const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
-//app.use(cors())
+app.use(cors())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {

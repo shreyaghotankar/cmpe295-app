@@ -43,6 +43,11 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
       "build": true
+    },
+    "generateOutfits": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "storage": {
@@ -74,6 +79,14 @@
         {
           "category": "function",
           "resourceName": "cmpe295app95382f35",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "generateOutfits",
           "attributes": [
             "Name",
             "Arn"
