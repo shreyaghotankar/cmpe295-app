@@ -1,0 +1,39 @@
+@import '../../shared/styles/colors.scss';
+@import '../../shared/styles/typography.scss';
+
+.container {
+    width: -webkit-fill-available;
+    margin: 24px;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 300px;
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 8px;
+}
+
+
+.text {
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: -0.0025em;
+margin-right: 8px;
+}
+
+.buttonContainer {
+    margin-top: 16px;
+    display: flex;
+    >:first-child {
+        margin-right: 16px;
+    }
+}
+
+.typeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}

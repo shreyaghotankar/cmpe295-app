@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import styles from './item-cart.module.scss';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +7,7 @@ import { getAttrName, ITEM_TYPE } from "../../shared/constants";
 import { ItemsContext } from "../../shared/contexts/items-info";
 import CustomModal from "../custom-modal/custom-modal";
 import UpdateItem from "../update-item/update-item";
+import Recommendations from "../recommendations/recommendations";
 
 function ItemCart (props) {
      const {
@@ -18,9 +19,14 @@ function ItemCart (props) {
 
      const [showAttr, setShowAttr] = useState(false);
      const [showUpdateModal, setShowUpdateModal] = useState(false);
+     const [showRecommendationModal, setShowRecommendationModal] = useState(false);
      const [deletingItem, setDeletingItem] = useState(false);
      const { removeItem } = useContext(ItemsContext);
      const upper = type === ITEM_TYPE.UPPER;
+
+     useEffect(() => {
+          return ;
+     },[])
 
      const imageStyle = image ? {
           backgroundImage: `url(${image})`
@@ -36,7 +42,7 @@ function ItemCart (props) {
      const handleDelete = (e) =>{
           e.preventDefault();
           setDeletingItem(true);
-          removeItem(imageId).then(() => console.log("done"));
+          removeItem(imageId).then(() => setDeletingItem(false));
      }
 
      return (
@@ -68,6 +74,9 @@ function ItemCart (props) {
                </div>
                <CustomModal show={showUpdateModal} onHide={()=> setShowUpdateModal(false)}>
                     <UpdateItem image={image} imageId={imageId} attributes={attributes} type={type} cancelUpdate={() => setShowUpdateModal(false)} />
+               </CustomModal>
+               <CustomModal show={showRecommendationModal} onHide={()=> setShowRecommendationModal(false)} hasCloseButton={false}>
+                    <Recommendations imageId={imageId} attributes={attributes} type={type} closeRecommendations={() => setShowRecommendationModal(false)} />
                </CustomModal>
           </>
      )

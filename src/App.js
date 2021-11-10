@@ -10,7 +10,7 @@ import MainPage from './components/main-page/main-page';
 import { UserContext } from './shared/contexts/user-info';
 import { getItems, uploadItem, deleteItems, updateItemDynamoDb } from "./shared/hooks/items";
 import { ItemsContext } from "./shared/contexts/items-info";
-import { getOutfits } from "./shared/hooks/outfits";
+import { getOutfits, deleteOutfit, saveFavoriteOutfits, generateRecommendations } from "./shared/hooks/outfits";
 import { OutfitsContext } from "./shared/contexts/outfits-info";
 
 Amplify.configure(awsconfig);
@@ -49,10 +49,22 @@ const App = () => {
           return updateItemDynamoDb(imageId, type, attributes).then(() => getItems()).then(result => setItems(sortItems(result))).catch(e => console.log(e.step));
      }
 
+     const removeOutfit = (imageIdOne, imageIdTwo) => {
+          return deleteOutfit(imageIdOne, imageIdTwo).then(() => getOutfits()).then(result => setOutfits(result));
+     }
+
+     const saveOutfits = (imageId, likedImageIds) => {
+          return saveFavoriteOutfits(imageId, likedImageIds).then(() => getOutfits()).then(result => setOutfits(result));
+     }
+
+     const generateOutfits = (imageId, type, attributes) => {
+          return generateRecommendations(imageId, type, attributes);
+     }
+
      return authState === AuthState.SignedIn && user ? (
           <UserContext.Provider value={{ user: user }}>
                <ItemsContext.Provider value={{ items: items, addItem: addItem, removeItem: removeItem, updateItem: updateItem }}>
-                    <OutfitsContext.Provider value={{ outfits: outfits }}>
+                    <OutfitsContext.Provider value={{ outfits: outfits, removeOutfit: removeOutfit, saveOutfits: saveOutfits, generateOutfits: generateOutfits }}>
                          <MainPage/>
                     </OutfitsContext.Provider>
                     

@@ -18,3 +18,33 @@ export const getOutfits = function () {
           }, 1000);
      });
 }
+
+export const deleteOutfit = function () {
+     return new Promise(function (resolve) {
+          setTimeout(function (){
+               console.log("Outfit is deleted")
+               // returning empty list of items
+               resolve(["h"])
+          }, 1000);
+     });
+}
+
+export const generateRecommendations = function () {
+     return new Promise(function (resolve) {
+          setTimeout(function (){
+               console.log("Generating outfit")
+               // returning empty list of items
+               resolve(["h"])
+          }, 1000);
+     });
+}
+
+export const saveFavoriteOutfits = function () {
+     return new Promise(function (resolve) {
+          setTimeout(function (){
+               console.log("SavingOutfits")
+               // returning empty list of items
+               resolve(["h"])
+          }, 1000);
+     });
+}
