@@ -10,7 +10,8 @@ function OutfitCart (props) {
           imageIdOne,
           imageIdTwo,
           imageOne, 
-          imageTwo
+          imageTwo, 
+          displayDeleteButton
      } = props;
 
      const [deletingItem, setDeletingItem] = useState(false);
@@ -52,7 +53,8 @@ function OutfitCart (props) {
                </div>
                <div className={imageTwo ? styles.image : styles.noImage} style={imageStyleTwo}>
                </div>
-               <Button variant="icon" onClick={handleDelete} className={styles.deleteButton}>{deletingItem ? <div style={spinnerStyle} className="spinner-border" role="status"></div> : <XIcon />}</Button>
+               {displayDeleteButton && 
+               <Button variant="icon" onClick={handleDelete} className={styles.deleteButton}>{deletingItem ? <div style={spinnerStyle} className="spinner-border" role="status"></div> : <XIcon />}</Button>}
           </div>
      )
 }
@@ -62,6 +64,7 @@ OutfitCart.propTypes = {
      imageIdTwo: PropTypes.string,
      imageOne: PropTypes.string,
      imageTwo: PropTypes.string,
+     displayDeleteButton: PropTypes.bool
 }
 
 export default OutfitCart;

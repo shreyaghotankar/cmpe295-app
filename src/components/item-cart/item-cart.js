@@ -70,12 +70,12 @@ function ItemCart (props) {
                               )}
                          </div>}
                     </div>
-                    <Button variant="outfit">Generate Outfit</Button>
+                    <Button variant="outfit" onClick={()=>setShowRecommendationModal(!showRecommendationModal)}>Generate Outfit</Button>
                </div>
                <CustomModal show={showUpdateModal} onHide={()=> setShowUpdateModal(false)}>
                     <UpdateItem image={image} imageId={imageId} attributes={attributes} type={type} cancelUpdate={() => setShowUpdateModal(false)} />
                </CustomModal>
-               <CustomModal show={showRecommendationModal} onHide={()=> setShowRecommendationModal(false)} hasCloseButton={false}>
+               <CustomModal show={showRecommendationModal} modalStyle={styles.recommendationsModal} onHide={()=> setShowRecommendationModal(false)} hasCloseButton={false}>
                     <Recommendations imageId={imageId} attributes={attributes} type={type} closeRecommendations={() => setShowRecommendationModal(false)} />
                </CustomModal>
           </>

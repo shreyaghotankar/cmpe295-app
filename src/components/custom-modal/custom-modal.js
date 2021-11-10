@@ -5,12 +5,12 @@ import styles from './custom-modal.module.scss';
 
 function CustomModal (props) {
      const {
-          show, onHide, children, hasCloseButton = true
+          show, onHide, children, hasCloseButton = true, modalStyle
      } = props;
 
 
      return (
-          <Modal show={show} onHide={onHide} backdrop="static" dialogClassName={styles.customSize} keyboard={false} contentClassName={styles.modal}>
+          <Modal show={show} onHide={onHide} backdrop="static" dialogClassName={modalStyle ? modalStyle : styles.customSize} keyboard={false} contentClassName={styles.modal}>
                {hasCloseButton && <Modal.Header closeButton bsPrefix={`modal-header ${styles.modalHeader}`}/>}
                <Modal.Body>
                     <div className={styles.container}>{children}</div>
@@ -21,13 +21,14 @@ function CustomModal (props) {
 }
 
 CustomModal.propTypes = {
-     onHide: PropTypes.func,
-     show: PropTypes.bool,
-     hasCloseButton: PropTypes.bool,
      children: PropTypes.oneOfType([
           PropTypes.arrayOf(PropTypes.node),
           PropTypes.node
-     ])
+     ]),
+     hasCloseButton: PropTypes.bool,
+     modalStyle: PropTypes.string,
+     onHide: PropTypes.func,
+     show: PropTypes.bool
 }
 
 export default CustomModal;

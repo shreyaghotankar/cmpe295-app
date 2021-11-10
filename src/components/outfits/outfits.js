@@ -20,7 +20,7 @@ function Outfits (props) {
                          const imageOne = 'https://di2ponv0v5otw.cloudfront.net/posts/2020/11/15/5fb1c7d2ffba9492e0b2c29a/m_5fb1c7d812d8803988ba4355.jpg'
                          const imageTwo = 'https://di2ponv0v5otw.cloudfront.net/posts/2020/11/15/5fb1c7d2ffba9492e0b2c29a/m_5fb1c7d812d8803988ba4355.jpg' 
                          return (<Col sm="auto" key={`user-outfit-${index}`}>
-                              <OutfitCart imageOne={imageOne} imageTwo={imageTwo} imageIdOne={el?.[0]} imageIdTwo={el?.[1]}/>
+                              <OutfitCart imageOne={imageOne} imageTwo={imageTwo} imageIdOne={el?.[0]} imageIdTwo={el?.[1]} displayDeleteButton/>
                          </Col>);})
                     }
                </Row>

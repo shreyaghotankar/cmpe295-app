@@ -1,5 +1,5 @@
-@import '../../shared/styles/colors.scss';
-@import '../../shared/styles/typography.scss';
+@import '../../../../shared/styles/colors.scss';
+@import '../../../../shared/styles/typography.scss';
 
 // .container {
 //     width: -webkit-fill-available;
@@ -38,30 +38,12 @@
 //     align-items: baseline;
 // }
 
-@keyframes move-text {
-    0% { bottom: -0.2em; opacity: 1; }
-    50% { bottom: 0.4em; }
-    100% { bottom: 0; opacity: 1; }
-}
 %container {
     margin: 24px;
     
 }
 %text {
     margin: 24px;
-}
-.loadingContainer {
-    @extend %container;
-    text-align: center;
-    font-size: 18px;
-    padding: 24px;
-    span {
-        @extend %h3;
-        position: relative;
-        opacity: 0;
-        margin-left: 4px;
-        animation: move-text 1s infinite; 
-    }
 }
 
 .resultsContainer {
@@ -91,13 +73,31 @@
     @extend %text;
     text-align: center;
 }
+
 .recommendationCart {
+    %button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+    }
     position: relative;
-.likeButton {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: $dark-red;
-    z-index: 2;
-}
+    .likeButton {
+        @extend %button;
+        background-color: $dark-red;
+        > svg {
+            width: 12px;
+            height: 12px;
+        }
+    }
+    .questionButton {
+        @extend %button;
+        background-color: $neutral-grey;
+        > svg {
+            width: 18px;
+            height: 18px;
+            color: $primary-black;
+        }
+    }
+    
 }

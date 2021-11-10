@@ -34,7 +34,7 @@ export const generateRecommendations = function () {
           setTimeout(function (){
                console.log("Generating outfit")
                // returning empty list of items
-               resolve(["h"])
+               resolve(["h", 'dsf', 'asdf', 'f',"h", 'dsf', 'asdf', 'f'])
           }, 1000);
      });
 }
