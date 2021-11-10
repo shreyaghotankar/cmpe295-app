@@ -19,8 +19,6 @@ function EmptyCloset (props) {
                </p>
                <Button variant="op" onClick={onClick}>Upload new item</Button>
           </div>
-        
-        
      )
 }
 

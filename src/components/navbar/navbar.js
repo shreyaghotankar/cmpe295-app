@@ -18,7 +18,6 @@ const handleSignOutButtonClick = async () => {
 
 
 function MainNavbar () {
-
      return (
           <Navbar className={styles.container}>
                <NavbarBrand className={styles.brand}>Outfit Perfection</NavbarBrand>
@@ -27,8 +26,6 @@ function MainNavbar () {
                </button>
                     
           </Navbar>
-
-        
      )
 }
 

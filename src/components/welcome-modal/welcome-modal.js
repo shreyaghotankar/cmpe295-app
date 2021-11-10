@@ -8,12 +8,8 @@ import EmptyColor from "./components/empty-color/empty-color";
 import AddItem from "../add-item/add-item";
 
 function WelcomeModal (props) {
-     const {
-          show, onHide
-     } = props;
-
+     const { onHide, show } = props;
      const [currentStep, setCurrentStep] = useState(WELCOME_STEPS.CLOSET)
-
 
      return (
           <CustomModal show={show} onHide={onHide} hasCloseButton={currentStep !== WELCOME_STEPS.NEW_ITEM}>

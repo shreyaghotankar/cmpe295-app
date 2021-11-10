@@ -10,6 +10,8 @@ import MainPage from './components/main-page/main-page';
 import { UserContext } from './shared/contexts/user-info';
 import { getItems, uploadItem, deleteItems, updateItemDynamoDb } from "./shared/hooks/items";
 import { ItemsContext } from "./shared/contexts/items-info";
+import { getOutfits } from "./shared/hooks/outfits";
+import { OutfitsContext } from "./shared/contexts/outfits-info";
 
 Amplify.configure(awsconfig);
 
@@ -17,6 +19,7 @@ const App = () => {
      const [user, setUser] = useState();
      const [authState, setAuthState] = useState();
      const [items, setItems] = useState();
+     const [outfits, setOutfits] = useState();
 
      useEffect(() => {
           return onAuthUIStateChange((nextAuthState, authData) => {
@@ -24,6 +27,7 @@ const App = () => {
                     setItems(result.data.Items.sort((a, b) => b?.created - a?.created))
                     console.log(result.data.Items)
                })
+               getOutfits().then(result => setOutfits(result));
                setAuthState(nextAuthState);
                setUser(authData);
           });
@@ -48,7 +52,10 @@ const App = () => {
      return authState === AuthState.SignedIn && user ? (
           <UserContext.Provider value={{ user: user }}>
                <ItemsContext.Provider value={{ items: items, addItem: addItem, removeItem: removeItem, updateItem: updateItem }}>
-                    <MainPage/>
+                    <OutfitsContext.Provider value={{ outfits: outfits }}>
+                         <MainPage/>
+                    </OutfitsContext.Provider>
+                    
                </ItemsContext.Provider>
           </UserContext.Provider>) : (
           <AmplifyAuthenticator usernameAlias="email">
