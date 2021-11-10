@@ -16,9 +16,21 @@
     "s3Key": {
       "Type": "String"
     },
+    "storagemasterDBName": {
+      "Type": "String",
+      "Default": "storagemasterDBName"
+    },
+    "storagemasterDBArn": {
+      "Type": "String",
+      "Default": "storagemasterDBArn"
+    },
     "functioncmpe295appcorslayerArn": {
       "Type": "String",
       "Default": "functioncmpe295appcorslayerArn"
+    },
+    "functioncmpe295appaxioslayerArn": {
+      "Type": "String",
+      "Default": "functioncmpe295appaxioslayerArn"
     }
   },
   "Conditions": {
@@ -51,12 +63,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "generateOutfits",
+            "getOutfits",
             {
               "Fn::Join": [
                 "",
                 [
-                  "generateOutfits",
+                  "getOutfits",
                   "-",
                   {
                     "Ref": "env"
@@ -86,6 +98,9 @@
         "Layers": [
           {
             "Ref": "functioncmpe295appcorslayerArn"
+          },
+          {
+            "Ref": "functioncmpe295appaxioslayerArn"
           }
         ],
         "Timeout": 25
@@ -97,12 +112,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cmpe295appLambdaRolea84d2cda",
+            "cmpe295appLambdaRole66a5ad18",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cmpe295appLambdaRolea84d2cda",
+                  "cmpe295appLambdaRole66a5ad18",
                   "-",
                   {
                     "Ref": "env"
@@ -168,6 +183,34 @@
                   }
                 ]
               }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DescribeTable",
+                "dynamodb:GetItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storagemasterDBArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storagemasterDBArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }
