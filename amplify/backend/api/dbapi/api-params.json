@@ -17,13 +17,15 @@
         },
         {
             "name": "/outfits",
-            "lambdaFunction": "generateOutfits",
+            "lambdaFunction": "getOutfits",
             "privacy": {
                 "private": true,
                 "auth": [
+                    "/POST",
                     "/GET",
                     "/PUT",
-                    "/PATCH"
+                    "/PATCH",
+                    "/DELETE"
                 ]
             },
             "policyResourceName": "/outfits"
@@ -36,7 +38,7 @@
             "lambdaFunction": "cmpe295app95382f35"
         },
         {
-            "lambdaFunction": "generateOutfits"
+            "lambdaFunction": "getOutfits"
         }
     ],
     "privacy": {
@@ -56,12 +58,12 @@
         },
         {
             "category": "function",
-            "resourceName": "generateOutfits",
+            "resourceName": "getOutfits",
             "attributes": [
                 "Name",
                 "Arn"
             ]
         }
     ],
-    "uuid": "72d690db"
+    "uuid": "7fd0e8b3"
 }
