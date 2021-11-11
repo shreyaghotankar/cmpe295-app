@@ -1,0 +1,103 @@
+@import '../../shared/styles/colors.scss';
+@import '../../shared/styles/typography.scss';
+
+// .container {
+//     width: -webkit-fill-available;
+//     margin: 24px;
+// }
+
+// .imageContainer {
+//     width: 100%;
+//     height: 300px;
+//     background-position: top center;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     margin-bottom: 8px;
+// }
+
+
+// .text {
+// font-weight: 500;
+// font-size: 14px;
+// line-height: 150%;
+// letter-spacing: -0.0025em;
+// margin-right: 8px;
+// }
+
+// .buttonContainer {
+//     margin-top: 16px;
+//     display: flex;
+//     >:first-child {
+//         margin-right: 16px;
+//     }
+// }
+
+// .typeContainer {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: baseline;
+// }
+
+@keyframes move-text {
+    0% { bottom: -0.2em; opacity: 1; }
+    50% { bottom: 0.4em; }
+    100% { bottom: 0; opacity: 1; }
+}
+%container {
+    margin: 24px;
+    
+}
+%text {
+    margin: 24px;
+}
+.loadingContainer {
+    @extend %container;
+    text-align: center;
+    font-size: 18px;
+    padding: 24px;
+    span {
+        @extend %h3;
+        position: relative;
+        opacity: 0;
+        margin-left: 4px;
+        animation: move-text 1s infinite; 
+    }
+}
+
+.resultsContainer {
+    @extend %container;
+    p {
+        text-align: center;
+        @extend %regular;
+        @extend %text;
+    }
+}
+
+.recommendations {
+    max-height: 550px;
+    overflow-x: hidden;
+}
+.buttonContainer {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    >:first-child {
+        margin-right: 16px;
+    }
+}
+
+.header {
+    @extend %h3;
+    @extend %text;
+    text-align: center;
+}
+.recommendationCart {
+    position: relative;
+.likeButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: $dark-red;
+    z-index: 2;
+}
+}

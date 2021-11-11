@@ -8,9 +8,17 @@
     padding: 16px;
     display: flex;
     flex-direction: row;
+    position: relative;
 
     >div:first-child {
         margin-right: 8px;
+    }
+
+    .deleteButton {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: $dark-red;
     }
 }
 
