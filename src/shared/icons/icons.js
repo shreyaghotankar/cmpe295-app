@@ -7,6 +7,9 @@ import { ReactComponent as ClosetIcon } from './svg-closet.svg';
 import { ReactComponent as OutfitsIcon } from './svg-outfits.svg';
 import { ReactComponent as PlusIcon } from './svg-plus.svg';
 import { ReactComponent as AddItemIcon } from './svg-add-item.svg';
+import { ReactComponent as XIcon } from './svg-x.svg'; 
+import { ReactComponent as QuestionIcon } from './svg-question.svg'; 
+import { ReactComponent as HeartIcon } from './svg-heart.svg'; 
 export { ExitIcon };
 export { HangerIcon };
 export { PenIcon };
@@ -16,3 +19,6 @@ export { ClosetIcon };
 export { OutfitsIcon }
 export { PlusIcon };
 export { AddItemIcon };
+export { XIcon };
+export { QuestionIcon };
+export { HeartIcon };

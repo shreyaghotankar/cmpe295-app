@@ -1,0 +1,103 @@
+@import '../../../../shared/styles/colors.scss';
+@import '../../../../shared/styles/typography.scss';
+
+// .container {
+//     width: -webkit-fill-available;
+//     margin: 24px;
+// }
+
+// .imageContainer {
+//     width: 100%;
+//     height: 300px;
+//     background-position: top center;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     margin-bottom: 8px;
+// }
+
+
+// .text {
+// font-weight: 500;
+// font-size: 14px;
+// line-height: 150%;
+// letter-spacing: -0.0025em;
+// margin-right: 8px;
+// }
+
+// .buttonContainer {
+//     margin-top: 16px;
+//     display: flex;
+//     >:first-child {
+//         margin-right: 16px;
+//     }
+// }
+
+// .typeContainer {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: baseline;
+// }
+
+%container {
+    margin: 24px;
+    
+}
+%text {
+    margin: 24px;
+}
+
+.resultsContainer {
+    @extend %container;
+    p {
+        text-align: center;
+        @extend %regular;
+        @extend %text;
+    }
+}
+
+.recommendations {
+    max-height: 550px;
+    overflow-x: hidden;
+}
+.buttonContainer {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    >:first-child {
+        margin-right: 16px;
+    }
+}
+
+.header {
+    @extend %h3;
+    @extend %text;
+    text-align: center;
+}
+
+.recommendationCart {
+    %button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+    }
+    position: relative;
+    .likeButton {
+        @extend %button;
+        background-color: $dark-red;
+        > svg {
+            width: 12px;
+            height: 12px;
+        }
+    }
+    .questionButton {
+        @extend %button;
+        background-color: $neutral-grey;
+        > svg {
+            width: 18px;
+            height: 18px;
+            color: $primary-black;
+        }
+    }
+    
+}
