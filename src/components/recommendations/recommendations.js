@@ -30,7 +30,7 @@ function Recommendations (props) {
                setRecommendations(res);
                console.log('recommd: ', res);
                setLoading(false);
-          })
+          }).catch(e => setLoading(false))
      }, [type, imageId, attributes, generateOutfits])
 
      const updateFavorites = (id) => {

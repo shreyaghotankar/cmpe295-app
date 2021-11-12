@@ -39,9 +39,10 @@ export const generateRecommendations = function (imageId, type, attributes) {
           attributes: attributes, 
      }
      // returning empty list of items
-     return API.get(apiName,'/recommendations',{
-          body: item,
-     }).catch((err) => console.log('DynamoDB Error'))
+     const myInit = { // OPTIONAL
+          headers: {}, // OPTIONAL
+     };
+     return API.get(apiName,'/recommendations',myInit).catch((err) => console.log('DynamoDB Error'))
 
 }
 
