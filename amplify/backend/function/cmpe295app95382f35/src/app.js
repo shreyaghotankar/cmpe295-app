@@ -211,6 +211,43 @@ app.post(path, function(req, res) {
   });
 });
 
+/************************************
+* HTTP update method for updating object *
+*************************************/
+app.put('/images/:imageId', function(req, res) {
+  var params = {};
+  var condition = {}
+  condition.userId = {
+    ComparisonOperator: 'EQ'
+  }
+
+
+  if (userIdPresent && req.apiGateway) {
+    condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH];
+    params[partitionKeyName] = convertUrlType(req.body[partitionKeyName], partitionKeyType);
+  }
+
+  let itemParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    Key: params,
+    KeyConditions: condition,
+    UpdateExpression: 'set attributes = :attributes, updated = :updated',
+    ExpressionAttributeValues: {
+      ':attributes': req.body['attributes'], 
+      ':updated': req.body['updated']
+    }
+  }
+  dynamodb.update(itemParams, (err, data) => {
+    if(err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url, body: req.body});
+    } else{
+      res.json({success: 'put call succeed!', url: req.url, data: data})
+    }
+  });
+});
+
 /**************************************
 * HTTP remove method to delete object *
 ***************************************/

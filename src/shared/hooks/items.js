@@ -21,7 +21,8 @@ const addItemDynamoDB = (result, type, attributes) => {
           imageId: result.key,
           type: type,
           attributes: attributes, 
-          created: epoch
+          created: epoch,
+          updated: epoch
      }
      return API.put(apiName,path, {
           body: item,
@@ -60,13 +61,17 @@ export const deleteItems = function (imageId) {
 }
    
 export const updateItemDynamoDb = function (imageId, type, attributes) {
+     const updatePath = path + '/' + imageId;
+     const date = new Date();
+     const epoch = date.getTime();
      const item = {
           imageId: imageId,
           type: type,
-          attributes: attributes
+          attributes: attributes,
+          updated: epoch
      }
      //console.log("print stuff", item)
-     return API.put(apiName,path, {
+     return API.put(apiName,updatePath, {
           body: item,
      }).catch((err) => Promise.reject(new AddingError('DynamoDB Update Failed')))
 } 
