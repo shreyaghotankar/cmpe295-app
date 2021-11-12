@@ -16,8 +16,8 @@
             "policyResourceName": "/images"
         },
         {
-            "name": "/outfits",
-            "lambdaFunction": "getOutfits",
+            "name": "/recommendations",
+            "lambdaFunction": "getRecommendations",
             "privacy": {
                 "private": true,
                 "auth": [
@@ -28,7 +28,7 @@
                     "/DELETE"
                 ]
             },
-            "policyResourceName": "/outfits"
+            "policyResourceName": "/recommendations"
         }
     ],
     "resourceName": "dBApi",
@@ -38,11 +38,11 @@
             "lambdaFunction": "cmpe295app95382f35"
         },
         {
-            "lambdaFunction": "getOutfits"
+            "lambdaFunction": "getRecommendations"
         }
     ],
     "privacy": {
-        "auth": 2,
+        "auth": 3,
         "unauth": 0,
         "authRoleName": "amplify-cmpe295app-dev-212841-authRole",
         "unAuthRoleName": "amplify-cmpe295app-dev-212841-unauthRole"
@@ -58,12 +58,12 @@
         },
         {
             "category": "function",
-            "resourceName": "getOutfits",
+            "resourceName": "getRecommendations",
             "attributes": [
                 "Name",
                 "Arn"
             ]
         }
     ],
-    "uuid": "7fd0e8b3"
+    "uuid": "beafa124"
 }

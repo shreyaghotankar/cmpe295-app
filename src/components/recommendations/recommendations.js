@@ -28,6 +28,7 @@ function Recommendations (props) {
           setLoading(true);
           return generateOutfits(imageId, type, attributes).then(res => {
                setRecommendations(res);
+               console.log('recommd: ', res);
                setLoading(false);
           })
      }, [type, imageId, attributes, generateOutfits])

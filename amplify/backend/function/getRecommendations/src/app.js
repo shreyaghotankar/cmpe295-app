@@ -12,6 +12,7 @@ const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 var bodyParser = require('body-parser')
 var express = require('express')
+var cors = require('cors')
 
 AWS.config.update({ region: process.env.TABLE_REGION });
 
@@ -22,13 +23,13 @@ if(process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
 
-const userIdPresent = false; // TODO: update in case is required to use that definition
+const userIdPresent = true; // TODO: update in case is required to use that definition
 const partitionKeyName = "imageId";
 const partitionKeyType = "S";
 const sortKeyName = "";
 const sortKeyType = "";
 const hasSortKey = sortKeyName !== "";
-const path = "/outfits";
+const path = "/recommendations";
 const UNAUTH = 'UNAUTH';
 const hashKeyPath = '/:' + partitionKeyName;
 const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
@@ -36,6 +37,7 @@ const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
+app.use(cors())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
@@ -58,7 +60,7 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get(path + hashKeyPath, function(req, res) {
+/* app.get(path + hashKeyPath, function(req, res) {
   var condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
@@ -88,13 +90,41 @@ app.get(path + hashKeyPath, function(req, res) {
       res.json(data.Items);
     }
   });
+}); */
+app.get(path, function(req, res) {
+  var condition = {}
+
+  condition.userId = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition.userId['AttributeValueList'] = [ req.apiGateway.event.requestContext.identity.cognitoIdentityId ];
+  }
+
+  console.log("recommendations condition: ", condition);
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    KeyConditions: condition        
+  }
+
+  dynamodb.query(queryParams, function(err, data) {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json({data});
+    }
+  })
 });
 
 /*****************************************
  * HTTP Get method for get single object *
  *****************************************/
 
-app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
+/* app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
@@ -133,6 +163,34 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
       }
     }
   });
+}); */
+
+app.get('/recommendations/:imageId', function(req, res) {
+  var condition = {}
+
+  condition.userId = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition.userId['AttributeValueList'] = [ req.apiGateway.event.requestContext.identity.cognitoIdentityId ];
+  }
+
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    KeyConditions: condition        
+  }
+
+  dynamodb.query(queryParams, function(err, data) {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json({data});
+    }
+  })
 });
 
 

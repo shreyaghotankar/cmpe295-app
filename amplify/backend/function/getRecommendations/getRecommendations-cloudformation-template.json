@@ -63,12 +63,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getOutfits",
+            "getRecommendations",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getOutfits",
+                  "getRecommendations",
                   "-",
                   {
                     "Ref": "env"
@@ -112,12 +112,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cmpe295appLambdaRole66a5ad18",
+            "cmpe295appLambdaRoled3d2583f",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cmpe295appLambdaRole66a5ad18",
+                  "cmpe295appLambdaRoled3d2583f",
                   "-",
                   {
                     "Ref": "env"

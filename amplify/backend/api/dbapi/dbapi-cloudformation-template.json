@@ -22,15 +22,15 @@
           
           
     
-          "functiongetOutfitsName": {
+          "functiongetRecommendationsName": {
             "Type": "String",
-            "Default": "functiongetOutfitsName"
+            "Default": "functiongetRecommendationsName"
           },
 
           
-          "functiongetOutfitsArn": {
+          "functiongetRecommendationsArn": {
             "Type": "String",
-            "Default": "functiongetOutfitsArn"
+            "Default": "functiongetRecommendationsArn"
           }
 
           
@@ -309,7 +309,7 @@
                 }
               },
               
-              "/outfits": {
+              "/recommendations": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -401,7 +401,7 @@
                             
                             {
 
-                                "Ref": "functiongetOutfitsArn"
+                                "Ref": "functiongetRecommendationsArn"
                             },
                             
                             "/invocations"
@@ -414,7 +414,7 @@
                   }
                 }
               },
-              "/outfits/{proxy+}": {
+              "/recommendations/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -506,7 +506,7 @@
                           
                           {
 
-                            "Ref": "functiongetOutfitsArn"
+                            "Ref": "functiongetRecommendationsArn"
                           },
                           
                           "/invocations"
@@ -597,12 +597,12 @@
         },
         
 
-        "functiongetOutfitsPermissiondBApi": {
+        "functiongetRecommendationsPermissiondBApi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functiongetOutfitsName"
+                        "Ref":  "functiongetRecommendationsName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -632,7 +632,7 @@
         
         
 
-      "DeploymentAPIGWdBApi7fd0e8b3": {
+      "DeploymentAPIGWdBApibeafa124": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",

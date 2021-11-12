@@ -1,11 +1,13 @@
 
-// import { API, Storage } from "aws-amplify";
-// import { AddingError } from '../constants';
+import { API } from "aws-amplify";
+import { AddingError } from '../constants';
+
+
 
 
 // Storage.configure({ level: 'private' });
 
-// let apiName = 'dBApi';
+let apiName = 'dBApi';
 // let path = '/images';
 
 
@@ -29,14 +31,14 @@ export const deleteOutfit = function () {
      });
 }
 
-export const generateRecommendations = function () {
-     return new Promise(function (resolve) {
-          setTimeout(function (){
-               console.log("Generating outfit")
-               // returning empty list of items
-               resolve(["h", 'dsf', 'asdf', 'f',"h", 'dsf', 'asdf', 'f'])
-          }, 1000);
-     });
+export const generateRecommendations = function (imageId, type, attributes) {
+     const myInit = { // OPTIONAL
+          headers: {}, // OPTIONAL
+     };
+     const path = '/recommendations/'+ imageId ;
+
+     return API.get('dBApi', path, myInit)
+
 }
 
 export const saveFavoriteOutfits = function () {

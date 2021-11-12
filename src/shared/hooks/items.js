@@ -1,6 +1,7 @@
 
 import { API, Storage } from "aws-amplify";
 import { AddingError } from '../constants';
+import {v4 as uuidv4} from 'uuid';
 
 
 Storage.configure({ level: 'private' });
@@ -28,7 +29,8 @@ const addItemDynamoDB = (result, type, attributes) => {
 } 
 
 export const uploadItem = function (fileName, file, type, attributes) {
-     return addItemS3(fileName, file).then(result => {
+     let fileId = uuidv4();
+     return addItemS3(fileId, file).then(result => {
           return addItemDynamoDB(result, type, attributes)
      })
 

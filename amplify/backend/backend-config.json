@@ -44,7 +44,12 @@
       "service": "LambdaLayer",
       "build": true
     },
-    "getOutfits": {
+    "cmpe295appaxioslayer": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
+    },
+    "getRecommendations": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -76,11 +81,6 @@
           }
         }
       ]
-    },
-    "cmpe295appaxioslayer": {
-      "providerPlugin": "awscloudformation",
-      "service": "LambdaLayer",
-      "build": true
     }
   },
   "storage": {
@@ -119,7 +119,7 @@
         },
         {
           "category": "function",
-          "resourceName": "getOutfits",
+          "resourceName": "getRecommendations",
           "attributes": [
             "Name",
             "Arn"

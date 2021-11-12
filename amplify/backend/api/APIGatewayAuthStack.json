@@ -364,7 +364,7 @@
                           }
                         ]
                       },
-                      "/GET/outfits/*"
+                      "/POST/recommendations/*"
                     ]
                   ]
                 },
@@ -394,7 +394,7 @@
                           }
                         ]
                       },
-                      "/GET/outfits"
+                      "/POST/recommendations"
                     ]
                   ]
                 },
@@ -424,7 +424,7 @@
                           }
                         ]
                       },
-                      "/PUT/outfits/*"
+                      "/GET/recommendations/*"
                     ]
                   ]
                 },
@@ -454,7 +454,7 @@
                           }
                         ]
                       },
-                      "/PUT/outfits"
+                      "/GET/recommendations"
                     ]
                   ]
                 },
@@ -484,7 +484,7 @@
                           }
                         ]
                       },
-                      "/PATCH/outfits/*"
+                      "/PUT/recommendations/*"
                     ]
                   ]
                 },
@@ -514,7 +514,127 @@
                           }
                         ]
                       },
-                      "/PATCH/outfits"
+                      "/PUT/recommendations"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "dBApi"
+                      },
+                      "/",
+                      {
+                        "Fn::If": [
+                          "ShouldNotCreateEnvResources",
+                          "Prod",
+                          {
+                            "Ref": "env"
+                          }
+                        ]
+                      },
+                      "/PATCH/recommendations/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "dBApi"
+                      },
+                      "/",
+                      {
+                        "Fn::If": [
+                          "ShouldNotCreateEnvResources",
+                          "Prod",
+                          {
+                            "Ref": "env"
+                          }
+                        ]
+                      },
+                      "/PATCH/recommendations"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "dBApi"
+                      },
+                      "/",
+                      {
+                        "Fn::If": [
+                          "ShouldNotCreateEnvResources",
+                          "Prod",
+                          {
+                            "Ref": "env"
+                          }
+                        ]
+                      },
+                      "/DELETE/recommendations/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "dBApi"
+                      },
+                      "/",
+                      {
+                        "Fn::If": [
+                          "ShouldNotCreateEnvResources",
+                          "Prod",
+                          {
+                            "Ref": "env"
+                          }
+                        ]
+                      },
+                      "/DELETE/recommendations"
                     ]
                   ]
                 }
