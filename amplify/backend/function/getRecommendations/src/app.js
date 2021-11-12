@@ -23,7 +23,7 @@ if(process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
 
-const userIdPresent = false; // TODO: update in case is required to use that definition
+const userIdPresent = true; // TODO: update in case is required to use that definition
 const partitionKeyName = "imageId";
 const partitionKeyType = "S";
 const sortKeyName = "";
@@ -93,19 +93,23 @@ const convertUrlType = (param, type) => {
 }); */
 app.get(path, function(req, res) {
   var condition = {}
+
   condition.userId = {
     ComparisonOperator: 'EQ'
   }
 
   if (userIdPresent && req.apiGateway) {
-    condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH];
+    condition.userId['AttributeValueList'] = [ req.apiGateway.event.requestContext.identity.cognitoIdentityId ];
   }
+
+  console.log("recommendations condition: ", condition);
 
   let queryParams = {
     TableName: tableName,
     IndexName: 'userId-index',
-    KeyConditions: condition,        
+    KeyConditions: condition        
   }
+
   dynamodb.query(queryParams, function(err, data) {
     if (err) {
       res.statusCode = 500;
@@ -120,7 +124,7 @@ app.get(path, function(req, res) {
  * HTTP Get method for get single object *
  *****************************************/
 
-app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
+/* app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
@@ -159,6 +163,34 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
       }
     }
   });
+}); */
+
+app.get('/recommendations/:imageId', function(req, res) {
+  var condition = {}
+
+  condition.userId = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition.userId['AttributeValueList'] = [ req.apiGateway.event.requestContext.identity.cognitoIdentityId ];
+  }
+
+
+  let queryParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    KeyConditions: condition        
+  }
+
+  dynamodb.query(queryParams, function(err, data) {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json({data});
+    }
+  })
 });
 
 

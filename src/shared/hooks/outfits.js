@@ -35,7 +35,9 @@ export const generateRecommendations = function (imageId, type, attributes) {
      const myInit = { // OPTIONAL
           headers: {}, // OPTIONAL
      };
-     return API.get('dBApi','/recommendations', myInit)
+     const path = '/recommendations/'+ imageId ;
+
+     return API.get('dBApi', path, myInit)
 
 }
 

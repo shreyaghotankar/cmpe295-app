@@ -16,21 +16,6 @@
             "policyResourceName": "/images"
         },
         {
-            "name": "/outfits",
-            "lambdaFunction": "getOutfits",
-            "privacy": {
-                "private": true,
-                "auth": [
-                    "/POST",
-                    "/GET",
-                    "/PUT",
-                    "/PATCH",
-                    "/DELETE"
-                ]
-            },
-            "policyResourceName": "/outfits"
-        },
-        {
             "name": "/recommendations",
             "lambdaFunction": "getRecommendations",
             "privacy": {
@@ -53,9 +38,6 @@
             "lambdaFunction": "cmpe295app95382f35"
         },
         {
-            "lambdaFunction": "getOutfits"
-        },
-        {
             "lambdaFunction": "getRecommendations"
         }
     ],
@@ -76,14 +58,6 @@
         },
         {
             "category": "function",
-            "resourceName": "getOutfits",
-            "attributes": [
-                "Name",
-                "Arn"
-            ]
-        },
-        {
-            "category": "function",
             "resourceName": "getRecommendations",
             "attributes": [
                 "Name",
@@ -91,5 +65,5 @@
             ]
         }
     ],
-    "uuid": "7048b56e"
+    "uuid": "beafa124"
 }
