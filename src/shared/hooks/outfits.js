@@ -32,16 +32,10 @@ export const deleteOutfit = function () {
 }
 
 export const generateRecommendations = function (imageId, type, attributes) {
-     const path = '/outfits/' + imageId;
-     const item = {
-          imageId: imageId,
-          type: type,
-          attributes: attributes, 
-     }
-     // returning empty list of items
-     return API.get(apiName,'/recommendations',{
-          body: item,
-     }).catch((err) => console.log('DynamoDB Error'))
+     const myInit = { // OPTIONAL
+          headers: {}, // OPTIONAL
+     };
+     return API.get('dBApi','/recommendations', myInit)
 
 }
 
