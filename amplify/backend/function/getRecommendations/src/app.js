@@ -13,7 +13,6 @@ var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware'
 var bodyParser = require('body-parser')
 var express = require('express')
 var cors = require('cors')
-var axios = require('axios')
 
 AWS.config.update({ region: process.env.TABLE_REGION });
 
@@ -30,7 +29,7 @@ const partitionKeyType = "S";
 const sortKeyName = "";
 const sortKeyType = "";
 const hasSortKey = sortKeyName !== "";
-const path = "/outfits";
+const path = "/recommendations";
 const UNAUTH = 'UNAUTH';
 const hashKeyPath = '/:' + partitionKeyName;
 const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
@@ -38,7 +37,6 @@ const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
-
 app.use(cors())
 
 // Enable CORS for all methods
@@ -93,8 +91,7 @@ const convertUrlType = (param, type) => {
     }
   });
 }); */
-app.get('/outfits/:imageId', function(req, res) {
-  var params = {};
+app.get(path, function(req, res) {
   var condition = {}
   condition.userId = {
     ComparisonOperator: 'EQ'
@@ -103,21 +100,8 @@ app.get('/outfits/:imageId', function(req, res) {
   if (userIdPresent && req.apiGateway) {
     condition.userId['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH];
   }
-  if (userIdPresent && req.apiGateway) {
-    params[partitionKeyName] = convertUrlType(req.body['imageId'], partitionKeyType);
-    params['type'] = convertUrlType(req.body['type'], partitionKeyType);
-    params['attributes'] = convertUrlType(req.body['attributes'], partitionKeyType);
-   }
-console.log('check image id', req.params['imageId']);
 
-//outfit recommendation model api call
-axios.get('https://pokeapi.co/api/v2/pokemon/ditto')
-.then(result => {
-  res.json({result});
-})
-
-// dynamodb call
-  /* let queryParams = {
+  let queryParams = {
     TableName: tableName,
     IndexName: 'userId-index',
     KeyConditions: condition,        
@@ -129,7 +113,7 @@ axios.get('https://pokeapi.co/api/v2/pokemon/ditto')
     } else {
       res.json({data});
     }
-  }) */
+  })
 });
 
 /*****************************************

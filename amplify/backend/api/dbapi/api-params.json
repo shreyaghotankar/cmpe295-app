@@ -29,6 +29,21 @@
                 ]
             },
             "policyResourceName": "/outfits"
+        },
+        {
+            "name": "/recommendations",
+            "lambdaFunction": "getRecommendations",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/recommendations"
         }
     ],
     "resourceName": "dBApi",
@@ -39,10 +54,13 @@
         },
         {
             "lambdaFunction": "getOutfits"
+        },
+        {
+            "lambdaFunction": "getRecommendations"
         }
     ],
     "privacy": {
-        "auth": 2,
+        "auth": 3,
         "unauth": 0,
         "authRoleName": "amplify-cmpe295app-dev-212841-authRole",
         "unAuthRoleName": "amplify-cmpe295app-dev-212841-unauthRole"
@@ -63,7 +81,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "getRecommendations",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "7fd0e8b3"
+    "uuid": "7048b56e"
 }
