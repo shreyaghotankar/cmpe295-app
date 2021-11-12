@@ -23,19 +23,19 @@
         },
         "cmpe295app95382f35": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295app95382f35-6d7736554c724e4b6335-build.zip"
+          "s3Key": "amplify-builds/cmpe295app95382f35-673447356b4c336c2b65-build.zip"
         },
         "cmpe295appcorslayer": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersion22ea5a1f-build.zip"
+          "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersion777b4e9a-build.zip"
         },
         "cmpe295appaxioslayer": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295appaxioslayer-LambdaLayerVersion079401a4-build.zip"
+          "s3Key": "amplify-builds/cmpe295appaxioslayer-LambdaLayerVersion861a5b8f-build.zip"
         },
         "getRecommendations": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/getRecommendations-4b486634382b422b7451-build.zip"
+          "s3Key": "amplify-builds/getRecommendations-7872727a466a58735850-build.zip"
         }
       }
     }
