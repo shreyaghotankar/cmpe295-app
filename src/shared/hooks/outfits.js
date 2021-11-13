@@ -32,12 +32,17 @@ export const deleteOutfit = function () {
 }
 
 export const generateRecommendations = function (imageId, type, attributes) {
+     const item = {
+          type: type,
+          attributes: attributes,
+     }
      const myInit = { // OPTIONAL
-          headers: {}, // OPTIONAL
+          headers: {},
+          body: item // OPTIONAL
      };
      const path = '/recommendations/'+ imageId ;
 
-     return API.get('dBApi', path, myInit)
+     return API.post('dBApi', path, myInit)
 
 }
 

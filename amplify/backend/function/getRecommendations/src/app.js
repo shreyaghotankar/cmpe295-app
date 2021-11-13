@@ -165,7 +165,8 @@ app.get(path, function(req, res) {
   });
 }); */
 
-app.get('/recommendations/:imageId', function(req, res) {
+app.post('/recommendations/:imageId', function(req, res) {
+  var params = {};
   var condition = {}
 
   condition.userId = {
@@ -174,14 +175,33 @@ app.get('/recommendations/:imageId', function(req, res) {
 
   if (userIdPresent && req.apiGateway) {
     condition.userId['AttributeValueList'] = [ req.apiGateway.event.requestContext.identity.cognitoIdentityId ];
-  }
+    params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
 
+  }
+/* let arr=[1, 2,3];
+let filtExp = '#t = :type';
+for (int i =0; i < arr.length(); i++) {
+  filtExp += 'and contains (#a, :atr{i})';
+
+} */
+  const attr = req.body['attributes'];
 
   let queryParams = {
     TableName: tableName,
     IndexName: 'userId-index',
-    KeyConditions: condition        
+    KeyConditions: condition,
+    FilterExpression: 'contains (#a, :attr) and #b = :type',
+    ExpressionAttributeNames:{
+      '#a': 'attributes',
+      '#b': 'type'
+    },
+    ExpressionAttributeValues: {
+      ':attr': attr, 
+      ':type': 'BOTTOM'
+    }
   }
+  console.log("get req:", req.body['type']);
+  console.log("get req attr:", req.body['attributes']);
 
   dynamodb.query(queryParams, function(err, data) {
     if (err) {
