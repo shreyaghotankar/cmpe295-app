@@ -31,23 +31,27 @@ export const deleteOutfit = function () {
      });
 }
 
-export const generateRecommendations = function (imageId, type, attributes, recomAttr) {
+export const generateRecommendations = function ( item ) {
      //recomDate < updated; recomAttr: undefined
-     
-     const item = {
+     const {attributes, type, imageId, recomAttr, recomDate, updated } = item;
+     const data = {
           type: type,
-          attributes: attributes,
-          recomAttr: recomAttr,
+          attributes: attributes
+     }
+     console.log(item)
+     if (recomDate && recomDate < updated) {
+          data['recomAttr'] = recomAttr
      }
      const myInit = { // OPTIONAL
           headers: {},
-          body: item // OPTIONAL
+          body: data // OPTIONAL
      };
      const path = '/recommendations/'+ imageId ;
      console.log("item: ", item);
 
-     return API.post('dBApi', path, myInit)
-
+     return API.post(apiName, path, myInit).catch((error) => 
+     {
+          return Promise.reject(new AddingError('OutfitGenerationError'))})
 }
 
 export const saveFavoriteOutfits = function () {

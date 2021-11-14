@@ -6,11 +6,12 @@ import Results from "./components/results/results";
 
 function Recommendations (props) {
      const { generateOutfits, saveOutfits } = useContext(OutfitsContext);
-     const { closeRecommendations, imageId, attributes, type, recomAttr } = props;
+     const { closeRecommendations, item } = props;
      const [loading, setLoading] = useState(true);
      const [recommendations, setRecommendations] = useState(null);
      const [selectedFavorites, setSelectedFavorites] = useState([]);
      const [sendingInfo, setSendingInfo] = useState(false);
+     const { imageId } = item;
 
      const handleSubmit = () => {
           setSendingInfo(true)
@@ -25,13 +26,29 @@ function Recommendations (props) {
      }, [])
 
      useEffect(() => {
+          if (recommendations?.success === false) {
+               setTimeout(() => closeRecommendations(), 2000)
+          }
+          return ;
+     }, [closeRecommendations, recommendations])
+
+     useEffect(() => {
           setLoading(true);
-          return generateOutfits(imageId, type, attributes, recomAttr).then(res => {
-               setRecommendations(res);
-               console.log('recommd: ', res);
+          return generateOutfits(item).then(res => {
+               setRecommendations({
+                    success: true,
+                    result: res
+               });
+               console.log(res)
+               setLoading(false);
+          }).catch(() => {
+               setRecommendations({
+                    success: false,
+                    result: "Smth went wrong"
+               });
                setLoading(false);
           })
-     }, [type, imageId, attributes, generateOutfits])
+     }, [item, generateOutfits])
 
      const updateFavorites = (id) => {
           console.log(id)
@@ -70,9 +87,15 @@ function Recommendations (props) {
 
 Recommendations.propTypes = {
      closeRecommendations: PropTypes.func,
-     imageId: PropTypes.string, 
-     attributes: PropTypes.arrayOf(PropTypes.string), 
-     type: PropTypes.string
+     item: PropTypes.shape({
+          attributes: PropTypes.arrayOf(PropTypes.string),
+          type: PropTypes.string ,
+          imageId: PropTypes.string, 
+          recomAttr: PropTypes.arrayOf(PropTypes.string),
+          created: PropTypes.number,
+          updated: PropTypes.number,
+          recomDate: PropTypes.number
+     }) 
 }
 
 export default Recommendations;

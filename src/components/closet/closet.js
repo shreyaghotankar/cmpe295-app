@@ -4,15 +4,10 @@ import PropTypes from 'prop-types';
 import ItemCart from "../item-cart/item-cart";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { API } from 'aws-amplify';
 
 function Closet (props) {
      const { items } = props;
      const emptyCloset = !items || items.length === 0;
-     const handleClick = (e) =>{
-          e.preventDefault();
-          return API.get('dBApi','/outfits').then(console.log('checking'))
-     }
 
      return (
           <div>
@@ -21,10 +16,9 @@ function Closet (props) {
                     {Array.isArray(items) && items.map((el, index)=>{
                          const image = `${process.env.REACT_APP_CLOUD_FRONT}${el.userId}/${el.imageId}`;
                          return (<Col sm="auto" key={`user-item-${index}`}>
-                              <ItemCart image={image} attributes={el.attributes} imageId={el.imageId} type={el.type} recomAttr={el.recomAttr}/>
+                              <ItemCart image={image} item={el}/>
                          </Col>)
                     })
-
                     }</Row>
           </div>
      )
