@@ -45,8 +45,8 @@ function Recommendations (props) {
      return (
           loading ? <div className={styles.loadingContainer}>
                <p className={styles.header}>Magic is all around us.</p>
-               <p>You are beautifyl!</p>
-               <p>We are maxing and matching to create perfect outfits for You!</p>
+               <p>You are beautiful!</p>
+               <p>We are mixing and matching to create perfect outfits for You!</p>
                {"...".split("").map((char, index) => {
                     const style = { animationDelay: (0.5 + index/10) + "s" };
                     return <span aria-hidden="true"

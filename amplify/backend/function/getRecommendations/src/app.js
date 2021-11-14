@@ -215,6 +215,7 @@ app.post('/recommendations/:imageId', async function(req, res) {
 
      let attr = req?.body?.['recomAttr'];
      if (!attr) {
+        //await from axios 
        // now attr = return from axios
        attr = [['f_pleated']];
        // put attr into DB
@@ -231,10 +232,10 @@ app.post('/recommendations/:imageId', async function(req, res) {
           ':recomDate': epoch
         }
       }
-      await dynamodb.update(itemParams)
-       //await from axios 
-       //await from DB
+      //await from DB
+      await dynamodb.update(itemParams).promise();    
      } 
+     console.log("check attr after update: ", attr);
      let filteringData = createFilteringObject(req?.body?.['type'], attr);
      let attrValues = filteringData.attrValues;
      let filterExp = filteringData.filterExp;
