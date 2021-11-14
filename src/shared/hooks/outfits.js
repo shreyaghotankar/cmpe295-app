@@ -32,6 +32,8 @@ export const deleteOutfit = function () {
 }
 
 export const generateRecommendations = function (imageId, type, attributes, recomAttr) {
+     //recomDate < updated; recomAttr: undefined
+     
      const item = {
           type: type,
           attributes: attributes,

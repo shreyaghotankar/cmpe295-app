@@ -172,7 +172,10 @@ function createFilteringObject(itemType, attr) {
 } else {
     attrValues[':type'] = 'TOP'
 }
-let filterExp = '#b = :type and (';
+let filterExp = '#b = :type and ';
+if (attr.length > 1) {
+  filterExp += '(';
+}
 for (var i=0; i<attr.length; i++){
   let elem = attr[i]; // ['f_cotton', 'f_demin']
   if (i !== 0){
@@ -189,7 +192,9 @@ for (var i=0; i<attr.length; i++){
   }
   filterExp += ')'
 }
-filterExp += ')';
+if (attr.length > 1) {
+  filterExp += ')';
+}
 
 return {
   attrValues: attrValues, 
@@ -212,13 +217,21 @@ app.post('/recommendations/:imageId', async function(req, res) {
 
      }
      
-
+// [[], []]
      let attr = req?.body?.['recomAttr'];
+
+
      if (!attr) {
-        //await from axios 
+        //await from axios
+        // let response = await axios.get('').promise(); // add api name in env
+        // attr = response.attributes;
        // now attr = return from axios
-       attr = [['f_pleated']];
+       //attr = [['f_pleated'],[]];
+       attr = attr.filter(el => el.length != 0);
        // put attr into DB
+       if (attr.length === 0) {
+         attr = "EMPTY"
+       }
        const date = new Date();
      const epoch = date.getTime();
        let itemParams = {
@@ -231,11 +244,15 @@ app.post('/recommendations/:imageId', async function(req, res) {
           ':attributes': attr, 
           ':recomDate': epoch
         }
-      }
+       }
       //await from DB
       await dynamodb.update(itemParams).promise();    
      } 
      console.log("check attr after update: ", attr);
+     if (attr === "EMPTY") {
+       res.json({data: {
+         Items: "EMPTY"}}) // ?
+     }
      let filteringData = createFilteringObject(req?.body?.['type'], attr);
      let attrValues = filteringData.attrValues;
      let filterExp = filteringData.filterExp;
