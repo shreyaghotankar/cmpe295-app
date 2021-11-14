@@ -44,39 +44,6 @@
       "service": "LambdaLayer",
       "build": true
     },
-    "getOutfits": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "cmpe295appcorslayer",
-          "attributes": [
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "cmpe295appaxioslayer",
-          "attributes": [
-            "Arn"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "masterDB",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
     "cmpe295appaxioslayer": {
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
@@ -145,14 +112,6 @@
         {
           "category": "function",
           "resourceName": "cmpe295app95382f35",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getOutfits",
           "attributes": [
             "Name",
             "Arn"
