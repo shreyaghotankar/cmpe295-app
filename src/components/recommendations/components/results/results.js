@@ -10,7 +10,7 @@ import { HeartIcon, QuestionIcon } from "../../../../shared/icons/icons";
 function Results (props) {
      const { closeRecommendations, imageId, recommendations, selectedFavorites, updateFavorites, saveOutfits, submitting } = props;
      const { success, data } = recommendations || {};
-     const { result } = data.Items;
+     const { result } = data?.Items;
 
      const recommendationsArray = success && Array.isArray(result) && result.length > 0;
 
