@@ -6,7 +6,7 @@ import Results from "./components/results/results";
 
 function Recommendations (props) {
      const { generateOutfits, saveOutfits } = useContext(OutfitsContext);
-     const { closeRecommendations, imageId, attributes, type } = props;
+     const { closeRecommendations, imageId, attributes, type, recomAttr } = props;
      const [loading, setLoading] = useState(true);
      const [recommendations, setRecommendations] = useState(null);
      const [selectedFavorites, setSelectedFavorites] = useState([]);
@@ -26,7 +26,7 @@ function Recommendations (props) {
 
      useEffect(() => {
           setLoading(true);
-          return generateOutfits(imageId, type, attributes).then(res => {
+          return generateOutfits(imageId, type, attributes, recomAttr).then(res => {
                setRecommendations(res);
                console.log('recommd: ', res);
                setLoading(false);

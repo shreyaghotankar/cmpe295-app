@@ -31,16 +31,18 @@ export const deleteOutfit = function () {
      });
 }
 
-export const generateRecommendations = function (imageId, type, attributes) {
+export const generateRecommendations = function (imageId, type, attributes, recomAttr) {
      const item = {
           type: type,
           attributes: attributes,
+          recomAttr: recomAttr,
      }
      const myInit = { // OPTIONAL
           headers: {},
           body: item // OPTIONAL
      };
      const path = '/recommendations/'+ imageId ;
+     console.log("item: ", item);
 
      return API.post('dBApi', path, myInit)
 

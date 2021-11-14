@@ -15,6 +15,7 @@ function ItemCart (props) {
           attributes, 
           imageId,
           type,
+          recomAttr
      } = props;
 
      const [showAttr, setShowAttr] = useState(false);
@@ -76,7 +77,7 @@ function ItemCart (props) {
                     <UpdateItem image={image} imageId={imageId} attributes={attributes} type={type} cancelUpdate={() => setShowUpdateModal(false)} />
                </CustomModal>
                <CustomModal show={showRecommendationModal} modalStyle={styles.recommendationsModal} onHide={()=> setShowRecommendationModal(false)} hasCloseButton={false}>
-                    <Recommendations imageId={imageId} attributes={attributes} type={type} closeRecommendations={() => setShowRecommendationModal(false)} />
+                    <Recommendations imageId={imageId} attributes={attributes} type={type} recomAttr={recomAttr} closeRecommendations={() => setShowRecommendationModal(false)} />
                </CustomModal>
           </>
      )
