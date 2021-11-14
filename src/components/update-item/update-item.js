@@ -9,7 +9,8 @@ import { ITEM_TYPE } from '../../shared/constants'
 
 function UpdateItem (props) {
      const { updateItem } = useContext(ItemsContext);
-     const { attributes, cancelUpdate, image, imageId, type } = props;
+     const { cancelUpdate, image, item } = props;
+     const { attributes, type, imageId } = item;
      const [selectedAttributes, setSelectedAttributes] = useState(attributes);
      const [sendingInfo, setSendingInfo] = useState(false);
 
@@ -50,11 +51,17 @@ function UpdateItem (props) {
 }
 
 UpdateItem.propTypes = {
-     attributes: PropTypes.arrayOf(PropTypes.string),
      cancelUpdate: PropTypes.func,
      image: PropTypes.string,
-     imageId: PropTypes.string, 
-     type: PropTypes.string
+     item: PropTypes.shape({
+          attributes: PropTypes.arrayOf(PropTypes.string),
+          type: PropTypes.string ,
+          imageId: PropTypes.string, 
+          recomAttr: PropTypes.arrayOf(PropTypes.string),
+          created: PropTypes.number,
+          updated: PropTypes.number,
+          recomDate: PropTypes.number
+     }) 
 }
 
 export default UpdateItem;

@@ -12,12 +12,9 @@ import Recommendations from "../recommendations/recommendations";
 function ItemCart (props) {
      const {
           image, 
-          attributes, 
-          imageId,
-          type,
-          recomAttr
+          item
      } = props;
-
+     const {attributes, type, imageId } = item;
      const [showAttr, setShowAttr] = useState(false);
      const [showUpdateModal, setShowUpdateModal] = useState(false);
      const [showRecommendationModal, setShowRecommendationModal] = useState(false);
@@ -74,10 +71,10 @@ function ItemCart (props) {
                     <Button variant="outfit" onClick={()=>setShowRecommendationModal(!showRecommendationModal)}>Generate Outfit</Button>
                </div>
                <CustomModal show={showUpdateModal} onHide={()=> setShowUpdateModal(false)}>
-                    <UpdateItem image={image} imageId={imageId} attributes={attributes} type={type} cancelUpdate={() => setShowUpdateModal(false)} />
+                    <UpdateItem image={image} item={item} cancelUpdate={() => setShowUpdateModal(false)} />
                </CustomModal>
                <CustomModal show={showRecommendationModal} modalStyle={styles.recommendationsModal} onHide={()=> setShowRecommendationModal(false)} hasCloseButton={false}>
-                    <Recommendations imageId={imageId} attributes={attributes} type={type} recomAttr={recomAttr} closeRecommendations={() => setShowRecommendationModal(false)} />
+                    <Recommendations item={item} closeRecommendations={() => setShowRecommendationModal(false)} />
                </CustomModal>
           </>
      )
@@ -85,8 +82,15 @@ function ItemCart (props) {
 
 ItemCart.propTypes = {
      image: PropTypes.string,
-     attributes: PropTypes.arrayOf(PropTypes.string),
-     upper: PropTypes.bool
+     item: PropTypes.shape({
+          attributes: PropTypes.arrayOf(PropTypes.string),
+          type: PropTypes.string ,
+          imageId: PropTypes.string, 
+          recomAttr: PropTypes.arrayOf(PropTypes.string),
+          created: PropTypes.number,
+          updated: PropTypes.number,
+          recomDate: PropTypes.number
+     })   
 }
 
 export default ItemCart;

@@ -9,8 +9,10 @@ import { HeartIcon, QuestionIcon } from "../../../../shared/icons/icons";
 
 function Results (props) {
      const { closeRecommendations, imageId, recommendations, selectedFavorites, updateFavorites, saveOutfits, submitting } = props;
+     const { success, data } = recommendations || {};
+     const { result } = data.Items;
 
-     const recommendationsArray = Array.isArray(recommendations) && recommendations.length > 0;
+     const recommendationsArray = success && Array.isArray(result) && result.length > 0;
 
      useEffect(() => {
           return;
@@ -25,9 +27,9 @@ function Results (props) {
                     <p>Let us know what looks good for you</p>
                     <div className={styles.recommendations}>
                          <Row className="justify-content-around">
-                              {Array.isArray(recommendations) && recommendations.map((el, index)=>{
-                                   console.log("outfit:", el)             
-                                   const imageTwo = 'https://di2ponv0v5otw.cloudfront.net/posts/2020/11/15/5fb1c7d2ffba9492e0b2c29a/m_5fb1c7d812d8803988ba4355.jpg'
+                              {Array.isArray(result) && result.map((el, index)=>{
+                                   console.log("outfit:", el)
+                                   const imageTwo = `${process.env.REACT_APP_CLOUD_FRONT}${el.userId}/${el.imageId}`;
                                    const isFavorite = selectedFavorites.includes(el);
                                    return (
                                         <Col sm="auto" key={`outfit-recommendations-${index}`} >
@@ -47,9 +49,10 @@ function Results (props) {
         	          </div>
                </div> :
                <div className={styles.resultsContainer}>
-                    <div className={styles.header}>Looks like we haven't found anything:(</div>
+                    <div className={styles.header}>{success ? "Looks like we haven't found anything:(" : "Oops! Something went wrong"}</div>
                     <div className={styles.buttonContainer}>
-                         <Button variant="cancel" onClick={closeRecommendations}>Hm, Let me check my Closet again</Button>
+                         <Button variant="cancel" onClick={closeRecommendations}>
+                              {success ? "Hm, Let me check my Closet again" : "Get better"}</Button>
         	          </div>
                </div>
      )
