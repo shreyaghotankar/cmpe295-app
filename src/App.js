@@ -57,8 +57,8 @@ const App = () => {
           return saveFavoriteOutfits(imageId, likedImageIds).then(() => getOutfits()).then(result => setOutfits(result));
      }
 
-     const generateOutfits = (imageId, type, attributes) => {
-          return generateRecommendations(imageId, type, attributes);
+     const generateOutfits = (imageId, type, attributes, recomAttr) => {
+          return generateRecommendations(imageId, type, attributes, recomAttr);
      }
 
      return authState === AuthState.SignedIn && user ? (

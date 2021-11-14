@@ -31,13 +31,22 @@ export const deleteOutfit = function () {
      });
 }
 
-export const generateRecommendations = function (imageId, type, attributes) {
+export const generateRecommendations = function (imageId, type, attributes, recomAttr) {
+     //recomDate < updated; recomAttr: undefined
+     
+     const item = {
+          type: type,
+          attributes: attributes,
+          recomAttr: recomAttr,
+     }
      const myInit = { // OPTIONAL
-          headers: {}, // OPTIONAL
+          headers: {},
+          body: item // OPTIONAL
      };
      const path = '/recommendations/'+ imageId ;
+     console.log("item: ", item);
 
-     return API.get('dBApi', path, myInit)
+     return API.post('dBApi', path, myInit)
 
 }
 
