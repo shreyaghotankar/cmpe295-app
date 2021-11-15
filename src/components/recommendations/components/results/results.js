@@ -33,7 +33,7 @@ function Results (props) {
                                         <Col sm="auto" key={`outfit-recommendations-${index}`} >
                                              <div className={styles.recommendationCart}>
                                                   <Button variant="icon"  onClick={() => updateFavorites(el.imageId)} className={isFavorite ? styles.likeButton : styles.questionButton}>{isFavorite ? <HeartIcon/> : <QuestionIcon/>}</Button>  
-                                                  <OutfitCart imageOne={imageOne} imageTwo={imageTwo} imageIdOne={imageId} imageIdTwo={el.imageId}/>  
+                                                  <OutfitCart imageOne={imageOne} imageTwo={imageTwo} mainItem={el} imageIdTwo={el.imageId}/>  
                                              </div>
                                         </Col>);})
                               }
