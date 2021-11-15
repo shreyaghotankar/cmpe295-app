@@ -14,7 +14,7 @@ function ItemCart (props) {
           image, 
           item
      } = props;
-     const {attributes, type, imageId } = item;
+     const { attributes, type, imageId } = item;
      const [showAttr, setShowAttr] = useState(false);
      const [showUpdateModal, setShowUpdateModal] = useState(false);
      const [showRecommendationModal, setShowRecommendationModal] = useState(false);

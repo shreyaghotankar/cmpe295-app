@@ -31,7 +31,6 @@ function MainPage () {
           }
           if (items && items.length > 0) {
                setFilteredItems(items);
-               console.log(items)
           }
           if (!items) {
                console.log("not here yet")

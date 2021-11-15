@@ -11,15 +11,12 @@ function Results (props) {
      const { closeRecommendations, imageId, recommendations, selectedFavorites, updateFavorites, saveOutfits, submitting } = props;
      const { success, data } = recommendations || {};
      const  result  = data?.Items;
-     console.log("result: ", props);
 
      const recommendationsArray = success && Array.isArray(result) && result.length > 0;
 
      useEffect(() => {
           return;
      },[])
-
-     //const imageOne = 'https://di2ponv0v5otw.cloudfront.net/posts/2020/11/15/5fb1c7d2ffba9492e0b2c29a/m_5fb1c7d812d8803988ba4355.jpg'
 
      return (
           recommendationsArray ? 
@@ -29,7 +26,6 @@ function Results (props) {
                     <div className={styles.recommendations}>
                          <Row className="justify-content-around">
                               {Array.isArray(result) && result.map((el, index)=>{
-                                   console.log("outfit:", el)
                                    const imageOne = `${process.env.REACT_APP_CLOUD_FRONT}${el.userId}/${imageId}`;
                                    const imageTwo = `${process.env.REACT_APP_CLOUD_FRONT}${el.userId}/${el.imageId}`;
                                    const isFavorite = selectedFavorites.includes(el.imageId);

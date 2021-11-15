@@ -7,7 +7,7 @@ import { OutfitsContext } from "../../shared/contexts/outfits-info";
 
 function OutfitCart (props) {
      const {
-          imageIdOne,
+          mainItem,
           imageIdTwo,
           imageOne, 
           imageTwo, 
@@ -23,7 +23,7 @@ function OutfitCart (props) {
      const handleDelete = (e) =>{
           e.preventDefault();
           setDeletingItem(true);
-          removeOutfit(imageIdOne, imageIdTwo).then(() => setDeletingItem(false));
+          removeOutfit(mainItem, imageIdTwo).then(() => setDeletingItem(false));
      }
 
      const imageStyleOne = imageOne ? {
@@ -60,7 +60,16 @@ function OutfitCart (props) {
 }
 
 OutfitCart.propTypes = {
-     imageIdOne: PropTypes.string,
+     mainItem: PropTypes.shape({
+          attributes: PropTypes.arrayOf(PropTypes.string),
+          type: PropTypes.string ,
+          imageId: PropTypes.string, 
+          recomAttr: PropTypes.any,
+          created: PropTypes.number,
+          updated: PropTypes.number,
+          recomDate: PropTypes.number,
+          favorites: PropTypes.arrayOf(PropTypes.string)
+     }),
      imageIdTwo: PropTypes.string,
      imageOne: PropTypes.string,
      imageTwo: PropTypes.string,
