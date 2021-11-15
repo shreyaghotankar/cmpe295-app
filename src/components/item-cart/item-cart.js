@@ -86,7 +86,7 @@ ItemCart.propTypes = {
           attributes: PropTypes.arrayOf(PropTypes.string),
           type: PropTypes.string ,
           imageId: PropTypes.string, 
-          recomAttr: PropTypes.arrayOf(PropTypes.string),
+          recomAttr: PropTypes.any,
           created: PropTypes.number,
           updated: PropTypes.number,
           recomDate: PropTypes.number

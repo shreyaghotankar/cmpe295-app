@@ -21,14 +21,18 @@ export const getOutfits = function () {
      });
 }
 
-export const deleteOutfit = function () {
-     return new Promise(function (resolve) {
-          setTimeout(function (){
-               console.log("Outfit is deleted")
-               // returning empty list of items
-               resolve(["h"])
-          }, 1000);
-     });
+export const deleteOutfit = function (imageId, likedImageIds) {
+     const data = {
+          favorites: likedImageIds
+     }
+     const myInit = { // OPTIONAL
+          headers: {},
+          body: data // OPTIONAL
+     };
+     const path = '/recommendations/fav/'+ imageId ;
+     return API.delete(apiName, path, myInit).catch((error) => 
+     {
+          return Promise.reject(new AddingError('Delete Fav Error'))})
 }
 
 export const generateRecommendations = function ( item ) {
@@ -39,7 +43,7 @@ export const generateRecommendations = function ( item ) {
           attributes: attributes
      }
      console.log(item)
-     if (recomDate && recomDate < updated) {
+     if (recomDate && recomDate > updated) {
           data['recomAttr'] = recomAttr
      }
      const myInit = { // OPTIONAL
@@ -54,12 +58,17 @@ export const generateRecommendations = function ( item ) {
           return Promise.reject(new AddingError('OutfitGenerationError'))})
 }
 
-export const saveFavoriteOutfits = function () {
-     return new Promise(function (resolve) {
-          setTimeout(function (){
-               console.log("SavingOutfits")
-               // returning empty list of items
-               resolve(["h"])
-          }, 1000);
-     });
+export const saveFavoriteOutfits = function ( imageId , likedImageIds) {
+     const data = {
+          favorites: likedImageIds
+     }
+     const myInit = { // OPTIONAL
+          headers: {},
+          body: data // OPTIONAL
+     };
+     const path = '/recommendations/fav/'+ imageId ;
+     return API.put(apiName, path, myInit).catch((error) => 
+     {
+          return Promise.reject(new AddingError('Save Fav Error'))})
+     
 }

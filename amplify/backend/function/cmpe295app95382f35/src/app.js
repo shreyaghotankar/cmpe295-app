@@ -234,8 +234,8 @@ app.put('/images/:imageId', function(req, res) {
     KeyConditions: condition,
     UpdateExpression: 'set attributes = :attributes, updated = :updated',
     ExpressionAttributeValues: {
-      ':attributes': req.body['attributes'], 
-      ':updated': req.body['updated']
+      ':attributes': req?.body?.['attributes'], 
+      ':updated': req?.body?.['updated']
     }
   }
   dynamodb.update(itemParams, (err, data) => {

@@ -226,7 +226,7 @@ app.post('/recommendations/:imageId', async function(req, res) {
         // let response = await axios.get('').promise(); // add api name in env
         // attr = response.attributes;
        // now attr = return from axios
-       //attr = [['f_pleated'],[]];
+       attr = [['f_pleated'],['f_cotton']];
        attr = attr.filter(el => el.length != 0);
        // put attr into DB
        if (attr.length === 0) {
@@ -291,17 +291,32 @@ app.post('/recommendations/:imageId', async function(req, res) {
 * HTTP put method for insert object *
 *************************************/
 
-app.put(path, function (req, res) {
+app.put('/recommendations/fav/:imageId', function (req, res) {
+  let params = {};
+  let condition = {};
 
-     if (userIdPresent) {
-          req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-     }
 
-     let putItemParams = {
-          TableName: tableName,
-          Item: req.body
-     }
-     dynamodb.put(putItemParams, (err, data) => {
+  condition.userId = {
+       ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+       condition.userId['AttributeValueList'] = [ req.apiGateway.event.requestContext.identity.cognitoIdentityId ];
+       params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
+
+  }
+
+  let putItemParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    Key: params,
+    KeyConditions: condition,
+    UpdateExpression: 'set favorites = :rImg',
+    ExpressionAttributeValues: {
+      ':rImg': req?.body?.['favorites']
+    }
+  }
+     dynamodb.update(putItemParams, (err, data) => {
           if(err) {
                res.statusCode = 500;
                res.json({ error: err, url: req.url, body: req.body });
@@ -339,38 +354,37 @@ app.post(path, function (req, res) {
 * HTTP remove method to delete object *
 ***************************************/
 
-app.delete(path + '/object' + hashKeyPath + sortKeyPath, function (req, res) {
-     var params = {};
-     if (userIdPresent && req.apiGateway) {
-          params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-     } else {
-          params[partitionKeyName] = req.params[partitionKeyName];
-          try {
-               params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
-          } catch(err) {
-               res.statusCode = 500;
-               res.json({ error: 'Wrong column type ' + err });
-          }
-     }
-     if (hasSortKey) {
-          try {
-               params[sortKeyName] = convertUrlType(req.params[sortKeyName], sortKeyType);
-          } catch(err) {
-               res.statusCode = 500;
-               res.json({ error: 'Wrong column type ' + err });
-          }
-     }
+app.delete('/recommendations/fav/:imageId', function (req, res) {
+  let params = {};
+  let condition = {};
 
-     let removeItemParams = {
-          TableName: tableName,
-          Key: params
-     }
-     dynamodb.delete(removeItemParams, (err, data)=> {
+
+  condition.userId = {
+       ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+       condition.userId['AttributeValueList'] = [ req.apiGateway.event.requestContext.identity.cognitoIdentityId ];
+       params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
+
+  }
+
+  let putItemParams = {
+    TableName: tableName,
+    IndexName: 'userId-index',
+    Key: params,
+    KeyConditions: condition,
+    UpdateExpression: 'set favorites = :rImg',
+    ExpressionAttributeValues: {
+      ':rImg': req?.body?.['favorites']
+    }
+  }
+     dynamodb.update(putItemParams, (err, data) => {
           if(err) {
                res.statusCode = 500;
-               res.json({ error: err, url: req.url });
-          } else {
-               res.json({ url: req.url, data: data });
+               res.json({ error: err, url: req.url, body: req.body });
+          } else{
+               res.json({ success: 'delete call succeed!', url: req.url, data: data })
           }
      });
 });
