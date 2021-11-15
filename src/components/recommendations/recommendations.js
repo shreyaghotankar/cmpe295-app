@@ -22,6 +22,13 @@ function Recommendations (props) {
      }
 
      useEffect(() => {
+          if (item?.favorites) {
+               setSelectedFavorites(item.favorites)
+          }
+          return;
+     }, [closeRecommendations, item])
+
+     useEffect(() => {
           return;
      }, [])
 
@@ -39,7 +46,6 @@ function Recommendations (props) {
                     success: true,
                     data: res.data
                });
-               console.log(res)
                setLoading(false);
           }).catch(() => {
                setRecommendations({
@@ -51,7 +57,6 @@ function Recommendations (props) {
      }, [item, generateOutfits])
 
      const updateFavorites = (id) => {
-          console.log(id)
           if (selectedFavorites.includes(id)) {
                setSelectedFavorites(selectedFavorites.filter(item => item !== id))
           } else {
@@ -94,7 +99,8 @@ Recommendations.propTypes = {
           recomAttr: PropTypes.any,
           created: PropTypes.number,
           updated: PropTypes.number,
-          recomDate: PropTypes.number
+          recomDate: PropTypes.number,
+          favorites: PropTypes.arrayOf(PropTypes.string)
      }) 
 }
 

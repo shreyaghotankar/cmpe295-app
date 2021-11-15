@@ -24,10 +24,11 @@ const App = () => {
      useEffect(() => {
           return onAuthUIStateChange((nextAuthState, authData) => {
                getItems().then(result => {
-                    setItems(result.data.Items.sort((a, b) => b?.created - a?.created))
-                    console.log(result.data.Items)
+                    setItems(result?.data?.Items.sort((a, b) => b?.created - a?.created))
+                    const outfits = getOutfits(result?.data?.Items);
+                    setOutfits(outfits);
+                    
                })
-               getOutfits().then(result => setOutfits(result));
                setAuthState(nextAuthState);
                setUser(authData);
           });
@@ -49,12 +50,21 @@ const App = () => {
           return updateItemDynamoDb(imageId, type, attributes).then(() => getItems()).then(result => setItems(sortItems(result))).catch(e => console.log(e.step));
      }
 
-     const removeOutfit = (imageIdOne, imageIdTwo) => {
-          return deleteOutfit(imageIdOne, imageIdTwo).then(() => getOutfits()).then(result => setOutfits(result));
+     const removeOutfit = (mainItem, imageIdTwo) => {
+          return deleteOutfit(mainItem, imageIdTwo).then(() => getItems()).then((result) => {
+               setItems(sortItems(result))
+               console.log(result)
+               const outfits = getOutfits(result?.data?.Items);
+               setOutfits(outfits);
+          });
      }
 
      const saveOutfits = (imageId, likedImageIds) => {
-          return saveFavoriteOutfits(imageId, likedImageIds).then(() => getOutfits()).then(result => setOutfits(result));
+          return saveFavoriteOutfits(imageId, likedImageIds).then(() => getItems()).then((result) => {
+               setItems(sortItems(result))
+               const outfits = getOutfits(result?.data?.Items);
+               setOutfits(outfits);
+          });
      }
 
      const generateOutfits = (item) => {

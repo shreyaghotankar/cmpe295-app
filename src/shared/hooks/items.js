@@ -1,7 +1,7 @@
 
 import { API, Storage } from "aws-amplify";
 import { AddingError } from '../constants';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 
 Storage.configure({ level: 'private' });
