@@ -37,14 +37,14 @@ function Recommendations (props) {
           return generateOutfits(item).then(res => {
                setRecommendations({
                     success: true,
-                    result: res
+                    data: res.data
                });
                console.log(res)
                setLoading(false);
           }).catch(() => {
                setRecommendations({
                     success: false,
-                    result: "Smth went wrong"
+                    data: "Smth went wrong"
                });
                setLoading(false);
           })
@@ -91,7 +91,7 @@ Recommendations.propTypes = {
           attributes: PropTypes.arrayOf(PropTypes.string),
           type: PropTypes.string ,
           imageId: PropTypes.string, 
-          recomAttr: PropTypes.arrayOf(PropTypes.string),
+          recomAttr: PropTypes.any,
           created: PropTypes.number,
           updated: PropTypes.number,
           recomDate: PropTypes.number
