@@ -31,11 +31,11 @@ export const UPPER_ATTRIBUTES ={
      f_leather: 'Leather',
      f_fur: 'Fur',
      p_sleeveless: 'Sleeveless',
-     p_longsleeve: 'LongSleeve',
+     p_longsleeve: 'LongSleeve', //change to p_long-sleeve
      p_collar: 'Collar',
      p_pocket: 'Pocket',
-     p_vneck: 'V Neck',
-     p_button: 'Button',
+     p_vneck: 'V Neck', // change to p_v-neck
+     p_button: 'Button', 
      p_hooded: 'Hooded',
      p_zipper: 'Zipper'
 }

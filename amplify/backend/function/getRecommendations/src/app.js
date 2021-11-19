@@ -13,6 +13,7 @@ var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware'
 var bodyParser = require('body-parser')
 var express = require('express')
 var cors = require('cors')
+var axios = require('axios')
 
 AWS.config.update({ region: process.env.TABLE_REGION });
 
@@ -104,7 +105,23 @@ app.get(path, function (req, res) {
 
      console.log("recommendations condition: ", condition);
 
-     let queryParams = {
+    axios({
+      method: 'post',
+      url: '',
+      data: {
+        type: 'TOP',
+        attributes: ["f_pleated", "f_cotton"]
+      }
+    }).then(response => {
+      console.log("recommendations: ", response?.data.attributes);
+      res.json({data: response.data})
+      
+    }).catch(err =>{
+      res.json({ error: 'Could not call api: ' + err });
+    })
+
+
+/*      let queryParams = {
           TableName: tableName,
           IndexName: 'userId-index',
           KeyConditions: condition        
@@ -117,53 +134,12 @@ app.get(path, function (req, res) {
           } else {
                res.json({ data });
           }
-     })
+     }) */
 });
 
 /*****************************************
- * HTTP Get method for get single object *
+ * function method for filtering *
  *****************************************/
-
-/* app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
-  var params = {};
-  if (userIdPresent && req.apiGateway) {
-    params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-  } else {
-    params[partitionKeyName] = req.params[partitionKeyName];
-    try {
-      params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong column type ' + err});
-    }
-  }
-  if (hasSortKey) {
-    try {
-      params[sortKeyName] = convertUrlType(req.params[sortKeyName], sortKeyType);
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong column type ' + err});
-    }
-  }
-
-  let getItemParams = {
-    TableName: tableName,
-    Key: params
-  }
-
-  dynamodb.get(getItemParams,(err, data) => {
-    if(err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err.message});
-    } else {
-      if (data.Item) {
-        res.json(data.Item);
-      } else {
-        res.json(data) ;
-      }
-    }
-  });
-}); */
 
 function createFilteringObject(itemType, attr) {
   let attrValues = {};
@@ -202,6 +178,9 @@ return {
 }
 }
 
+/*****************************************
+ * HTTP post method to call ml api *
+ *****************************************/
 app.post('/recommendations/:imageId', async function(req, res) {
      let params = {};
      let condition = {};
@@ -220,13 +199,28 @@ app.post('/recommendations/:imageId', async function(req, res) {
 // [[], []]
      let attr = req?.body?.['recomAttr'];
 
+     let sendType = req?.body?.['type']
+     let sendAtrr = req?.body?.['attributes']
+
 
      if (!attr) {
         //await from axios
-        // let response = await axios.get('').promise(); // add api name in env
-        // attr = response.attributes;
-       // now attr = return from axios
-       attr = [['f_pleated'],['f_cotton']];
+        try{
+          let result = await axios({
+          method: 'post',
+          url: '',
+          data: {
+            type: sendType,
+            attributes: sendAtrr
+          }
+        })
+        attr = result.data.attributes;
+        console.log("axios result: ", attr)
+      } catch(e) {
+        res.statusCode = 500;
+        res.json({ error: 'Bad axios response: ' + e });
+      }
+      
        attr = attr.filter(el => el.length != 0);
        // put attr into DB
        if (attr.length === 0) {
