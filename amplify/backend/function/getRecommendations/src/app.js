@@ -57,41 +57,6 @@ const convertUrlType = (param, type) => {
      }
 }
 
-/********************************
- * HTTP Get method for list objects *
- ********************************/
-
-/* app.get(path + hashKeyPath, function(req, res) {
-  var condition = {}
-  condition[partitionKeyName] = {
-    ComparisonOperator: 'EQ'
-  }
-
-  if (userIdPresent && req.apiGateway) {
-    condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
-  } else {
-    try {
-      condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong column type ' + err});
-    }
-  }
-
-  let queryParams = {
-    TableName: tableName,
-    KeyConditions: condition
-  }
-
-  dynamodb.query(queryParams, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err});
-    } else {
-      res.json(data.Items);
-    }
-  });
-}); */
 app.get(path, function (req, res) {
      var condition = {}
 
@@ -107,7 +72,7 @@ app.get(path, function (req, res) {
 
     axios({
       method: 'post',
-      url: '',
+      url: process.env.MLAPI_URL,
       data: {
         type: 'TOP',
         attributes: ["f_pleated", "f_cotton"]
@@ -208,7 +173,7 @@ app.post('/recommendations/:imageId', async function(req, res) {
         try{
           let result = await axios({
           method: 'post',
-          url: '',
+          url: process.env.MLAPI_URL,
           data: {
             type: sendType,
             attributes: sendAtrr
@@ -246,7 +211,7 @@ app.post('/recommendations/:imageId', async function(req, res) {
      if (attr === "EMPTY") {
        res.json({data: {
          Items: "EMPTY"}}) // ?
-     }
+     }else{
      let filteringData = createFilteringObject(req?.body?.['type'], attr);
      let attrValues = filteringData.attrValues;
      let filterExp = filteringData.filterExp;
@@ -278,6 +243,7 @@ app.post('/recommendations/:imageId', async function(req, res) {
                res.json({ data });
           }
      })
+    }
 });
 
 
