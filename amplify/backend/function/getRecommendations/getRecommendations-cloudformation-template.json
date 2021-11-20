@@ -31,6 +31,9 @@
     "functioncmpe295appaxioslayerArn": {
       "Type": "String",
       "Default": "functioncmpe295appaxioslayerArn"
+    },
+    "mlapiUrl": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -85,6 +88,9 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "MLAPI_URL": {
+              "Ref": "mlapiUrl"
             }
           }
         },
