@@ -1,4 +1,14 @@
 @import './colors.scss';
+@import './breakpoint.scss';
+
+
+.navbar-toggler {
+    border: 0;
+    padding: 0;
+    &:focus {
+        box-shadow: none;
+    }
+}
 .btn {
     border-radius: 8px;
     padding: 1.25rem;
@@ -9,7 +19,12 @@
   box-shadow: none;
     }
 }
-
+@media (max-width: $mobile) {
+    .btn {
+        width: 100%;
+        padding: 1rem;
+    }
+}
 .btn-op {
     background-color: $primary-red;
     color: $primary-white;
@@ -119,3 +134,4 @@
 .btn-dropdown::after{
     display: none;
 }
+

@@ -1,0 +1,105 @@
+@import '../../shared/styles/colors.scss';
+@import '../../shared/styles/typography.scss';
+@import '../../shared/styles/breakpoint.scss';
+.container {
+   background-color: inherit;
+   height: 100vh;
+}
+
+.navContainer {
+   background-color: $primary-white ;
+   padding: 24px 40px;
+   justify-content: space-between !important;
+}
+
+.button {
+   color: $primary-blue;
+   background-color: transparent;
+   border: none;
+   display: flex;
+   align-items: center;
+}
+
+.buttonText {
+   font-size: 18px;
+   font-weight: 500;
+}
+
+.brand {
+   @extend %brand;
+   color: $primary-blue !important;
+   padding: 0 !important;
+   line-height: 24px;
+}
+
+.sectionMain {
+   padding-top: 72px;
+   background-color: $primary-blue;
+   color: $primary-white;
+
+   .header {
+      @extend %header;
+   }
+
+   .infoRow {
+      padding: 72px 72px 18px 72px;
+   }
+
+   .subsectionHeader {
+      @extend %subheader;
+   }
+}
+
+.sectionIdea{
+   padding: 72px;
+   background-color: $neutral-grey;
+   
+   .header {
+      @extend %header;
+   }
+
+   .infoRow {
+      padding: 72px 72px 18px 72px;
+   }
+
+   .subsectionHeader {
+      @extend %subheader;
+   }
+}
+
+.sectionAbout{
+   padding: 72px;
+   
+   .header {
+      @extend %header;
+   }
+
+   .subsectionHeader {
+      @extend %subheader;
+   }
+}
+
+
+.sectionHow {
+   padding-top: 72px;
+   .header {
+      @extend %header;
+   }
+}
+
+@media (max-width: $mobile) {
+   .sectionMain {
+      padding-top: 36px;  
+      
+      .infoRow {
+         padding: 36px;
+      }
+   }
+   .navContainer {
+      padding: 18px 24px;
+   }
+
+   .sectionIdea, .sectionAbout {
+      padding: 36px;
+   }
+}

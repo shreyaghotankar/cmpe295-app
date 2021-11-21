@@ -1,5 +1,6 @@
 @import '../../shared/styles/colors.scss';
-
+@import '../../shared/styles/breakpoint.scss';
+@import '../../shared/styles/typography.scss';
 .container {
     background-color: $primary-blue;
     padding: 24px 40px;
@@ -24,11 +25,16 @@
 }
 
 .brand {
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: 500;
-    letter-spacing: -0.005em;
+    @extend %brand;
     color: $primary-white !important;
     padding: 0 !important;
     line-height: 24px;
 }
+
+@media (max-width: $mobile) {
+    .container {
+       padding: 12px 24px;
+    }
+ 
+ 
+ }

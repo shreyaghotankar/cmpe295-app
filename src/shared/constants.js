@@ -83,3 +83,38 @@ export class AddingError extends Error {
           this.date = new Date()
      }
 }
+
+export const PERSONAS = [
+     {
+          name: 'Shreya Ghotankar',
+          title: 'Management and Backend',
+          linkedin: 'https://www.linkedin.com/in/shreya-ghotankar/',
+          about: "Amazing human-being! She is unstoppable and ready to explore new horizontes.",
+          profUrl: 'https://media-exp1.licdn.com/dms/image/C5603AQF75BZZmMXugQ/profile-displayphoto-shrink_200_200/0/1631052407804?e=1643241600&v=beta&t=N4MqpTXi3VtcRCPybHQCuEYu8Qs9qfPSg-7MiQ4EOo4',
+          githubUrl: 'https://github.com/shreyaghotankar'
+     },
+     {
+          name: 'Manjiri Kadam',
+          title: 'ML Deployment',
+          linkedin: 'https://www.linkedin.com/in/shreya-ghotankar/',
+          about: "Smile is her moto. You can hardly find any other girl who can do so much under a time pressure.",
+          profUrl: 'https://media-exp1.licdn.com/dms/image/C5603AQF75BZZmMXugQ/profile-displayphoto-shrink_200_200/0/1631052407804?e=1643241600&v=beta&t=N4MqpTXi3VtcRCPybHQCuEYu8Qs9qfPSg-7MiQ4EOo4',
+          githubUrl: 'https://github.com/Manjiri1101'
+     },
+     {
+          name: 'Parvathi Pai',
+          title: 'Machine Learning',
+          linkedin: 'https://www.linkedin.com/in/shreya-ghotankar/',
+          about: "She knows EVERYTHING! Our main resercher and machine learning enthusiast.",
+          profUrl: 'https://media-exp1.licdn.com/dms/image/C5603AQF75BZZmMXugQ/profile-displayphoto-shrink_200_200/0/1631052407804?e=1643241600&v=beta&t=N4MqpTXi3VtcRCPybHQCuEYu8Qs9qfPSg-7MiQ4EOo4',
+          githubUrl: 'https://github.com/ParvathiRPai'
+     },
+     {
+          name: 'Anastasia Zimina',
+          title: 'Frontend and Idea',
+          linkedin: 'https://www.linkedin.com/in/shreya-ghotankar/',
+          about: "She loves to create beauty around and laughts in the face of hard problems.",
+          profUrl: 'https://media-exp1.licdn.com/dms/image/C5603AQF75BZZmMXugQ/profile-displayphoto-shrink_200_200/0/1631052407804?e=1643241600&v=beta&t=N4MqpTXi3VtcRCPybHQCuEYu8Qs9qfPSg-7MiQ4EOo4',
+          githubUrl: 'https://github.com/anastaszi'
+     },
+]

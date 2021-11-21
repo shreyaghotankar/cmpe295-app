@@ -13,7 +13,7 @@ function Outfits (props) {
      }, [])
      return (
           <div>
-               {emptyCollection ? <div> Outfits Insperation Board is empty. Make the magic happens by clicking on 'Generate outfit'</div> : null}
+               {emptyCollection ? <div><p>Outfits Insperation Board is empty.</p><p>Make the magic happens by clicking on 'Generate outfit'</p></div> : null}
                <Row className="justify-content-start">
                     {Array.isArray(outfits) && outfits.map((el, index)=>{
                          const imageIdOne = el?.itemOne?.imageId;

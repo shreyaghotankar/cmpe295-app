@@ -42,10 +42,7 @@ function OutfitCart (props) {
           height: `14px`,
           width: `14px`
      }
-     // const handleDelete = (e) =>{
-     //      e.preventDefault();
-     //      removeItem(imageId);
-     // }
+
 
      return (
           <div className={styles.container}>

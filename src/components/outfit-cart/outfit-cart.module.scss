@@ -1,4 +1,5 @@
 @import '../../shared/styles/colors.scss';
+@import '../../shared/styles/breakpoint.scss';
 
 .container {
     border-radius: 8px;
@@ -40,3 +41,16 @@
 .noImage {
     @extend %imageStyle;
 }
+
+@media (max-width: $mobile) {
+    %imageStyle {
+        height: 150px;
+        width: 130px;
+    }
+
+    .container {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+ }
+
