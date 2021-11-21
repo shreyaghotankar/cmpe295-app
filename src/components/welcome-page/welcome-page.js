@@ -4,6 +4,7 @@ import { Col, Row,  Navbar, NavbarBrand, Nav, NavLink } from "react-bootstrap";
 import styles from './welcome-page.module.scss';
 import { TimeIcon, PlanetIcon, MoneyIcon } from '../../shared/icons/icons';
 import { PERSONAS } from "../../shared/constants";
+import HowItWorks from "./components/how-it-works/how-it-works";
 
 const useScroll = () => {
      const elRef = useRef(null);
@@ -77,9 +78,7 @@ function WelcomePage (props) {
                </div>
                <div className={styles.sectionHow} ref={howRef}>
                     <h1 className={styles.header}>How it works</h1>
-                    <Row className={styles.infoRow}>
-
-                    </Row>
+                    <HowItWorks />
                </div>
                <div className={styles.sectionIdea} ref={ideaRef}>
                     <h1 className={styles.header}>Idea</h1>
@@ -98,10 +97,10 @@ function WelcomePage (props) {
                                    backgroundImage: `url(${el.profUrl})`
                               }
                               return (
-                                   <Col  className="me-4" key={key}>
-                                        <div style={imgStyle}></div>
-                                        <div>{el.name}</div>
-                                        <div>{el.title}</div>
+                                   <Col  className="md-4" key={key}>
+                                        <div style={imgStyle} className={styles.aboutImage}></div>
+                                        <div className="mt-3 fw-bold text-center">{el.name}</div>
+                                        <div className="mb-3 text-center">{el.title}</div>
                                         <div>{el.about}</div>
                                         <NavLink><MoneyIcon /></NavLink>
                                    </Col>)

@@ -53,6 +53,7 @@
 .sectionIdea{
    padding: 72px;
    background-color: $neutral-grey;
+   padding-bottom: 36px;
    
    .header {
       @extend %header;
@@ -69,6 +70,7 @@
 
 .sectionAbout{
    padding: 72px;
+   padding-bottom: 36px;
    
    .header {
       @extend %header;
@@ -77,11 +79,23 @@
    .subsectionHeader {
       @extend %subheader;
    }
+
+   .aboutImage {
+      margin: auto;
+      width: 200px;
+      height: 200px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      border-radius: 50%;
+   }
+
 }
 
 
 .sectionHow {
-   padding-top: 72px;
+   padding: 72px;
+   padding-bottom: 36px;
    .header {
       @extend %header;
    }
@@ -99,7 +113,7 @@
       padding: 18px 24px;
    }
 
-   .sectionIdea, .sectionAbout {
+   .sectionIdea, .sectionAbout, .sectionHow {
       padding: 36px;
    }
 }
