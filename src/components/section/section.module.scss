@@ -1,5 +1,6 @@
 @import '../../shared/styles/colors.scss';
 @import '../../shared/styles/typography.scss';
+@import '../../shared/styles/breakpoint.scss';
 .container {
    margin: 32px 40px;
    padding: 40px;
@@ -60,3 +61,26 @@
         margin-left: 16px;
     }
 }
+
+@media (max-width: $mobile) {
+    .container {
+        margin: 18px 20px;
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        margin-bottom: 20px;
+        align-items: flex-start;
+    }
+
+    .button {
+        margin-top: 12px;
+        margin-left: 0;
+    }
+
+    .body{
+        max-height: unset;
+        overflow-x: hidden;
+    }
+ }

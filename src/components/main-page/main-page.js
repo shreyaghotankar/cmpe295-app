@@ -52,6 +52,11 @@ function MainPage () {
                <MainNavbar />
                <div className={styles.container}>
                     <Section
+                         section={SECTIONS.OUTFITS}
+                    >
+                         <Outfits outfits={outfits}/>
+                    </Section>
+                    <Section
                          section={SECTIONS.CLOSET}
                          isButton
                          sectionButton={<Button 
@@ -65,11 +70,7 @@ function MainPage () {
                     >
                          <Closet items={filteredItems} />
                     </Section>
-                    <Section
-                         section={SECTIONS.OUTFITS}
-                    >
-                         <Outfits outfits={outfits}/>
-                    </Section>
+
                </div>
                <WelcomeModal show={showWelcomeModal} onHide={()=> setShowWelcomeModal(false)}/>
                <CustomModal show={showAddModal} onHide={()=> setShowAddModal(false)} hasCloseButton={false}>
