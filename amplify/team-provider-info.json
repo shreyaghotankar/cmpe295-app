@@ -27,15 +27,15 @@
         },
         "cmpe295appcorslayer": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersiona9fd4023-build.zip"
+          "s3Key": "amplify-builds/cmpe295appcorslayer-LambdaLayerVersion58f7efec-build.zip"
         },
         "cmpe295appaxioslayer": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/cmpe295appaxioslayer-LambdaLayerVersion52703bb5-build.zip"
+          "s3Key": "amplify-builds/cmpe295appaxioslayer-LambdaLayerVersion03ca9db5-build.zip"
         },
         "getRecommendations": {
           "deploymentBucketName": "amplify-cmpe295app-dev-212841-deployment",
-          "s3Key": "amplify-builds/getRecommendations-5972674879566b54386e-build.zip",
+          "s3Key": "amplify-builds/getRecommendations-63364b52705842715370-build.zip",
           "mlapiUrl": "https://xhiqn303be.execute-api.us-east-1.amazonaws.com/prd"
         }
       }

@@ -12,6 +12,7 @@ function AttributesButtonPill (props) {
     
      return (
           <button
+               data-testid="attributeOptionPill"
                type="checkbox"
                onClick={onClick}
                className={`${styles.pill}${isChecked ? ` ${styles.checked}` : ''}`}

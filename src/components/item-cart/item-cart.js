@@ -14,7 +14,7 @@ function ItemCart (props) {
           image, 
           item
      } = props;
-     const { attributes, type, imageId } = item;
+     const { attributes, type, imageId } = item || {};
      const [showAttr, setShowAttr] = useState(false);
      const [showUpdateModal, setShowUpdateModal] = useState(false);
      const [showRecommendationModal, setShowRecommendationModal] = useState(false);
@@ -46,14 +46,14 @@ function ItemCart (props) {
      return (
           <>
                <div className={styles.container}>
-                    <div className={image ? styles.image : styles.noImage} style={imageStyle}>
+                    <div className={image ? styles.image : styles.noImage} style={imageStyle} data-testid="itemBackground" role="img">
                          <Button variant="icon" onClick={() => setShowUpdateModal(true)}><PenIcon /></Button>
                          <Button variant="icon" onClick={handleDelete}>{deletingItem ? <div style={spinnerStyle} className="spinner-border" role="status"></div> : <BinIcon />}</Button>
                     </div>
                     <div className={styles.attributes}>
                          <div className={styles.header}>
                     Attributes
-                              <span className="px-1">({attrLength})</span>
+                              <span className="px-1" data-testid="numberOfAttributes">({attrLength})</span>
                               <Button 
                                    className="ms-auto" 
                                    variant="toggle"
@@ -63,7 +63,7 @@ function ItemCart (props) {
                               </Button>
                          </div>
                          {showAttr && attrLength > 0 && <div className={`row ${styles.list}`}>
-                              {attributes.map((attr, index) =>
+                              {Array.isArray(attributes) && attributes.map((attr, index) =>
                                    <span key={`item-attribute-${index}`} className={`col-auto ${styles.pill}`}>{getAttrName(upper, attr)}</span>
                               )}
                          </div>}

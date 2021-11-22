@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import PropTypes from 'prop-types';
-import { Col, Row,  Navbar, NavbarBrand, Nav, NavLink } from "react-bootstrap";
+import { Col, Row,  Navbar, NavbarBrand, Nav } from "react-bootstrap";
 import styles from './welcome-page.module.scss';
-import { TimeIcon, PlanetIcon, MoneyIcon } from '../../shared/icons/icons';
+import { TimeIcon, PlanetIcon, MoneyIcon, GithubIcon, LinkedinIcon } from '../../shared/icons/icons';
 import { PERSONAS } from "../../shared/constants";
 import HowItWorks from "./components/how-it-works/how-it-works";
 
@@ -38,7 +38,7 @@ function WelcomePage (props) {
      ]
 
      return (
-          <div className={styles.container}>
+          <div className={styles.container} data-testid="welcomePage">
                <Navbar className={styles.navContainer} sticky="top" expand='md'>
                     <NavbarBrand className={styles.brand}>Outfit Perfection</NavbarBrand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -97,12 +97,13 @@ function WelcomePage (props) {
                                    backgroundImage: `url(${el.profUrl})`
                               }
                               return (
-                                   <Col  className="md-4" key={key}>
+                                   <Col  className="md-4 mb-4" key={key}>
                                         <div style={imgStyle} className={styles.aboutImage}></div>
                                         <div className="mt-3 fw-bold text-center">{el.name}</div>
                                         <div className="mb-3 text-center">{el.title}</div>
                                         <div>{el.about}</div>
-                                        <NavLink><MoneyIcon /></NavLink>
+                                        <a href={el.linkedin} className={styles.link}><LinkedinIcon/></a>
+                                        <a href={el.githubUrl} className={styles.link}><GithubIcon/></a>
                                    </Col>)
                          })}
                     </Row>

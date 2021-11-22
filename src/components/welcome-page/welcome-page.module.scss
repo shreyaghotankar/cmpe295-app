@@ -80,6 +80,11 @@
       @extend %subheader;
    }
 
+   .link {
+      color: $primary-blue;
+      margin-right: 16px;
+   }
+
    .aboutImage {
       margin: auto;
       width: 200px;

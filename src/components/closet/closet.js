@@ -7,19 +7,19 @@ import Col from "react-bootstrap/Col";
 
 function Closet (props) {
      const { items } = props;
-     const emptyCloset = !items || items.length === 0;
+     const emptyCloset = !items || items.filter(value => Object.keys(value).length !== 0).length === 0;
 
      return (
           <div>
-               {emptyCloset ? <div>No items in your Closet yet</div> : null}
-               <Row className="justify-content-start">
-                    {Array.isArray(items) && items.map((el, index)=>{
-                         const image = `${process.env.REACT_APP_CLOUD_FRONT}${el.userId}/${el.imageId}`;
-                         return (<Col sm="auto" key={`user-item-${index}`}>
-                              <ItemCart image={image} item={el}/>
-                         </Col>)
-                    })
-                    }</Row>
+               {emptyCloset ? <div data-testid="emptyCloset">No items in your Closet yet</div> :
+                    <Row className="justify-content-start" data-testid="closetExists">
+                         {Array.isArray(items) && items.map((el, index)=>{
+                              const image = `${process.env.REACT_APP_CLOUD_FRONT}${el.userId}/${el.imageId}`;
+                              return (<Col sm="auto" key={`user-item-${index}`}>
+                                   <ItemCart image={image} item={el}/>
+                              </Col>)
+                         })
+                         }</Row>}
           </div>
      )
 }

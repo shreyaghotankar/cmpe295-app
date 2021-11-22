@@ -31,10 +31,10 @@ export const UPPER_ATTRIBUTES ={
      f_leather: 'Leather',
      f_fur: 'Fur',
      p_sleeveless: 'Sleeveless',
-     p_longsleeve: 'LongSleeve', //change to p_long-sleeve
+     'p_long-sleeve': 'LongSleeve', //change to p_long-sleeve
      p_collar: 'Collar',
      p_pocket: 'Pocket',
-     p_vneck: 'V Neck', // change to p_v-neck
+     'p_v-neck': 'V Neck', // change to p_v-neck
      p_button: 'Button', 
      p_hooded: 'Hooded',
      p_zipper: 'Zipper'
@@ -89,7 +89,7 @@ export const PERSONAS = [
           name: 'Shreya Ghotankar',
           title: 'Lead and Backend',
           linkedin: 'https://www.linkedin.com/in/shreya-ghotankar/',
-          about: "Amazing human-being! She is unstoppable and ready to explore new horizontes.",
+          about: "Amazing human-being! She is unstoppable and ready to explore new horizons.",
           profUrl: 'https://media-exp1.licdn.com/dms/image/C5603AQF75BZZmMXugQ/profile-displayphoto-shrink_200_200/0/1631052407804?e=1643241600&v=beta&t=N4MqpTXi3VtcRCPybHQCuEYu8Qs9qfPSg-7MiQ4EOo4',
           githubUrl: 'https://github.com/shreyaghotankar'
      },
@@ -97,7 +97,7 @@ export const PERSONAS = [
           name: 'Manjiri Kadam',
           title: 'ML Deployment',
           linkedin: 'https://www.linkedin.com/in/manjiri-kadam-133085113/',
-          about: "Smile is her moto. You can hardly find any other girl who can do so much under a time pressure.",
+          about: "Smile is her motto. You can hardly find any other girl who can do so much under time pressure.",
           profUrl: 'https://media-exp1.licdn.com/dms/image/D5635AQHGpfpzUcGs7A/profile-framedphoto-shrink_800_800/0/1632525846968?e=1637575200&v=beta&t=t5QZtLSVIIv6VvBONoO41Dl5z4FBdAqi0GWWKzTel24',
           githubUrl: 'https://github.com/Manjiri1101'
      },
@@ -113,7 +113,7 @@ export const PERSONAS = [
           name: 'Anastasia Zimina',
           title: 'Frontend and Idea',
           linkedin: 'https://www.linkedin.com/in/anastaszi/',
-          about: "She loves to create beauty around and laughts in the face of hard problems.",
+          about: "She loves to create beauty around and laughs in the face of challenging problems.",
           profUrl: 'https://media-exp1.licdn.com/dms/image/C5603AQG8PqiiUKdiRg/profile-displayphoto-shrink_800_800/0/1517199611001?e=1643241600&v=beta&t=as0E-Act-cqcF7mw5j-al7uDLbTqGoCv2Ac9oGtL6Uo',
           githubUrl: 'https://github.com/anastaszi'
      },

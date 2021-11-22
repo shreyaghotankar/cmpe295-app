@@ -8,7 +8,7 @@ function AttributesSelection (props) {
      const { selectedOptions, setSelectedOptions, upper=true } = props;
      const options = upper ? Object.keys(UPPER_ATTRIBUTES) : Object.keys(BOTTOM_ATTRIBUTES)
      const selectOption = (option) => {
-          if (selectedOptions.includes(option)) {
+          if (selectedOptions?.includes(option)) {
                setSelectedOptions(selectedOptions.filter(item => item !== option))
           } else {
                setSelectedOptions(prev => [...prev, option])
@@ -23,7 +23,7 @@ function AttributesSelection (props) {
                          const value = getAttrName(upper, option);
                          const pill_key = `button-pill-${value}`
                          return (
-                              <AttributesButtonPill key={pill_key} value={value} onSelect={()=> selectOption(option)} isChecked={selectedOptions.includes(option)}/>
+                              <AttributesButtonPill key={pill_key} value={value} onSelect={()=> selectOption(option)} isChecked={selectedOptions?.includes(option)}/>
                          )}
                     )
                }

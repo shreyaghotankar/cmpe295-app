@@ -70,7 +70,10 @@
 
 
 @media (max-width: $mobile) {
-
+    .recommendations {
+        max-height: 330px;
+        overflow-x: hidden;
+    }
 
     .recommendationCart {
         %button {
