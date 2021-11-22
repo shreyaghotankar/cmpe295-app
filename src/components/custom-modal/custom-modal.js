@@ -13,7 +13,7 @@ function CustomModal (props) {
           <Modal show={show} onHide={onHide} backdrop="static" dialogClassName={modalStyle ? modalStyle : styles.customSize} keyboard={false} contentClassName={styles.modal}>
                {hasCloseButton && <Modal.Header closeButton bsPrefix={`modal-header ${styles.modalHeader}`}/>}
                <Modal.Body>
-                    <div className={styles.container}>{children}</div>
+                    <div className={styles.container} data-testid="modalContent">{children}</div>
                </Modal.Body>
           </Modal>
 

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import PropTypes from 'prop-types';
-import { Col, Row,  Navbar, NavbarBrand, Nav} from "react-bootstrap";
+import { Col, Row,  Navbar, NavbarBrand, Nav } from "react-bootstrap";
 import styles from './welcome-page.module.scss';
 import { TimeIcon, PlanetIcon, MoneyIcon, GithubIcon, LinkedinIcon } from '../../shared/icons/icons';
 import { PERSONAS } from "../../shared/constants";
@@ -38,7 +38,7 @@ function WelcomePage (props) {
      ]
 
      return (
-          <div className={styles.container}>
+          <div className={styles.container} data-testid="welcomePage">
                <Navbar className={styles.navContainer} sticky="top" expand='md'>
                     <NavbarBrand className={styles.brand}>Outfit Perfection</NavbarBrand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -2,7 +2,6 @@ import React from "react";
 
 import { Col, Row  } from "react-bootstrap";
 import styles from './how-it-works.module.scss';
-import { TimeIcon, PlanetIcon, MoneyIcon } from '../../../../shared/icons/icons';
 
 function HowItWorks () {
 
