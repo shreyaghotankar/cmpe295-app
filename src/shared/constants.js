@@ -31,10 +31,10 @@ export const UPPER_ATTRIBUTES ={
      f_leather: 'Leather',
      f_fur: 'Fur',
      p_sleeveless: 'Sleeveless',
-     p_longsleeve: 'LongSleeve', //change to p_long-sleeve
+     'p_long-sleeve': 'LongSleeve', //change to p_long-sleeve
      p_collar: 'Collar',
      p_pocket: 'Pocket',
-     p_vneck: 'V Neck', // change to p_v-neck
+     'p_v-neck': 'V Neck', // change to p_v-neck
      p_button: 'Button', 
      p_hooded: 'Hooded',
      p_zipper: 'Zipper'
@@ -113,7 +113,7 @@ export const PERSONAS = [
           name: 'Anastasia Zimina',
           title: 'Frontend and Idea',
           linkedin: 'https://www.linkedin.com/in/anastaszi/',
-          about: "She loves to create beauty around and laughts in the face of hard problems.",
+          about: "She loves to create beauty around and laughts in the face of hard problems. ",
           profUrl: 'https://media-exp1.licdn.com/dms/image/C5603AQG8PqiiUKdiRg/profile-displayphoto-shrink_800_800/0/1517199611001?e=1643241600&v=beta&t=as0E-Act-cqcF7mw5j-al7uDLbTqGoCv2Ac9oGtL6Uo',
           githubUrl: 'https://github.com/anastaszi'
      },
