@@ -55,9 +55,9 @@ function WelcomePage (props) {
                     <div className="text-center mx-4 my-3">Discover amazing outfits by mixing and matching clothes that You already have</div>
                     <Row className={styles.infoRow}>
                          <Col>
-                              {sections.map((el, id)=> <Row key={id} className="mb-3">
+                              {sections.map((el, id)=> <Row key={id} className="mb-4">
                                    <Col xs="auto" className="me-2 me-md-4">{el.icon}</Col>
-                                   <Col className="d-flex align-items-center">
+                                   <Col >
                                         <div className={styles.subsectionHeader}>{el.header}</div>
                                         <div className="d-none d-md-block mt-md-3">{el.text}</div>
                                    </Col>
