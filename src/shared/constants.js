@@ -98,7 +98,7 @@ export const PERSONAS = [
           title: 'ML Deployment',
           linkedin: 'https://www.linkedin.com/in/manjiri-kadam-133085113/',
           about: "Smile is her motto. You can hardly find any other girl who can do so much under time pressure.",
-          profUrl: 'https://media-exp1.licdn.com/dms/image/D5635AQHGpfpzUcGs7A/profile-framedphoto-shrink_800_800/0/1632525846968?e=1637575200&v=beta&t=t5QZtLSVIIv6VvBONoO41Dl5z4FBdAqi0GWWKzTel24',
+          profUrl: '/img/D5635AQHGpfpzUcGs7A.jpeg',
           githubUrl: 'https://github.com/Manjiri1101'
      },
      {

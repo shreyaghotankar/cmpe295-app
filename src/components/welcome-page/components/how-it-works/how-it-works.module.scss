@@ -13,12 +13,100 @@
       font-weight: 700;
       text-align: center;
       padding: 0 16px;
+      margin-bottom: 16px;
+   }
+
+   .item {
+      margin: auto;
+      height: 120px;
+      width: 120px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+   }
+   .blank {
+      margin: 16px;
+      height: 192px;
+   }
+   .addition {
+      margin-bottom: 8px;
+      height: 80px;
+      width: 536px;
+   }
+
+   .algoIcon {
+      fill: $primary-red;
    }
 }
+
+.recommendations {
+   position: relative;
+
+   >:nth-child(2) {
+      margin-left: 80px;
+      margin-top: 80px;
+   }
+   >:nth-child(3) {
+      margin-left: 160px;
+      margin-top: 160px;
+   }
+}
+
+
+.recommendationCart {
+   position: absolute;
+   width: fit-content;
+   %button {
+       position: absolute;
+       right: 0;
+       top: 0;
+       z-index: 2;
+   }
+   .likeButton {
+       @extend %button;
+       background-color: $dark-red;
+       > svg {
+           width: 12px;
+           height: 12px;
+       }
+   }
+   
+}
+
+
 @media (max-width: $mobile) {
    .container {
-      .header {
+      .item {
+         height: 100px;
+         width: 60px;
+      }
 
+      .blank {
+         height: 100px;
+      }
+      .addition {
+         height: 60px;
+         width: 248px;
+      }
+   }
+   .recommendationCart {
+      .likeButton {
+         width: 20px;
+         height: 20px;
+         > svg {
+             width: 8px;
+             height: 8px;
+         }
+     }
+   }
+   .recommendations {
+      >:nth-child(2) {
+         margin-left: 50px;
+         margin-top: 50px;
+      }
+      >:nth-child(3) {
+         margin-left: 100px;
+         margin-top: 100px;
       }
    }
 }

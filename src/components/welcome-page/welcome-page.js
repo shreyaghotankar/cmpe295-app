@@ -23,17 +23,17 @@ function WelcomePage (props) {
           {
                icon: < TimeIcon />, 
                header: 'save your time', 
-               text: 'add smth here'
+               text: 'Get outfit recommendations within seconds and dress up without spending too much time on thinking what to wear.'
           },
           {
                icon: < MoneyIcon />, 
                header: 'save your budget', 
-               text: 'add smth here'
+               text: "Explore the potencial of your closet: mix and match what is already there."
           },
           {
                icon: <PlanetIcon/>, 
                header: 'save the planet', 
-               text: 'add smth here'
+               text: 'Be mindul and buy new things when you really need them.'
           }
      ]
 
@@ -55,14 +55,15 @@ function WelcomePage (props) {
                     <div className="text-center mx-4 my-3">Discover amazing outfits by mixing and matching clothes that You already have</div>
                     <Row className={styles.infoRow}>
                          <Col>
-                              {sections.map((el, id)=> <Row key={id} className="mb-4 mb-md-5">
-                                   <Col xs="auto" className="me-4">{el.icon}</Col>
-                                   <Col>
+                              {sections.map((el, id)=> <Row key={id} className="mb-4">
+                                   <Col xs="auto" className="me-2 me-md-4">{el.icon}</Col>
+                                   <Col >
                                         <div className={styles.subsectionHeader}>{el.header}</div>
-                                        <div className="mt-2 mt-md-3">{el.text}</div>
+                                        <div className="d-none d-md-block mt-md-3">{el.text}</div>
                                    </Col>
+                                   <Col className="d-md-none mb-3 mt-2" xs={12}><div className="mt-2 mt-md-3">{el.text}</div></Col>
                               </Row>)}
-                              <div className="pt-5  d-md-none text-center">
+                              <div className="d-md-none text-center">
                                    <p>“You can have anything you want in life if you dress for it.”</p>
                                    <p>Edith Head</p>
                               </div>
@@ -71,7 +72,7 @@ function WelcomePage (props) {
                          <Col className="mt-4 mt-md-0">{children}
                          </Col>
                     </Row>
-                    <div className="py-5 d-none d-md-block text-center">
+                    <div className="py-4 d-none d-md-block text-center">
                          <p>“You can have anything you want in life if you dress for it.”</p>
                          <p>Edith Head</p>
                     </div>
@@ -82,14 +83,14 @@ function WelcomePage (props) {
                </div>
                <div className={styles.sectionIdea} ref={ideaRef}>
                     <h1 className={styles.header}>Idea</h1>
-                    <p className="mt-4">Outfit Perfection provides you with an opportunity to explore your own Closet. Our state-of-art recommendation algorithm will help find amazing outfit options for you by matching tops or bottoms for a aprticular clothing item in your closet.</p>
-                    <p>
-                    Our vision is to promote sustainable fashion by repurposing items already owned by the user without compromising on style.
-                    </p>
+                    <Row className="mt-4">
+                         <Col xs={12} md={6}>Outfit Perfection provides you with an opportunity to explore your own Closet. Our state-of-art recommendation algorithm will help find amazing outfit options for you by matching tops or bottoms for a aprticular clothing item in your closet.</Col>
+                         <Col>Our vision is to promote sustainable fashion by repurposing items already owned by the user without compromising on style.</Col>
+                    </Row>
                </div>
                <div className={styles.sectionAbout} ref={aboutRef}>
                     <h1 className={styles.header}>About us</h1>
-                    <p className="mt-4">Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text, this is simply copy that serves to fill a space without actually saying anything meaningful. ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p className="mt-4">Meet the women behind Outfit Perfection. We started it as an academic project and on exploring the sustainable fashion domain realized the potential of this application. We incorporated our software engineering and machine learning knowledge for the betterment of the people and the planet.</p>
                     <Row className="my-5">
                          {PERSONAS.map((el, id)=> {
                               const key = "member" + id;

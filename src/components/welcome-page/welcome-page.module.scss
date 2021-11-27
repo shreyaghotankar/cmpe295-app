@@ -8,7 +8,7 @@
 
 .navContainer {
    background-color: $primary-white ;
-   padding: 24px 40px;
+   padding: 16px 40px;
    justify-content: space-between !important;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .sectionMain {
-   padding-top: 72px;
+   padding-top: 40px;
    background-color: $primary-blue;
    color: $primary-white;
 
@@ -42,7 +42,7 @@
    }
 
    .infoRow {
-      padding: 72px 72px 18px 72px;
+      padding: 40px 72px 18px 80px;
    }
 
    .subsectionHeader {
@@ -91,7 +91,7 @@
       height: 200px;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: contain;
+      background-size: cover;
       border-radius: 50%;
    }
 

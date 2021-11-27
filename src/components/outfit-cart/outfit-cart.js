@@ -11,7 +11,8 @@ function OutfitCart (props) {
           imageIdTwo,
           imageOne, 
           imageTwo, 
-          displayDeleteButton
+          displayDeleteButton,
+          custom
      } = props;
 
      const [deletingItem, setDeletingItem] = useState(false);
@@ -45,7 +46,7 @@ function OutfitCart (props) {
 
 
      return (
-          <div className={styles.container}>
+          <div className={custom ? styles.containerCustom : styles.container}>
                <div className={imageOne ? styles.image : styles.noImage} style={imageStyleOne}>
                </div>
                <div className={imageTwo ? styles.image : styles.noImage} style={imageStyleTwo}>
