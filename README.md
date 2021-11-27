@@ -1,3 +1,16 @@
+# CMPE295 Masters Project
+### University : [San Jose State University](http://www.sjsu.edu/)
+### Project: Sustainable Fashion Recommendation Application using Machine Learning
+### Project Advisor: Dr. KaiKai Liu
+#### This repository has Frontend and Backend code for the application. For ML component code follow this [link](https://github.com/shreyaghotankar/CMPE295-Masters_Project)
+
+## Abstract
+According to the UN environment program, the fashion industry is the second-biggest consumer of water and is responsible for 8-10 percent of global carbon emissions. Clothing affordability, demand over-stimulated by social media lead to imprudent buying and under-utilization of clothes which eventually results in waste accumulation. We are seeking a solution to provide outfit recommendations based on users’ existing closets and help them reimagine their style without compromising the environment.
+
+Rapid advancements in Machine Learning (ML) and Artificial Intelligence (AI) created significant momentum for developing recommendation systems. Broad utilization of such systems allows online fashion retailers to make more personalized suggestions for upselling products. Existing fashion recommendation systems encourage additional purchases of similar items or items based on their previous purchases and current trends. 
+
+In this project, we built a web application reinforced with machine learning recommendation system. We achieved this by applying collaborative filtering recommendations to users' virtual closets. Users can upload images of their pre-existing wardrobe, and the application will recommend the outfits. Our application will help people wear the styles that best suit them and have satisfaction knowing that they contributed towards mitigating climate change.
+
 ## About React configurations
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
