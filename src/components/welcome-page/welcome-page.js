@@ -33,7 +33,7 @@ function WelcomePage (props) {
           {
                icon: <PlanetIcon/>, 
                header: 'save the planet', 
-               text: 'Be mindul and buy new things when you really need them.'
+               text: 'Be mindful and buy new things when you really need them.'
           }
      ]
 
