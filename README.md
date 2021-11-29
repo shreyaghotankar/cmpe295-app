@@ -155,7 +155,6 @@ Ex: feature/readme-az
 
 [Configure AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) \
 [CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet) \
-
 [Context Usage](https://dmitripavlutin.com/react-context-and-usecontext/) \
 [Custom Amplify SignOut](https://github.com/aws-amplify/amplify-js/issues/7039) \
 [Preview in React](https://dev.to/yosraskhiri/make-an-image-preview-in-react-js-301f) \
