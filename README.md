@@ -2,7 +2,21 @@
 ### University : [San Jose State University](http://www.sjsu.edu/)
 ### Project: Sustainable Fashion Recommendation Application using Machine Learning
 ### Project Advisor: Dr. KaiKai Liu
-#### This repository has Frontend and Backend code for the application. For ML component code follow this [link](https://github.com/shreyaghotankar/CMPE295-Masters_Project)
+*This repository has Frontend and Backend code for the application.* \
+*For ML component code follow this [link](https://github.com/shreyaghotankar/CMPE295-Masters_Project)*
+
+**Live version: [www.outfitperfection.com](https://www.outfitperfection.com/)**
+
+>Table of content: 
+> - [Abstract](#abstract) 
+> - [Architecture Diagram](#architecture-diagram) 
+> - [React configurations](#react-configurations) 
+> - [Testing](#testing)
+> - [Amplify Setup](#amplify-setup)
+> - [Project Folder Structure](#project-folder-structure)
+> - [Styles](#styles)
+> - [Screenshots](#screenshots)
+> - [Branching](#branching)
 
 ## Abstract
 According to the UN environment program, the fashion industry is the second-biggest consumer of water and is responsible for 8-10 percent of global carbon emissions. Clothing affordability, demand over-stimulated by social media lead to imprudent buying and under-utilization of clothes which eventually results in waste accumulation. We are seeking a solution to provide outfit recommendations based on users’ existing closets and help them reimagine their style without compromising the environment.
@@ -11,7 +25,10 @@ Rapid advancements in Machine Learning (ML) and Artificial Intelligence (AI) cre
 
 In this project, we built a web application reinforced with machine learning recommendation system. We achieved this by applying collaborative filtering recommendations to users' virtual closets. Users can upload images of their pre-existing wardrobe, and the application will recommend the outfits. Our application will help people wear the styles that best suit them and have satisfaction knowing that they contributed towards mitigating climate change.
 
-## About React configurations
+## Architecture Diagram
+![architecture](https://github.com/shreyaghotankar/cmpe295-app/blob/feature/update-readme/images/architecture.jpg)
+
+## React configurations
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -21,26 +38,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - node-sass [to use scss instead of plain css]
 - prop-types [to typecheck]
 - bootstrap
+- lint
 
 ## Testing
 
 Jest library
 `npm test`
-
-## Branching
-
-
- > ! Before you start always pull latest changes \
- > `git pull`
-
-For each feature/bug or issue resolvment create a new branch 
-
-`git checkout -b [branch name]`
-
-Follow branch naming convention:
-[feature/bug/issue]/[name of the reature]-[author]
-Ex: feature/readme-az
-
 
 ## Amplify Setup
 
@@ -116,16 +119,42 @@ export default ComponentName;
 
 ```
 
-
 ## Styles
 
 To destinguish local vs global styles we are using Css Modules that automatically create a unique classname in the format `[filename]\_[classname]\_\_[hash]`
+
+## Screenshots
+
+### Welcome Screen (mobile and desktop)
+![welcome_screen](https://github.com/shreyaghotankar/cmpe295-app/blob/feature/update-readme/images/desktop_welcome.png)
+![about_screen](https://github.com/shreyaghotankar/cmpe295-app/blob/feature/update-readme/images/desktop_aboutus.png)
+![mobile_welcome_screen](https://github.com/shreyaghotankar/cmpe295-app/blob/feature/update-readme/images/mobile_welcome.png)
+
+### Main Scree (mobile and desktop)
+![mobile_add](https://github.com/shreyaghotankar/cmpe295-app/blob/feature/update-readme/images/mobile_add.png)
+![mobile_magic](https://github.com/shreyaghotankar/cmpe295-app/blob/feature/update-readme/images/mobile_magic.png)
+![mobile_outfits](https://github.com/shreyaghotankar/cmpe295-app/blob/feature/update-readme/images/mobile_outfits.png)
+![desktop_results](https://github.com/shreyaghotankar/cmpe295-app/blob/feature/update-readme/images/desktop_results.png)
+
+## Branching
+
+
+ > ! Before you start always pull latest changes \
+ > `git pull`
+
+For each feature/bug or issue resolvment create a new branch 
+
+`git checkout -b [branch name]`
+
+Follow branch naming convention:
+[feature/bug/issue]/[name of the reature]-[author]
+Ex: feature/readme-az
+
 
 ## References:
 
 [Configure AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) \
 [CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet) \
-
 [Context Usage](https://dmitripavlutin.com/react-context-and-usecontext/) \
 [Custom Amplify SignOut](https://github.com/aws-amplify/amplify-js/issues/7039) \
 [Preview in React](https://dev.to/yosraskhiri/make-an-image-preview-in-react-js-301f) \

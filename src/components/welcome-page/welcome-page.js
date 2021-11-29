@@ -28,7 +28,7 @@ function WelcomePage (props) {
           {
                icon: < MoneyIcon />, 
                header: 'save your budget', 
-               text: "Explore the potencial of your closet: mix and match what is already there."
+               text: "Explore the potential of your closet: mix and match what is already there."
           },
           {
                icon: <PlanetIcon/>, 
@@ -84,13 +84,13 @@ function WelcomePage (props) {
                <div className={styles.sectionIdea} ref={ideaRef}>
                     <h1 className={styles.header}>Idea</h1>
                     <Row className="mt-4">
-                         <Col xs={12} md={6}>Outfit Perfection provides you with an opportunity to explore your own Closet. Our state-of-art recommendation algorithm will help find amazing outfit options for you by matching tops or bottoms for a aprticular clothing item in your closet.</Col>
+                         <Col xs={12} md={6}>Outfit Perfection provides you with an opportunity to explore your own Closet. Our state-of-art recommendation algorithm will help you find fantastic outfit options for you by matching tops or bottoms for a particular clothing item in your closet.</Col>
                          <Col>Our vision is to promote sustainable fashion by repurposing items already owned by the user without compromising on style.</Col>
                     </Row>
                </div>
                <div className={styles.sectionAbout} ref={aboutRef}>
                     <h1 className={styles.header}>About us</h1>
-                    <p className="mt-4">Meet the women behind Outfit Perfection. We started it as an academic project and on exploring the sustainable fashion domain realized the potential of this application. We incorporated our software engineering and machine learning knowledge for the betterment of the people and the planet.</p>
+                    <p className="mt-4">Meet the women behind Outfit Perfection. We started it as an academic project and, while exploring the sustainable fashion domain, we realized this application's potential. We incorporated our software engineering and machine learning knowledge for the betterment of the people and the planet.</p>
                     <Row className="my-5">
                          {PERSONAS.map((el, id)=> {
                               const key = "member" + id;
