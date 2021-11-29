@@ -28,7 +28,7 @@ function WelcomePage (props) {
           {
                icon: < MoneyIcon />, 
                header: 'save your budget', 
-               text: "Explore the potencial of your closet: mix and match what is already there."
+               text: "Explore the potential of your closet: mix and match what is already there."
           },
           {
                icon: <PlanetIcon/>, 
