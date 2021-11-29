@@ -11,6 +11,11 @@ Rapid advancements in Machine Learning (ML) and Artificial Intelligence (AI) cre
 
 In this project, we built a web application reinforced with machine learning recommendation system. We achieved this by applying collaborative filtering recommendations to users' virtual closets. Users can upload images of their pre-existing wardrobe, and the application will recommend the outfits. Our application will help people wear the styles that best suit them and have satisfaction knowing that they contributed towards mitigating climate change.
 
+## Architecture Diagram
+
+## Screenshots
+
+
 ## About React configurations
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -21,6 +26,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - node-sass [to use scss instead of plain css]
 - prop-types [to typecheck]
 - bootstrap
+- lint
 
 ## Testing
 
