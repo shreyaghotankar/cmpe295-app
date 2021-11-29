@@ -29,7 +29,7 @@ function HowItWorks () {
           <Row className="my-4 mb-md-5">
                <Col className="mb-4">
                     <div className={styles.container}>
-                         <div className={styles.header}>add items from your clost</div>
+                         <div className={styles.header}>add items from your closet</div>
                          <div className="mt-2 mt-md-3">
                               <Row className="justify-content-around">
                                    <Col xs='auto'>
@@ -56,7 +56,7 @@ function HowItWorks () {
                          <div className={styles.header}>Magic happens</div>
                          <div className="mt-2 mt-md-3">
                               <div className="my-4 d-flex justify-content-center"><AlgoIcon className={styles.algoIcon}/></div>
-                              Our state-of-art recommendation algorithm mixes and matches your items to create amazing outfit options.</div>
+                              Our state-of-art recommendation algorithm mixes and matches your items to create fantastic outfit options.</div>
                     </div>
                </Col>
                <Col md="auto" className="mb-4">
